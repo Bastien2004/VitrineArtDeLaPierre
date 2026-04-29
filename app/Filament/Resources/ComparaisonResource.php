@@ -3,7 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\RealisationResource\Pages;
-use App\Models\Realisation;
+use App\Models\Comparaison;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -16,9 +16,9 @@ use Filament\Actions\DeleteAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 
-class RealisationResource extends Resource
+class ComparaisonResource extends Resource
 {
-    protected static ?string $model = Realisation::class;
+    protected static ?string $model = Comparaison::class;
     protected static string|null|\BackedEnum $navigationIcon = Heroicon::OutlinedPhoto;
     protected static ?string $navigationLabel = 'Réalisations';
     protected static ?string $modelLabel = 'Réalisation';
@@ -30,7 +30,6 @@ class RealisationResource extends Resource
 
             Forms\Components\TextInput::make('title')
                 ->label('Titre de la réalisation')
-                ->placeholder('Ex : Restauration d\'un portail XVIIe')
                 ->required()
                 ->maxLength(255),
 
@@ -97,7 +96,7 @@ class RealisationResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageRealisations::route('/'),
+            'index' => Pages\ManageComparaisons::route('/'),
         ];
     }
 }

@@ -54,6 +54,9 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])
+            ->brandName("F. ODEN")
+            ->colors(["primary" => Color::hex("#8B7355")])
+            ->darkMode(false);
     }
 }

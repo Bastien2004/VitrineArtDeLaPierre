@@ -1,6 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RealisationController;
+use App\Http\Controllers\ComparaisonController;
 
-Route::get('/', [RealisationController::class, 'index']);
+Route::get('/', [ComparaisonController::class, 'index']);

@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Realisation;
+use App\Models\Comparaison;
 
-class RealisationController extends Controller
+class ComparaisonController extends Controller
 {
     public function index()
     {
-        $realisations = Realisation::orderBy('order')->get();
+        $realisations = Comparaison::orderBy('order')->get();
 
         $items = [];
         foreach ($realisations as $r) {
