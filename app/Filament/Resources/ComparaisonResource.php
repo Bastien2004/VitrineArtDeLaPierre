@@ -20,9 +20,9 @@ class ComparaisonResource extends Resource
 {
     protected static ?string $model = Comparaison::class;
     protected static string|null|\BackedEnum $navigationIcon = Heroicon::OutlinedPhoto;
-    protected static ?string $navigationLabel = 'Réalisations';
-    protected static ?string $modelLabel = 'Réalisation';
-    protected static ?string $pluralModelLabel = 'Réalisations';
+    protected static ?string $navigationLabel = 'Comparaisons';
+    protected static ?string $modelLabel = 'Comparaisons';
+    protected static ?string $pluralModelLabel = 'Comparaisons';
 
     public static function form(Form|Schema $form): Schema
     {
