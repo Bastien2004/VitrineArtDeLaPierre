@@ -60,7 +60,6 @@
                 />
             @endif
         @empty
-            <p class="text-gray-400 italic">Ajoutez des images dans public/images/comparaisons (ex: 01_avant.jpg et 01_apres.jpg)</p>
         @endforelse
     </div>
 </main>

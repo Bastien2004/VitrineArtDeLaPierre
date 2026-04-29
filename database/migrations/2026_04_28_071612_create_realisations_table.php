@@ -9,12 +9,14 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void {
+    // database/migrations/xxxx_create_realisations_table.php
+    public function up(): void
+    {
         Schema::create('realisations', function (Blueprint $table) {
             $table->id();
+            $table->string('slug');        // ex: "01", "02"
             $table->string('title');
-            $table->string('image_before');
-            $table->string('image_after');
+            $table->integer('order')->default(0);
             $table->timestamps();
         });
     }
