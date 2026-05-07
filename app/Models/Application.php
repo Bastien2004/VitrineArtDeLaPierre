@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Application extends Model
+{
+    use HasFactory;
+
+    // On autorise Laravel à remplir ces colonnes
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'email',
+        'phone',
+        'cv_path',
+        'cover_letter_path',
+        'status',
+    ];
+}
