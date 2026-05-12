@@ -18,6 +18,7 @@
         <li><a href="/">Artiste</a></li>
         <li><a href="#">Savoir-Faire</a></li>
         <li><a href="#">Réalisations</a></li>
+        <li><a href="/configurateur">Devis</a></li>
         <li><a href="{{ route('recrutement') }}">Recrutement</a></li>
         <li><a href="#">Contact</a></li>
     </ul>

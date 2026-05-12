@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('email');
             $table->string('phone');
-            $table->string('cv_path'); // Chemin du fichier CV
-            $table->string('cover_letter_path')->nullable(); // Optionnel
-            $table->string('status')->default('nouveau'); // Pour ton futur Filament
+            $table->string('cv_path');
+            $table->string('cover_letter_path')->nullable();
+            $table->string('status')->default('nouveau');
             $table->timestamps();
         });
     }
