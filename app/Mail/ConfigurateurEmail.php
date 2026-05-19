@@ -8,7 +8,14 @@ use Illuminate\Mail\Mailables\Envelope;
 
 class ConfigurateurEmail extends Mailable
 {
-    public function __construct(public array $pierres) {}
+    public function __construct(
+        public array $pierres,
+        public string $note = '',
+        public string $numero = '',
+        public string $mail = '',
+        public string $nom = '',
+        public string $prenom = '',
+    ) {}
 
     public function envelope(): Envelope
     {

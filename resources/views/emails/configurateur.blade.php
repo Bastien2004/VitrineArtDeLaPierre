@@ -8,12 +8,25 @@
         .badge { display: inline-block; background: #e8e0d4; padding: 2px 8px; border-radius: 4px; font-size: 11px; margin: 2px; }
     </style></head>
 <body>
+
 <h2>Configuration reçue — L'Art de la Pierre</h2>
+
+<p>
+    <strong>Nom :</strong> {{ $nom }} {{ $prenom }}<br>
+    <strong>Téléphone :</strong> {{ $numero }}<br>
+    <strong>Email :</strong> {{ $mail }}
+</p>
+
 <p>{{ count($pierres) }} pierre(s) configurée(s) :</p>
+
 <table>
-    <thead><tr>
-        <th>#</th><th>Dimensions (cm)</th><th>Finitions</th>
-    </tr></thead>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Dimensions (cm)</th>
+        <th>Finitions</th>
+    </tr>
+    </thead>
     <tbody>
     @foreach($pierres as $i => $p)
         @php
@@ -37,5 +50,14 @@
     @endforeach
     </tbody>
 </table>
+
+@if($note)
+    <div style="margin-top: 20px; padding: 12px 16px; background: #faf9f7;
+                border-left: 3px solid #b0a494; font-size: 13px; color: #44403c;">
+        <strong>Note du client :</strong><br>
+        {{ $note }}
+    </div>
+@endif
+
 </body>
 </html>
