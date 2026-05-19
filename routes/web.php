@@ -8,3 +8,4 @@ use App\Http\Controllers\ComparaisonController;
 Route::get('/', [ComparaisonController::class, 'index']);
 Route::get('/recrutement', RecruitmentForm::class)->name('recrutement');
 Route::get('/configurateur', [ConfigurateurController::class, 'index'])->name('configurateur');
+Route::post('/configurateur/envoyer-mail', [ConfigurateurController::class, 'envoyerMail']);

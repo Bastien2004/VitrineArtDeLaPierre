@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Configurateur — L'Art de la Pierre</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
@@ -21,7 +22,14 @@
             <span class="plus-icon">+</span>
             Ajouter une pierre
         </button>
-        <span class="stone-count" id="stone-count"></span>
+
+        <button class="add-btn" onclick="envoyerMail()" id="btn-mail">
+            <span class="plus-icon">✉</span>
+            Envoyer par mail
+        </button>
+
+        <br><span class="stone-count" id="stone-count"></span>
+
     </div>
 
     <div id="liste-pierres"></div>
@@ -219,6 +227,47 @@
     }
 
     window.onload = () => ajouterPierre(false);
+
+
+
+
+
+
+    async function envoyerMail() {
+        const instances = document.querySelectorAll('.stone-instance');
+
+        if (instances.length === 0) {
+            notifier("Aucune pierre à envoyer.");
+            return;
+        }
+
+        // Collecte l'état de chaque pierre
+        const pierres = Array.from(instances).map(inst => inst.state);
+
+        const btn = document.getElementById('btn-mail');
+        btn.disabled = true;
+        btn.querySelector('.plus-icon').textContent = '⏳';
+
+        try {
+            const response = await fetch('/configurateur/envoyer-mail', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content
+                        || '{{ csrf_token() }}',
+                },
+                body: JSON.stringify({ pierres }),
+            });
+
+            if (!response.ok) throw new Error();
+            notifier("✓ Configuration envoyée par mail !");
+        } catch {
+            notifier("Erreur lors de l'envoi. Réessayez.");
+        } finally {
+            btn.disabled = false;
+            btn.querySelector('.plus-icon').textContent = '✉';
+        }
+    }
 </script>
 </body>
 </html>
