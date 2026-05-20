@@ -33,19 +33,19 @@
         <div class="client-form-grid">
             <div class="client-field">
                 <label for="nom-client">Nom</label>
-                <input type="text" id="nom-client" placeholder="Dupont">
+                <input type="text" id="nom-client" placeholder="Dupont" required>
             </div>
             <div class="client-field">
                 <label for="prenom-client">Prénom</label>
-                <input type="text" id="prenom-client" placeholder="Jean">
+                <input type="text" id="prenom-client" placeholder="Jean" required>
             </div>
             <div class="client-field">
                 <label for="email-client">Adresse mail</label>
-                <input type="email" id="email-client" placeholder="jean@example.com">
+                <input type="email" id="email-client" placeholder="jean@example.com" required>
             </div>
             <div class="client-field">
                 <label for="telephone-client">Téléphone</label>
-                <input type="tel" id="telephone-client" placeholder="06 00 00 00 00">
+                <input type="tel" id="telephone-client" placeholder="06 00 00 00 00" required>
             </div>
         </div>
 
