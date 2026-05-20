@@ -1,176 +1,716 @@
+/* ============================================
+   FRÉDÉRIC ODEN — Tailleur de Pierre & Sculpteur
+   CSS — Direction : Luxury Editorial / Stone Craft
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@200;300;400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
+
+/* ---- CUSTOM PROPERTIES ---- */
 :root {
-    --stone-white: #ffffff;
-    --text-dark: #111111;
-    --accent-grey: #a3a3a3;
-    --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    --white:        #FDFCFA;
+    --off-white:    #F5F2EE;
+    --stone-light:  #E8E3DC;
+    --stone-mid:    #C4BDB3;
+    --stone-dark:   #7A7269;
+    --charcoal:     #1C1A18;
+    --ink:          #0D0C0B;
+    --accent:       #8C7B6E;
+
+    --serif:        'Cormorant Garamond', Georgia, serif;
+    --sans:         'Montserrat', sans-serif;
+    --nav-sans:     'Plus Jakarta Sans', sans-serif;
+
+    --ease-out:     cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out:  cubic-bezier(0.45, 0, 0.55, 1);
+    --duration:     0.7s;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* ---- RESET ---- */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    margin-top: -80px;
+    position: relative;
+    z-index: 5;
+    background: var(--white);
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 
 body {
-    background-color: var(--stone-white);
-    color: var(--text-dark);
-    font-family: 'Montserrat', sans-serif;
+    background-color: var(--white);
+    color: var(--charcoal);
+    font-family: var(--sans);
+    font-weight: 300;
     overflow-x: hidden;
 }
 
-/* --- NAVIGATION --- */
+/* ============================================
+   NAVIGATION
+   ============================================ */
 .navbar {
     display: flex;
     justify-content: space-between;
-    padding: 30px 60px;
-    position: absolute;
+    align-items: center;
+    padding: 32px 64px;
+    position: fixed;
+    top: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 200;
+    transition: padding var(--duration) var(--ease-out),
+    background var(--duration) var(--ease-out),
+    backdrop-filter var(--duration) var(--ease-out);
+}
+
+.navbar.scrolled {
+    padding: 18px 64px;
+    background: rgba(253, 252, 250, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--stone-light);
+}
+
+.navbar.scrolled .logo {
+    color: var(--charcoal);
+}
+
+.navbar.scrolled .nav-links a {
+    color: rgba(28, 26, 24, 0.7);
+}
+
+.navbar.scrolled .nav-links a:hover {
+    color: var(--charcoal);
+}
+
+.navbar.scrolled .nav-links li:last-child a {
+    border-color: rgba(28, 26, 24, 0.25);
+    color: var(--charcoal);
+}
+
+.navbar.scrolled .nav-links li:last-child a:hover {
+    background: var(--charcoal);
+    color: var(--white) !important;
+    border-color: var(--charcoal);
 }
 
 .logo {
-    font-size: 1.1rem;
-    letter-spacing: 0.5em;
-    font-weight: 200;
-    color: white;
+    font-family: var(--nav-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #ffffff;
+    text-transform: none;
+    text-decoration: none;
+    opacity: 0.95;
+    transition: color var(--duration) var(--ease-out), opacity 0.3s var(--ease-out);
 }
 
-.nav-links { display: flex; list-style: none; gap: 40px; }
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 36px;
+    align-items: center;
+}
+
 .nav-links a {
     text-decoration: none;
-    color: white;
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    opacity: 0.8;
+    color: rgba(255, 255, 255, 0.65);
+    font-family: var(--nav-sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    letter-spacing: 0;
+    position: relative;
+    padding: 6px 0;
+    transition: color 0.3s var(--ease-out), opacity 0.3s var(--ease-out);
 }
 
-/* --- HERO --- */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1.5px;
+    background-color: currentColor;
+    transform: translateX(-50%);
+    transition: width 0.35s var(--ease-out);
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links li:last-child a {
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 8px 18px;
+    border-radius: 40px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transition: all 0.3s var(--ease-out);
+}
+
+.nav-links li:last-child a::after {
+    display: none;
+}
+
+.nav-links li:last-child a:hover {
+    background: #ffffff;
+    color: #000000 !important;
+    border-color: #ffffff;
+    transform: translateY(-1px);
+}
+
+/* ============================================
+   HERO
+   ============================================ */
 .hero {
-    height: 85vh; /* Légèrement réduit pour laisser de la place à la sculpture */
+    height: 125vh;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    background-color: #000;
+    background-color: var(--ink);
     background-image: url('../images/header.jpg');
     background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background-position: 70% 20%;
+    overflow: visible;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    background-size: 200px;
+    opacity: 0.5;
+    z-index: 2;
+    pointer-events: none;
 }
 
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent 60%, #000 100%);
+    background: linear-gradient(
+        170deg,
+        rgba(0,0,0,0.55) 0%,
+        rgba(0,0,0,0.2) 45%,
+        rgba(0,0,0,0.75) 100%
+    );
     z-index: 1;
+}
+
+.hero-wave {
+    position: absolute;
+    bottom: 80px;
+    left: 0;
+    width: 100%;
+    height: 380px;
+    z-index: 20;
+    pointer-events: none;
+    display: block;
+    object-fit: fill;
 }
 
 .hero-content {
     text-align: center;
     z-index: 10;
     color: white;
+    animation: heroFadeIn 1.8s var(--ease-out) forwards;
+    opacity: 0;
+    transform: translateY(24px);
+}
+
+@keyframes heroFadeIn {
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .hero-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3rem, 10vw, 8rem);
+    font-family: var(--serif);
+    font-size: clamp(4rem, 11vw, 9.5rem);
     font-weight: 300;
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    color: rgba(255,255,255,0.96);
+}
+
+.hero-title em {
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(255,255,255,0.85);
 }
 
 .hero-subtitle {
+    margin-top: 24px;
     text-transform: uppercase;
-    letter-spacing: 0.5em;
-    font-size: 0.8rem;
-    opacity: 0.9;
+    letter-spacing: 0.55em;
+    font-size: 0.62rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
 }
 
-/* --- LA SCULPTURE (VRAIE FORME) --- */
-.stone-divider {
-    width: 100%;
-    position: relative;
-    z-index: 50;
-    line-height: 0;
-    /* On ajuste la remontée pour que le bas de l'image
-       touche exactement le début de la section blanche */
-    margin-top: -450px;
-    pointer-events: none; /* Pour pouvoir cliquer sur les liens derrière si besoin */
+.hero-scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255,255,255,0.45);
+    font-size: 0.55rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    animation: scrollHintFade 2.5s ease-in-out infinite;
 }
 
-.stone-divider img {
-    width: 100%; /* Elle prend toute la largeur */
-    height: auto; /* ⚠️ IMPORTANT : On laisse la hauteur naturelle pour voir les pics */
+.hero-scroll-hint::after {
+    content: '';
     display: block;
-
-    /* On garde l'ombre pour le relief */
-    filter: drop-shadow(0px -10px 20px rgba(0,0,0,0.5));
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
 }
 
-/* --- SECTION RÉALISATIONS --- */
-.content-section {
-    background: white;
-    padding-top: 120px; /* On augmente l'espace car la vague descend plus bas */
+@keyframes scrollHintFade {
+    0%, 100% { opacity: 0.45; transform: translateX(-50%) translateY(0); }
+    50%       { opacity: 0.9;  transform: translateX(-50%) translateY(6px); }
+}
+
+/* ============================================
+   ABOUT SECTION (BIOGRAPHIE) — MODERNE GRILLE
+   ============================================ */
+.about-section {
+    padding: 140px 64px;
+    background-color: var(--white);
     position: relative;
     z-index: 10;
+    overflow: hidden;
 }
 
-.curve-divider {
-    margin-bottom: 60px;
-    opacity: 0.5;
+.about-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 8%;
+    align-items: center;
 }
 
+.about-text-column {
+    position: relative;
+}
+
+.about-image-column {
+    position: relative;
+    width: 100%;
+}
+
+.about-title {
+    font-family: var(--serif);
+    font-size: clamp(2.5rem, 5vw, 4.2rem);
+    font-weight: 300;
+    color: var(--charcoal);
+    line-height: 1.1;
+    margin-top: 8px;
+}
+
+.about-title em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--accent);
+}
+
+.section-rule-left {
+    width: 60px;
+    height: 1px;
+    background: var(--stone-mid);
+    margin: 32px 0 40px 0;
+}
+
+.about-content {
+    color: var(--charcoal);
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    font-weight: 300;
+}
+
+.about-content p {
+    margin-bottom: 24px;
+    opacity: 0.85;
+    text-align: justify;
+}
+
+.about-content .about-lead {
+    font-family: var(--serif);
+    font-size: 1.45rem;
+    line-height: 1.5;
+    color: var(--charcoal);
+    font-style: italic;
+    opacity: 1;
+    margin-bottom: 32px;
+}
+
+.about-content .about-quote {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--ink);
+    padding-left: 24px;
+    border-left: 2px solid var(--accent);
+    margin-top: 40px;
+    font-style: normal;
+    opacity: 0.95;
+}
+
+.about-content strong {
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+}
+
+/* ============================================
+   BLOC IMAGE AVEC EFFET CADRE PHOTO
+   ============================================ */
+.about-image-wrapper {
+    position: relative;
+    width: 90%; /* On réduit légèrement la largeur pour laisser respirer */
+    margin: 40px auto; /* Centre le bloc et crée de l'espace */
+    aspect-ratio: 4 / 5;
+}
+
+/* Le fond texturé façon papier / passe-partout */
+.about-image-bg {
+    position: absolute;
+    top: 15px;   /* Décalage vers le haut */
+    left: -15px; /* Décalage vers la gauche */
+    width: 100%;
+    height: 100%;
+    background-color: var(--off-white);
+    z-index: 1;
+}
+
+/* La photo avec son cadre blanc */
+.about-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 2;
+    border: 15px solid #FFFFFF; /* Le cadre blanc épais */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Ombre portée douce */
+}
+
+.about-image-wrapper:hover .about-img {
+    filter: grayscale(0);
+}
+
+/* ---- SIGNATURE EN MANUSCRIT ---- */
+.about-signature-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    padding-right: 10px;
+}
+
+.about-signature {
+    height: auto;
+    width: 160px;
+    opacity: 0.85;
+    mix-blend-mode: multiply;
+    filter: grayscale(1);
+    transition: opacity 0.3s ease;
+}
+
+.about-signature:hover {
+    opacity: 1;
+}
+
+/* ============================================
+   CONTENT (SECTIONS PAR DÉFAUT)
+   ============================================ */
+.content-section {
+    background: var(--white);
+    position: relative;
+    z-index: 10;
+    padding-top: 80px;
+}
+
+.section-header {
+    padding: 0 64px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.section-label {
+    display: block;
+    font-size: 0.58rem;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--stone-dark);
+    margin-bottom: 10px;
+}
+
+.section-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--charcoal);
+    line-height: 1.1;
+}
+
+.section-rule {
+    display: block;
+    width: 36px;
+    height: 1px;
+    background: var(--stone-mid);
+    margin-top: 14px;
+}
+
+/* ============================================
+   SLIDER & CARDS
+   ============================================ */
 .slider-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 30px;
+    gap: 24px;
+    padding: 0 64px;
 }
 
-.cards-wrapper { display: flex; gap: 20px; }
+.cards-wrapper {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding-bottom: 32px;
+    flex: 1;
+}
+
+.cards-wrapper::-webkit-scrollbar { display: none; }
 
 .card {
-    width: 300px;
+    flex: 0 0 320px;
     aspect-ratio: 3/4;
     position: relative;
     overflow: hidden;
-    background: #f9f9f9;
-    transition: var(--transition);
+    background: var(--stone-light);
+    scroll-snap-align: start;
+    cursor: pointer;
+    transition: transform var(--duration) var(--ease-out);
 }
 
-.card:hover { transform: translateY(-10px); }
+.card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(255,255,255,0.12);
+    z-index: 5;
+    pointer-events: none;
+}
+
+.card:hover { transform: translateY(-8px); }
 
 .card-image {
     width: 100%;
     height: 100%;
     background-size: cover;
     background-position: center;
-    filter: grayscale(1);
-    transition: var(--transition);
+    filter: grayscale(0.3);
+    transition: transform var(--duration) var(--ease-out), filter var(--duration) var(--ease-out);
 }
 
-.card:hover .card-image { filter: grayscale(0); transform: scale(1.1); }
+.card:hover .card-image {
+    filter: grayscale(0);
+    transform: scale(1.06);
+}
+
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,8,6,0.82) 0%, rgba(10,8,6,0.2) 45%, transparent 100%);
+    z-index: 2;
+    transition: opacity var(--duration) var(--ease-out);
+}
+
+.card:hover .card-overlay {
+    background: linear-gradient(to top, rgba(10,8,6,0.9) 0%, rgba(10,8,6,0.35) 55%, transparent 100%);
+}
 
 .card-info {
     position: absolute;
-    bottom: 20px;
-    left: 20px;
+    bottom: 28px;
+    left: 28px;
+    right: 28px;
     color: white;
-    z-index: 2;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    z-index: 6;
 }
 
-.card-info h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; }
+.card-info h3 {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.1;
+    margin-bottom: 6px;
+}
 
-/* --- NAVIGATION SLIDER --- */
+.card-info span {
+    font-size: 0.58rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+}
+
+.card-tag {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 6;
+    font-size: 0.52rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 5px 10px;
+    background: rgba(0,0,0,0.2);
+    backdrop-filter: blur(6px);
+    transition: all 0.3s ease;
+}
+
+.card:hover .card-tag {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.45);
+    color: white;
+}
+
+/* ---- NAV ARROWS ---- */
 .arrow {
+    flex-shrink: 0;
     background: none;
-    border: 1px solid #ddd;
-    width: 45px;
-    height: 45px;
+    border: 1px solid var(--stone-light);
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     cursor: pointer;
-    transition: 0.3s;
+    font-size: 1rem;
+    color: var(--stone-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.35s var(--ease-out);
 }
 
-.arrow:hover { background: #000; color: #fff; border-color: #000; }
+.arrow:hover {
+    background: var(--charcoal);
+    border-color: var(--charcoal);
+    color: white;
+    transform: scale(1.08);
+}
 
-/* --- FOOTER --- */
-.footer { padding: 80px 60px; text-align: center; }
-.footer-line { height: 1px; background: #eee; width: 60px; margin: 0 auto 30px; }
-.footer p { font-size: 0.6rem; letter-spacing: 0.3em; color: var(--accent-grey); }
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+    padding: 80px 64px 60px;
+    text-align: center;
+    background: var(--white);
+    border-top: 1px solid var(--stone-light);
+    margin-top: 80px;
+}
+
+.footer-line {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--stone-light), transparent);
+    width: 80px;
+    margin: 0 auto 28px;
+}
+
+.footer p {
+    font-size: 0.58rem;
+    letter-spacing: 0.38em;
+    color: var(--stone-mid);
+    text-transform: uppercase;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+.reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================
+   RESPONSIVE MODIFICATIONS
+   ============================================ */
+
+/* Responsivité du Bloc Biographie */
+@media (max-width: 992px) {
+    .about-section { padding: 80px 40px; }
+    .about-container { grid-template-columns: 1fr; gap: 60px; }
+    .about-image-column { width: 80%; margin: 0 auto; }
+}
+
+@media (max-width: 768px) {
+    .about-section { padding: 60px 28px; }
+    .about-image-column { width: 100%; }
+    .about-content .about-lead { font-size: 1.25rem; }
+    /* Sur mobile, on réduit un peu l'épaisseur du cadre photo */
+    .about-img { border: 10px solid #FFFFFF; }
+    /* Et on ajuste le débordement du fond pour qu'il ne crée pas de scroll horizontal */
+    .about-image-bg { left: 0; right: 0; top: -15px; bottom: -15px; }
+
+    .about-signature-wrapper { justify-content: center; margin-top: 30px; }
+    .about-signature { width: 140px; }
+}
+
+/* Responsivité de l'interface globale */
+@media (max-width: 768px) {
+    .navbar { padding: 24px 28px; }
+    .navbar.scrolled { padding: 16px 28px; }
+    .nav-links { gap: 20px; }
+    .nav-links a { font-size: 0.75rem; }
+    .nav-links li:last-child a { padding: 6px 12px; }
+
+    .section-header { padding: 0 28px 36px; flex-direction: column; align-items: flex-start; gap: 20px; }
+    .slider-container { padding: 0 28px; }
+    .card { flex: 0 0 260px; }
+    .footer { padding: 60px 28px 48px; }
+}
+
+@media (max-width: 480px) {
+    .nav-links { display: none; }
+    .card { flex: 0 0 80vw; }
+}
