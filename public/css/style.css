@@ -54,6 +54,15 @@ body {
     overflow-x: hidden;
 }
 
+/* ---- SCROLLBAR UTILITIES ---- */
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
 /* ============================================
    NAVIGATION
    ============================================ */
@@ -79,23 +88,13 @@ body {
     border-bottom: 1px solid var(--stone-light);
 }
 
-.navbar.scrolled .logo {
-    color: var(--charcoal);
-}
-
-.navbar.scrolled .nav-links a {
-    color: rgba(28, 26, 24, 0.7);
-}
-
-.navbar.scrolled .nav-links a:hover {
-    color: var(--charcoal);
-}
-
+.navbar.scrolled .logo { color: var(--charcoal); }
+.navbar.scrolled .nav-links a { color: rgba(28, 26, 24, 0.7); }
+.navbar.scrolled .nav-links a:hover { color: var(--charcoal); }
 .navbar.scrolled .nav-links li:last-child a {
     border-color: rgba(28, 26, 24, 0.25);
     color: var(--charcoal);
 }
-
 .navbar.scrolled .nav-links li:last-child a:hover {
     background: var(--charcoal);
     color: var(--white) !important;
@@ -146,13 +145,8 @@ body {
     transition: width 0.35s var(--ease-out);
 }
 
-.nav-links a:hover {
-    color: #ffffff;
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
+.nav-links a:hover { color: #ffffff; }
+.nav-links a:hover::after { width: 100%; }
 
 .nav-links li:last-child a {
     color: #ffffff;
@@ -164,11 +158,7 @@ body {
     -webkit-backdrop-filter: blur(4px);
     transition: all 0.3s var(--ease-out);
 }
-
-.nav-links li:last-child a::after {
-    display: none;
-}
-
+.nav-links li:last-child a::after { display: none; }
 .nav-links li:last-child a:hover {
     background: #ffffff;
     color: #000000 !important;
@@ -206,12 +196,7 @@ body {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        170deg,
-        rgba(0,0,0,0.55) 0%,
-        rgba(0,0,0,0.2) 45%,
-        rgba(0,0,0,0.75) 100%
-    );
+    background: linear-gradient(170deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.2) 45%, rgba(0,0,0,0.75) 100%);
     z-index: 1;
 }
 
@@ -295,7 +280,7 @@ body {
 }
 
 /* ============================================
-   ABOUT SECTION (BIOGRAPHIE) — MODERNE GRILLE
+   ABOUT SECTION (BIOGRAPHIE)
    ============================================ */
 .about-section {
     padding: 140px 64px;
@@ -314,14 +299,8 @@ body {
     align-items: center;
 }
 
-.about-text-column {
-    position: relative;
-}
-
-.about-image-column {
-    position: relative;
-    width: 100%;
-}
+.about-text-column { position: relative; }
+.about-image-column { position: relative; width: 100%; }
 
 .about-title {
     font-family: var(--serif);
@@ -387,28 +366,23 @@ body {
     letter-spacing: 0.02em;
 }
 
-/* ============================================
-   BLOC IMAGE AVEC EFFET CADRE PHOTO
-   ============================================ */
 .about-image-wrapper {
     position: relative;
-    width: 90%; /* On réduit légèrement la largeur pour laisser respirer */
-    margin: 40px auto; /* Centre le bloc et crée de l'espace */
+    width: 90%;
+    margin: 40px auto;
     aspect-ratio: 4 / 5;
 }
 
-/* Le fond texturé façon papier / passe-partout */
 .about-image-bg {
     position: absolute;
-    top: 15px;   /* Décalage vers le haut */
-    left: -15px; /* Décalage vers la gauche */
+    top: 15px;
+    left: -15px;
     width: 100%;
     height: 100%;
     background-color: var(--off-white);
     z-index: 1;
 }
 
-/* La photo avec son cadre blanc */
 .about-img {
     position: absolute;
     inset: 0;
@@ -417,15 +391,10 @@ body {
     background-size: cover;
     background-position: center;
     z-index: 2;
-    border: 15px solid #FFFFFF; /* Le cadre blanc épais */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Ombre portée douce */
+    border: 15px solid #FFFFFF;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-.about-image-wrapper:hover .about-img {
-    filter: grayscale(0);
-}
-
-/* ---- SIGNATURE EN MANUSCRIT ---- */
 .about-signature-wrapper {
     display: flex;
     justify-content: flex-end;
@@ -442,12 +411,10 @@ body {
     transition: opacity 0.3s ease;
 }
 
-.about-signature:hover {
-    opacity: 1;
-}
+.about-signature:hover { opacity: 1; }
 
 /* ============================================
-   CONTENT (SECTIONS PAR DÉFAUT)
+   CONTENT (SECTIONS PAR DÉFAUT & COMPOSANTS)
    ============================================ */
 .content-section {
     background: var(--white);
@@ -490,7 +457,7 @@ body {
 }
 
 /* ============================================
-   SLIDER & CARDS
+   SLIDER & CARDS (PORTFOLIO STANDARD)
    ============================================ */
 .slider-container {
     display: flex;
@@ -506,13 +473,9 @@ body {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
     padding-bottom: 32px;
     flex: 1;
 }
-
-.cards-wrapper::-webkit-scrollbar { display: none; }
 
 .card {
     flex: 0 0 320px;
@@ -609,8 +572,8 @@ body {
     color: white;
 }
 
-/* ---- NAV ARROWS ---- */
-.arrow {
+/* ---- INTERFACE BUTTONS (FLÈCHES) ---- */
+.arrow, main section.py-20 button {
     flex-shrink: 0;
     background: none;
     border: 1px solid var(--stone-light);
@@ -623,13 +586,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.35s var(--ease-out);
+    transition: all 0.35s var(--ease-out) !important;
 }
 
-.arrow:hover {
-    background: var(--charcoal);
-    border-color: var(--charcoal);
-    color: white;
+.arrow:hover, main section.py-20 button:hover {
+    background: var(--charcoal) !important;
+    border-color: var(--charcoal) !important;
+    color: white !important;
     transform: scale(1.08);
 }
 
@@ -673,31 +636,19 @@ body {
 }
 
 /* ============================================
-   RESPONSIVE MODIFICATIONS
+   RESPONSIVE MODIFICATIONS (GLOBAL & SECTIONS)
    ============================================ */
 
-/* Responsivité du Bloc Biographie */
+/* ---- TABLETTES & ÉCRANS INTERMÉDIAIRES (Max 992px) ---- */
 @media (max-width: 992px) {
     .about-section { padding: 80px 40px; }
     .about-container { grid-template-columns: 1fr; gap: 60px; }
     .about-image-column { width: 80%; margin: 0 auto; }
 }
 
+/* ---- SMARTPHONES DESIGN — COHÉRENCE GENERALE (Max 768px) ---- */
 @media (max-width: 768px) {
-    .about-section { padding: 60px 28px; }
-    .about-image-column { width: 100%; }
-    .about-content .about-lead { font-size: 1.25rem; }
-    /* Sur mobile, on réduit un peu l'épaisseur du cadre photo */
-    .about-img { border: 10px solid #FFFFFF; }
-    /* Et on ajuste le débordement du fond pour qu'il ne crée pas de scroll horizontal */
-    .about-image-bg { left: 0; right: 0; top: -15px; bottom: -15px; }
-
-    .about-signature-wrapper { justify-content: center; margin-top: 30px; }
-    .about-signature { width: 140px; }
-}
-
-/* Responsivité de l'interface globale */
-@media (max-width: 768px) {
+    /* Base UI */
     .navbar { padding: 24px 28px; }
     .navbar.scrolled { padding: 16px 28px; }
     .nav-links { gap: 20px; }
@@ -708,9 +659,89 @@ body {
     .slider-container { padding: 0 28px; }
     .card { flex: 0 0 260px; }
     .footer { padding: 60px 28px 48px; }
+
+    /* Section Biographie */
+    .about-section { padding: 60px 28px; }
+    .about-image-column { width: 100%; }
+    .about-content .about-lead { font-size: 1.25rem; }
+    .about-img { border: 10px solid #FFFFFF; }
+    .about-image-bg { left: 0; right: 0; top: -15px; bottom: -15px; }
+    .about-signature-wrapper { justify-content: center; margin-top: 30px; }
+    .about-signature { width: 140px; }
+
+    /* --- OPTIMISATION DU COMPOSANT RÉALISATIONS (Blade / Alpine) --- */
+    main > section.py-20 {
+        padding-top: 4rem !important;
+        padding-bottom: 4rem !important;
+    }
+
+    /* En-tête Réalisations */
+    main > section.py-20 > div.px-10 {
+        padding-left: 28px !important;
+        padding-right: 28px !important;
+        margin-bottom: 32px !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: flex-end !important;
+    }
+
+    /* Titre Réalisations */
+    main > section.py-20 h2.text-4xl {
+        font-size: 2rem !important;
+        line-height: 1.2 !important;
+    }
+
+    /* Flèches Réalisations */
+    main > section.py-20 button {
+        width: 44px !important;
+        height: 44px !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* Wrapper Horizontal des Réalisations */
+    main > section.py-20 div[x-ref="scrollContainer"] {
+        padding-left: 28px !important;
+        padding-right: 28px !important;
+        gap: 20px !important;
+        padding-bottom: 24px !important;
+    }
+
+    /* Cartes de Comparaison Réalisations */
+    main > section.py-20 div[x-ref="scrollContainer"] > div {
+        flex: 0 0 290px !important;
+        scroll-snap-align: center !important;
+    }
 }
 
+/* ---- PETITS SMARTPHONES (Max 480px) ---- */
 @media (max-width: 480px) {
     .nav-links { display: none; }
     .card { flex: 0 0 80vw; }
+
+    /* Structure Épurée pour les Réalisations sur Petit Écran */
+    main > section.py-20 > div.px-10 {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 20px !important;
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+    }
+
+    /* Alignement propre des boutons en dessous */
+    main > section.py-20 > div.px-10 > div.flex {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    /* Ajustement de la zone d'affichage des cartes */
+    main > section.py-20 div[x-ref="scrollContainer"] {
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+    }
+
+    /* Largeur immersive de la carte sur petit mobile */
+    main > section.py-20 div[x-ref="scrollContainer"] > div {
+        flex: 0 0 85vw !important;
+    }
 }
