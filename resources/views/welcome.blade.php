@@ -51,10 +51,39 @@
             </div>
         </section>
 
+        <section class="py-20">
+            <div class="px-10 mb-12">
+                <h2 class="text-4xl font-serif italic text-gray-800">Nos réalisations</h2>
+                <div class="h-px w-20 bg-gray-400 mt-2"></div>
+            </div>
+
+            <div class="px-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                @forelse($realisations as $realisation)
+                    <div class="group relative overflow-hidden rounded-sm shadow-md border border-gray-200 aspect-[4/3] bg-gray-100">
+
+                        <img src="{{ asset($realisation->image) }}"
+                             alt="{{ $realisation->title }}"
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+
+                        {{-- Overlay au survol --}}
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                            <p class="text-white font-serif italic text-lg leading-tight">{{ $realisation->title }}</p>
+                            @if($realisation->category)
+                                <span class="text-white/70 text-sm mt-1">{{ $realisation->category }}</span>
+                            @endif
+                        </div>
+
+                    </div>
+                @empty
+                    <p class="text-gray-400 col-span-3">Aucune réalisation pour le moment.</p>
+                @endforelse
+            </div>
+        </section>
+
         <section class="py-20" x-data="{}">
             <div class="px-10 mb-12 flex justify-between items-end">
                 <div>
-                    <h2 class="text-4xl font-serif italic text-gray-800">Nos réalisations</h2>
+                    <h2 class="text-4xl font-serif italic text-gray-800">Nos rénovations</h2>
                     <div class="h-px w-20 bg-gray-400 mt-2"></div>
                 </div>
                 <div class="flex gap-2">
@@ -64,17 +93,15 @@
             </div>
 
             <div x-ref="scrollContainer" class="flex overflow-x-auto snap-x snap-mandatory gap-8 px-10 pb-12 hide-scrollbar scroll-smooth">
-                @forelse($items as $id => $paths)
-                    @if(isset($paths['before']) && isset($paths['after']))
-                        <div class="snap-start shrink-0">
-                            <x-compare-card
-                                :number="$id"
-                                :title="$paths['title']"
-                                :before="$paths['before']"
-                                :after="$paths['after']"
-                            />
-                        </div>
-                    @endif
+                @forelse($comparaisons as $comparaison)
+                    <div class="snap-start shrink-0">
+                        <x-compare-card
+                            :number="$comparaison->id"
+                            :title="$comparaison->title"
+                            :before="$comparaison->before_image"
+                            :after="$comparaison->after_image"
+                        />
+                    </div>
                 @empty
                 @endforelse
             </div>
