@@ -45,8 +45,8 @@ class RealisationResource extends Resource
             Forms\Components\FileUpload::make('image')
                 ->label('Photo de la réalisation')
                 ->image()
-                ->directory('images/realisations')
-                ->disk('public_path')
+                ->directory('realisations')
+                ->disk('public')
                 ->required(),
         ]);
     }
@@ -62,7 +62,7 @@ class RealisationResource extends Resource
 
                 Tables\Columns\ImageColumn::make('image')
                     ->label('Photo')
-                    ->disk('public_path')
+                    ->disk('public')
                     ->square(),
 
                 Tables\Columns\TextColumn::make('title')
