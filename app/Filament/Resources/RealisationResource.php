@@ -45,6 +45,7 @@ class RealisationResource extends Resource
             Forms\Components\FileUpload::make('image')
                 ->label('Photo de la réalisation')
                 ->image()
+                ->maxSize(5120) // 5MB maximum
                 ->directory('realisations')
                 ->disk('public')
                 ->required(),
