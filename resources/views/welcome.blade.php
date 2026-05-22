@@ -75,7 +75,6 @@
 
                     </div>
                 @empty
-                    <p class="text-gray-400 col-span-3">Aucune réalisation pour le moment.</p>
                 @endforelse
             </div>
         </section>
