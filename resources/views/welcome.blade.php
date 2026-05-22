@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@use('Illuminate\Support\Facades\Storage')
 
 @section('content')
 
@@ -61,7 +62,7 @@
                 @forelse($realisations as $realisation)
                     <div class="group relative overflow-hidden rounded-sm shadow-md border border-gray-200 aspect-[4/3] bg-gray-100">
 
-                        <img src="{{ asset($realisation->image) }}"
+                        <img src="{{ Storage::url($realisation->image) }}"
                              alt="{{ $realisation->title }}"
                              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
 
