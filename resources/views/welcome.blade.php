@@ -48,7 +48,7 @@
             </div>
         </section>
 
-        <section class="py-20">
+        <section class="py-20 realisations">
             <div class="px-10 mb-12">
                 <h2 class="text-4xl font-serif italic text-gray-800">Nos réalisations</h2>
                 <div class="h-px w-20 bg-gray-400 mt-2"></div>
@@ -76,7 +76,7 @@
             </div>
         </section>
 
-        <section class="py-20" x-data="{}">
+        <section class="py-20 renovations" x-data="{}">
             <div class="px-10 mb-12 flex justify-between items-end">
                 <div>
                     <h2 class="text-4xl font-serif italic text-gray-800">Nos rénovations</h2>
