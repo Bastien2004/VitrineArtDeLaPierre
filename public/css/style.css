@@ -283,7 +283,7 @@ body {
    ABOUT SECTION (BIOGRAPHIE)
    ============================================ */
 .about-section {
-    padding: 140px 64px;
+    padding: 40px 64px;
     background-color: var(--white);
     position: relative;
     z-index: 10;

@@ -35,10 +35,6 @@
                         <p class="about-quote">
                             Depuis maintenant plus de 20 ans, je transforme la matière brute et prends plaisir à la "faire vivre" en un mouvement subtil, une forme élégante qui traverse le temps, reflétant une histoire unique.
                         </p>
-
-                        <div class="about-signature-wrapper">
-                            <img src="{{ asset('images/signature.gif') }}" alt="Signature Frédéric Oden" class="about-signature">
-                        </div>
                     </div>
                 </div>
 
