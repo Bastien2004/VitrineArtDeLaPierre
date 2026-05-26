@@ -17,18 +17,20 @@
 </head>
 <body class="bg-[#FDFCFA]">
 
-<nav class="navbar">
+{{-- Navbar : toujours opaque par défaut.
+     Uniquement sur la page d'accueil, le JS retire .scrolled
+     au chargement et le rétablit au scroll. --}}
+<nav class="navbar scrolled" id="navbar">
     <div class="logo">F. ODEN</div>
     <ul class="nav-links">
-        <li><a href="#">Savoir-Faire</a></li>
-        <li><a href="#">Réalisations</a></li>
+        <li><a href="/">Savoir-Faire</a></li>
+        <li><a href="/">Réalisations</a></li>
         <li><a href="/configurateur">Devis</a></li>
         <li><a href="{{ route('recrutement') }}">Recrutement</a></li>
         <li><a href="#">Contact</a></li>
     </ul>
 </nav>
 
-{{-- Injection du contenu des vues dépendantes --}}
 @yield('content')
 
 <footer class="footer">
@@ -37,9 +39,19 @@
 </footer>
 
 <script>
-    window.addEventListener('scroll', () => {
-        document.querySelector('.navbar').classList.toggle('scrolled', scrollY > 60);
-    });
+    (function () {
+        const navbar  = document.getElementById('navbar');
+        const isHome  = document.querySelector('.hero') !== null;
+
+        if (!isHome) return; // Toutes les autres pages : navbar opaque fixe, rien à faire
+
+        // Page d'accueil uniquement : transparent au top, opaque au scroll
+        navbar.classList.remove('scrolled');
+
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 60);
+        }, { passive: true });
+    })();
 </script>
 
 @stack('scripts')

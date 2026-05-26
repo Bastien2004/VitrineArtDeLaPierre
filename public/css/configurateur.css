@@ -1,20 +1,31 @@
+/* ═══════════════════════════════════════════════════════════
+   configurateur.css — L'Art de la Pierre
+   ═══════════════════════════════════════════════════════════ */
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-    --stone-bg: #D6CCBC;
+    --stone:        #D6CCBC;
     --stone-border: #B0A494;
-    --stone-dark: #C8BEAE;
-    --accent: #7C6A52;
-    --text: #2C2420;
-    --text-light: #8A7A6A;
-    --bg: #F5F1EB;
-    --panel-bg: #FDFAF6;
-    --btn-add-bg: #2C2420;
-    --btn-add-text: #F5F1EB;
-    --tag-bg: #EDE8DF;
-    --tag-on: #7C6A52;
-    --notif-bg: #2C2420;
-    --radius: 10px;
+    --stone-dark:   #C8BEAE;
+    --accent:       #6B5744;
+    --accent-light: #9A7E67;
+    --text:         #1E1A17;
+    --text-muted:   #8A7A6A;
+    --text-faint:   #B0A49A;
+    --bg:           #F5F1EB;
+    --surface:      #FDFAF6;
+    --surface-raised: #FFFFFF;
+    --border:       #E4DDD4;
+    --border-light: #EDE8DF;
+    --btn-bg:       #1E1A17;
+    --btn-text:     #F5F1EB;
+    --tag-bg:       #EDE8DF;
+    --tag-on:       #6B5744;
+    --notif-bg:     #1E1A17;
+    --radius-sm:    6px;
+    --radius-md:    10px;
+    --radius-lg:    14px;
 }
 
 body {
@@ -22,124 +33,237 @@ body {
     background: var(--bg);
     color: var(--text);
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
 }
 
+/* ── Page wrapper ────────────────────────────────────────── */
 .page {
-    max-width: 860px;
+    max-width: 880px;
     margin: 0 auto;
-    padding: 48px 24px 80px;
+    padding: 56px 28px 100px;
 }
 
-/* Header */
+/* ── 1. Header ───────────────────────────────────────────── */
 .header {
-    margin-bottom: 40px;
+    margin-bottom: 44px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid var(--border-light);
 }
+
 .eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.18em;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--text-light);
-    margin-bottom: 8px;
+    color: var(--accent-light);
+    margin-bottom: 14px;
 }
+
+.eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent-light);
+}
+
 h1 {
     font-family: 'DM Serif Display', serif;
-    font-size: clamp(32px, 5vw, 48px);
-    line-height: 1.1;
+    font-size: clamp(34px, 5vw, 52px);
+    line-height: 1.08;
     color: var(--text);
+    letter-spacing: -0.01em;
 }
-h1 em { font-style: italic; color: var(--accent); }
 
-/* Add button */
-.add-btn-container {
-    margin-bottom: 28px;
+h1 em {
+    font-style: italic;
+    color: var(--accent);
 }
+
+/* ── 2. Contact card ─────────────────────────────────────── */
+.contact-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 44px;
+    padding: 20px 28px;
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    flex-wrap: wrap;
+}
+
+.contact-card__intro {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+.contact-card__items {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.contact-card__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 18px 9px 12px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 500;
+    transition: background .16s, border-color .16s, transform .12s;
+}
+
+.contact-card__item:hover {
+    background: #EDE8DF;
+    border-color: var(--stone-border);
+    transform: translateY(-1px);
+}
+
+.contact-card__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--surface-raised);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.contact-card__icon svg {
+    width: 14px;
+    height: 14px;
+    color: var(--accent);
+}
+
+.contact-card__label {
+    letter-spacing: 0.01em;
+}
+
+@media (max-width: 560px) {
+    .contact-card { flex-direction: column; align-items: flex-start; }
+    .contact-card__item { width: 100%; justify-content: center; }
+}
+
+/* ── 3. Configurateur — barre d'actions ──────────────────── */
+.add-btn-container {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
 .add-btn {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 9px;
     padding: 11px 22px;
-    background: var(--btn-add-bg);
-    color: var(--btn-add-text);
+    background: var(--btn-bg);
+    color: var(--btn-text);
     border: none;
     border-radius: 100px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
+    letter-spacing: 0.01em;
     cursor: pointer;
     transition: opacity .15s, transform .15s;
 }
-.add-btn:hover { opacity: .85; transform: translateY(-1px); }
-.add-btn:active { transform: translateY(0); }
+
+.add-btn:hover   { opacity: .82; transform: translateY(-1px); }
+.add-btn:active  { transform: translateY(0); }
+
 .add-btn .plus-icon {
-    width: 18px; height: 18px;
-    background: rgba(255,255,255,.18);
+    width: 20px;
+    height: 20px;
+    background: rgba(255,255,255,.14);
     border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 16px; line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    line-height: 1;
+    flex-shrink: 0;
 }
 
-/* Stone counter */
 .stone-count {
-    display: inline-block;
     font-size: 12px;
-    color: var(--text-light);
-    margin-left: 14px;
-    transition: opacity .3s;
+    font-weight: 500;
+    color: var(--text-faint);
+    letter-spacing: 0.04em;
 }
 
-/* Liste */
+/* ── 4. Liste de pierres ─────────────────────────────────── */
 #liste-pierres {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 14px;
 }
 
-/* Stone instance */
 .stone-instance {
-    background: var(--panel-bg);
-    border: 1px solid #E8E0D4;
-    border-radius: var(--radius);
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
     overflow: hidden;
     animation: slideIn .28s cubic-bezier(.22,.8,.36,1) both;
 }
+
 .stone-instance.removing {
     animation: slideOut .22s ease forwards;
 }
 
 @keyframes slideIn {
-    from { opacity: 0; transform: translateY(12px) scale(.98); }
+    from { opacity: 0; transform: translateY(10px) scale(.99); }
     to   { opacity: 1; transform: none; }
 }
+
 @keyframes slideOut {
-    to { opacity: 0; transform: translateY(-8px) scale(.97); max-height: 0; padding: 0; margin: 0; }
+    to { opacity: 0; transform: translateY(-6px) scale(.98); max-height: 0; padding: 0; margin: 0; }
 }
 
-/* Layout intérieur */
+/* Layout intérieur : visuel | panel */
 .layout {
     display: grid;
-    grid-template-columns: 1fr 260px;
+    grid-template-columns: 1fr 280px;
 }
-@media (max-width: 620px) {
+
+@media (max-width: 640px) {
     .layout { grid-template-columns: 1fr; }
 }
 
 /* Canvas */
 .canvas-wrap {
-    padding: 20px;
-    border-right: 1px solid #EDE8DF;
+    padding: 24px;
+    border-right: 1px solid var(--border-light);
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
+    background: #FAF7F3;
 }
+
 .canvas-stage svg {
     width: 100%;
     height: auto;
     display: block;
 }
+
 .dim-label {
     font-family: 'DM Sans', sans-serif;
     font-size: 8px;
-    fill: #A09880;
+    fill: #A8A09A;
 }
 
 /* Tags */
@@ -148,134 +272,249 @@ h1 em { font-style: italic; color: var(--accent); }
     flex-wrap: wrap;
     gap: 6px;
 }
+
 .tag {
-    padding: 3px 10px;
+    padding: 4px 11px;
     background: var(--tag-bg);
     border-radius: 100px;
     font-size: 11px;
-    color: var(--text-light);
     font-weight: 500;
-}
-.tag.on {
-    background: var(--tag-on);
-    color: #fff;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
 }
 
-/* Panel */
+.tag.on {
+    background: var(--accent);
+    color: #F5EFE8;
+}
+
+/* Panel droite */
 .panel {
-    padding: 18px 20px;
+    padding: 20px 22px;
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 20px;
 }
-.panel-section { display: flex; flex-direction: column; gap: 10px; }
+
+.panel-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .sec-label {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: .12em;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--text-light);
+    color: var(--text-faint);
 }
 
 /* Dimensions */
-.dim-inputs { display: flex; gap: 10px; }
+.dim-inputs {
+    display: flex;
+    gap: 8px;
+}
+
 .input-group {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 5px;
 }
+
 .input-group label {
     font-size: 11px;
-    color: var(--text-light);
+    color: var(--text-muted);
 }
+
 .input-group input {
     width: 100%;
     padding: 7px 10px;
-    border: 1px solid #DDD6CA;
-    border-radius: 6px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
     font-family: 'DM Sans', sans-serif;
     font-size: 14px;
-    background: #fff;
+    font-weight: 500;
+    background: var(--bg);
     color: var(--text);
     outline: none;
-    transition: border-color .15s;
+    transition: border-color .15s, background .15s;
 }
-.input-group input:focus { border-color: var(--accent); }
+
+.input-group input:focus {
+    border-color: var(--accent);
+    background: #fff;
+}
 
 /* Finitions */
 .fin-grid {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 5px;
 }
+
 .fin-btn {
     display: grid;
-    grid-template-columns: 20px 1fr auto;
+    grid-template-columns: 16px 1fr;
     align-items: center;
     gap: 10px;
-    padding: 8px 12px;
-    border: 1px solid #E0D9CF;
-    border-radius: 7px;
+    padding: 9px 12px;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
     background: transparent;
     cursor: pointer;
     font-family: 'DM Sans', sans-serif;
-    transition: background .13s, border-color .13s;
+    transition: background .12s, border-color .12s;
     text-align: left;
 }
-.fin-btn:hover { background: #F0EBE3; }
+
+.fin-btn:hover {
+    background: #F2EDE6;
+    border-color: var(--border);
+}
+
 .fin-btn.on {
     background: #EDE4D8;
-    border-color: var(--accent);
+    border-color: var(--accent-light);
 }
+
 .fin-indicator {
-    width: 8px; height: 8px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
-    background: #CCC4B8;
+    background: var(--border);
     transition: background .15s;
+    flex-shrink: 0;
 }
-.fin-btn.on .fin-indicator { background: var(--accent); }
+
+.fin-btn.on .fin-indicator {
+    background: var(--accent);
+}
+
 .fin-name {
     font-size: 13px;
     font-weight: 500;
     color: var(--text);
 }
-.fin-desc {
-    font-size: 11px;
-    color: var(--text-light);
-}
 
 /* Description dynamique */
 .desc-text {
     font-size: 12px;
-    color: var(--text-light);
-    line-height: 1.5;
+    color: var(--text-muted);
+    line-height: 1.55;
     min-height: 36px;
+    font-style: italic;
 }
 
-/* Delete */
+/* Supprimer */
 .delete-btn {
     width: 100%;
     padding: 8px;
-    border: 1px solid #E8DDD3;
-    border-radius: 6px;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
     background: transparent;
     font-family: 'DM Sans', sans-serif;
     font-size: 12px;
-    color: #A09080;
+    font-weight: 500;
+    color: var(--text-faint);
     cursor: pointer;
+    letter-spacing: 0.02em;
     transition: background .13s, color .13s, border-color .13s;
 }
+
 .delete-btn:hover {
     background: #FBF0EC;
-    border-color: #E0A898;
-    color: #C05A40;
+    border-color: #E8B8A8;
+    color: #B84A30;
 }
 
-/* Notifications */
+/* ── 5. Formulaire client ────────────────────────────────── */
+.client-form {
+    margin-top: 44px;
+    padding: 32px 36px;
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+}
+
+.client-form::before {
+    content: 'Vos coordonnées';
+    display: block;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 22px;
+}
+
+.client-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+@media (max-width: 520px) {
+    .client-form { padding: 24px 20px; }
+    .client-form-grid { grid-template-columns: 1fr; }
+}
+
+.client-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.client-field label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.client-field input,
+.client-field textarea {
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    background: var(--bg);
+    color: var(--text);
+    outline: none;
+    transition: border-color .15s, background .15s;
+}
+
+.client-field input:focus,
+.client-field textarea:focus {
+    border-color: var(--accent);
+    background: #fff;
+}
+
+.client-field input::placeholder,
+.client-field textarea::placeholder {
+    color: var(--text-faint);
+}
+
+.client-field textarea {
+    min-height: 100px;
+    resize: vertical;
+    line-height: 1.5;
+}
+
+/* Séparateur avant le bouton d'envoi */
+.client-form > div:last-child {
+    padding-top: 20px;
+    margin-top: 8px;
+    border-top: 1px solid var(--border-light);
+}
+
+/* ── 6. Notifications toast ──────────────────────────────── */
 #notif-container {
     position: fixed;
-    bottom: 28px;
+    bottom: 32px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -285,70 +524,18 @@ h1 em { font-style: italic; color: var(--accent); }
     pointer-events: none;
     z-index: 100;
 }
+
 .notif {
-    padding: 9px 20px;
+    padding: 10px 22px;
     background: var(--notif-bg);
     color: #F5F1EB;
     border-radius: 100px;
     font-size: 13px;
     font-weight: 500;
     white-space: nowrap;
+    letter-spacing: 0.01em;
     animation: notifIn .2s ease both, notifOut .3s ease 2.6s both;
 }
 
-/* Formulaire client */
-.client-form {
-    margin-top: 40px;
-    padding: 28px;
-    background: var(--panel-bg);
-    border: 1px solid #E8E0D4;
-    border-radius: var(--radius);
-}
-
-.client-form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-}
-
-@media (max-width: 520px) {
-    .client-form-grid { grid-template-columns: 1fr; }
-}
-
-.client-field {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.client-field label {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    color: var(--text-light);
-}
-
-.client-field input,
-.client-field textarea {
-    padding: 9px 12px;
-    border: 1px solid #DDD6CA;
-    border-radius: 6px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    background: #fff;
-    color: var(--text);
-    outline: none;
-    transition: border-color .15s;
-}
-
-.client-field input:focus,
-.client-field textarea:focus { border-color: var(--accent); }
-
-.client-field textarea {
-    min-height: 100px;
-    resize: vertical;
-}
-
-@keyframes notifIn  { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform:none; } }
-@keyframes notifOut { to   { opacity:0; transform: translateY(4px); } }
+@keyframes notifIn  { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes notifOut { to   { opacity: 0; transform: translateY(6px); } }
