@@ -332,6 +332,50 @@
     padding: 3px;
 }
 
+/* ---- ÉCRAN DE SUCCÈS ---- */
+.recrutement-success-box {
+    text-align: center;
+    padding: 40px 20px;
+    animation: fadeIn 0.5s var(--ease-fluid);
+}
+
+.recrutement-success-box .success-icon {
+    width: 64px;
+    height: 64px;
+    background-color: #F2F6F2;
+    border: 1px solid #D2E0D2;
+    color: var(--color-success);
+    font-size: 1.8rem;
+    line-height: 62px;
+    border-radius: 50%;
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.recrutement-success-box h3 {
+    font-family: var(--serif, 'Cormorant Garamond', Georgia, serif);
+    font-size: 1.8rem;
+    color: var(--color-stone-dark);
+    font-weight: 400;
+    margin-bottom: 16px;
+}
+
+.recrutement-success-box p {
+    font-family: var(--sans, system-ui, sans-serif);
+    font-size: 0.95rem;
+    color: var(--color-stone-medi);
+    line-height: 1.6;
+    max-width: 440px;
+    margin: 0 auto;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 /* ---- ANIMATIONS ---- */
 @keyframes pulse {
     0%, 100% { opacity: 0.6; }

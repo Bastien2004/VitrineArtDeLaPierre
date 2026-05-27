@@ -4,21 +4,21 @@ namespace App\Livewire;
 
 use App\Models\Application;
 use Livewire\Component;
-use Livewire\WithFileUploads; // Indispensable pour les fichiers
+use Livewire\WithFileUploads;
 
 class RecruitmentForm extends Component
 {
     use WithFileUploads;
 
-    // Les champs liés au formulaire (wire:model)
     public $first_name, $last_name, $email, $phone, $cv, $cover_letter;
+    public $isSubmitted = false;
 
     protected $rules = [
         'first_name' => 'required|min:2',
         'last_name' => 'required|min:2',
         'email' => 'required|email',
         'phone' => 'required',
-        'cv' => 'required|mimes:pdf|max:3072', // PDF uniquement, 3Mo max
+        'cv' => 'required|mimes:pdf|max:3072',
         'cover_letter' => 'nullable|mimes:pdf|max:3072',
     ];
 
@@ -37,9 +37,10 @@ class RecruitmentForm extends Component
                 : null,
         ]);
 
-        session()->flash('message', 'Candidature bien reçue ! Nous reviendrons vers vous.');
+        // On bascule l'état du composant
+        $this->isSubmitted = true;
 
-        $this->reset();
+        $this->reset(['first_name', 'last_name', 'email', 'phone', 'cv', 'cover_letter']);
     }
 
     public function render()
