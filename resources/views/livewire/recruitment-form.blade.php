@@ -98,6 +98,23 @@
                 </form>
             @endif
 
+            <div class="recrutement-contact-block">
+                <div class="contact-item font-serif-address">
+                    <span class="contact-label">Société</span>
+                    <span class="contact-value">13 Ham. de Breaugies, 59570 Bellignies</span>
+                </div>
+                <div class="contact-row">
+                    <div class="contact-item">
+                        <span class="contact-label">Téléphone</span>
+                        <span class="contact-value">06 15 85 06 25</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Contact</span>
+                        <span class="contact-value">frederic.oden.tailleur.pierre@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+
             <p class="recrutement-note">
                 L'art de la pierre s'engage à traiter votre dossier en toute confidentialité.<br>
             </p>
