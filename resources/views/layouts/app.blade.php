@@ -30,7 +30,6 @@
         <li><a href="/">Réalisations</a></li>
         <li><a href="/configurateur">Devis</a></li>
         <li><a href="{{ route('recrutement') }}">Recrutement</a></li>
-        <li><a href="#">Contact</a></li>
     </ul>
 </nav>
 
