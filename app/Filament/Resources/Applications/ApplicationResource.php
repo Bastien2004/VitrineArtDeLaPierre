@@ -16,6 +16,10 @@ class ApplicationResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
     protected static ?string $recordTitleAttribute = 'last_name';
 
+    protected static ?string $modelLabel = 'candidature';
+    protected static ?string $pluralModelLabel = 'candidatures';
+    protected static ?string $navigationLabel = 'Candidatures';
+
     public static function canCreate(): bool
     {
         return false;
