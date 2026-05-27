@@ -44,7 +44,6 @@ class RecruitmentForm extends Component
 
     public function render()
     {
-        return view('livewire.recruitment-form')
-            ->layout('layouts.app');
+        return view('livewire.recruitment-form');
     }
 }

@@ -6,7 +6,6 @@
     <title>Frédéric Oden | Art de la Pierre</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,400&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <style>
         .font-serif { font-family: 'Cormorant Garamond', serif; }
@@ -32,6 +31,7 @@
 </nav>
 
 @yield('content')
+@livewireScripts
 
 <footer class="footer">
     <div class="footer-line"></div>
