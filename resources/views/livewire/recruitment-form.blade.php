@@ -1,80 +1,105 @@
 <div>
-    <main class="py-20">
-        <div class="max-w-xl mx-auto p-6 bg-white rounded-lg shadow border-t-4 border-gray-800">
-            <h2 class="text-2xl font-serif mb-6 text-gray-800 uppercase tracking-widest">Postuler à l'Atelier</h2>
+    <main class="recrutement-page">
+        <div class="recrutement-card">
+
+            <div class="recrutement-head">
+                <h2 class="recrutement-title">Postuler à L'art de la pierre</h2>
+                <div class="recrutement-rule"></div>
+            </div>
 
             @if (session()->has('message'))
-                <div class="mb-4 p-4 bg-green-100 text-green-800 rounded border border-green-200">
+                <div class="alert-success">
                     {{ session('message') }}
                 </div>
             @endif
 
-            <form wire:submit="save" enctype="multipart/form-data" class="space-y-4">
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-semibold">Prénom</label>
-                        <input type="text" wire:model="first_name" class="w-full border-gray-300 rounded shadow-sm">
-                        @error('first_name') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+            <form wire:submit="save" enctype="multipart/form-data">
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">Prénom</label>
+                        <input type="text" wire:model="first_name" class="form-input" placeholder="Jean">
+                        @error('first_name') <span class="form-error">{{ $message }}</span> @enderror
                     </div>
-                    <div>
-                        <label class="block text-sm font-semibold">Nom</label>
-                        <input type="text" wire:model="last_name" class="w-full border-gray-300 rounded shadow-sm">
-                        @error('last_name') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                    <div class="form-group">
+                        <label class="form-label">Nom</label>
+                        <input type="text" wire:model="last_name" class="form-input" placeholder="Dupont">
+                        @error('last_name') <span class="form-error">{{ $message }}</span> @enderror
                     </div>
                 </div>
 
-                <div>
-                    <label class="block text-sm font-semibold">Email</label>
-                    <input type="email" wire:model="email" class="w-full border-gray-300 rounded shadow-sm">
-                    @error('email') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" wire:model="email" class="form-input" placeholder="jean.dupont@exemple.com">
+                    @error('email') <span class="form-error">{{ $message }}</span> @enderror
                 </div>
 
-                <div>
-                    <label class="block text-sm font-semibold">Téléphone</label>
-                    <input type="text" wire:model="phone" class="w-full border-gray-300 rounded shadow-sm">
-                    @error('phone') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                <div class="form-group">
+                    <label class="form-label">Téléphone</label>
+                    <input type="text" wire:model="phone" class="form-input" placeholder="06 12 34 56 78">
+                    @error('phone') <span class="form-error">{{ $message }}</span> @enderror
                 </div>
 
-                <div class="py-2">
-                    <label class="block text-sm font-semibold text-gray-700">Votre CV (PDF obligatoire)</label>
-                    <input type="file" wire:model="cv" class="mt-1 block w-full text-sm">
+                <div class="form-divider"></div>
 
-                    <div wire:loading wire:target="cv" class="text-sm text-blue-500 mt-1">
-                        ⏳ Upload en cours...
+                <div class="form-file-area">
+                    <label class="form-file-label">Votre CV (PDF obligatoire)</label>
+                    <span class="form-file-sublabel">Format PDF</span>
+
+                    <div class="form-file-row">
+                        <label class="form-file-btn">
+                            Choisir un fichier
+                            <input type="file" wire:model="cv" style="display: none;">
+                        </label>
+
+                        <div wire:loading wire:target="cv" class="upload-status loading">
+                            ⏳ Upload en cours...
+                        </div>
+                        <div wire:loading.remove wire:target="cv">
+                            @if ($cv)
+                                <span class="upload-status ready">✅ Fichier prêt</span>
+                            @else
+                                <span class="upload-status empty">Aucun fichier sélectionné</span>
+                            @endif
+                        </div>
                     </div>
-                    <div wire:loading.remove wire:target="cv">
-                        @if ($cv)
-                            <p class="text-sm text-green-600 mt-1">✅ Fichier prêt</p>
-                        @endif
-                    </div>
-                    @error('cv') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                    @error('cv') <span class="form-error">{{ $message }}</span> @enderror
                 </div>
 
-                <div class="py-2">
-                    <label class="block text-sm font-semibold text-gray-700">Lettre de motivation (PDF facultatif)</label>
-                    <input type="file" wire:model="cover_letter" class="mt-1 block w-full text-sm">
+                <div class="form-file-area">
+                    <label class="form-file-label">Lettre de motivation  (PDF obligatoire)</label>
+                    <span class="form-file-sublabel">Format PDF</span>
 
-                    <div wire:loading wire:target="cover_letter" class="text-sm text-blue-500 mt-1">
-                        ⏳ Upload en cours...
+                    <div class="form-file-row">
+                        <label class="form-file-btn">
+                            Choisir un fichier
+                            <input type="file" wire:model="cover_letter" style="display: none;">
+                        </label>
+
+                        <div wire:loading wire:target="cover_letter" class="upload-status loading">
+                            ⏳ Upload en cours...
+                        </div>
+                        <div wire:loading.remove wire:target="cover_letter">
+                            @if ($cover_letter)
+                                <span class="upload-status ready">✅ Fichier prêt</span>
+                            @else
+                                <span class="upload-status empty">Aucun fichier sélectionné</span>
+                            @endif
+                        </div>
                     </div>
-                    <div wire:loading.remove wire:target="cover_letter">
-                        @if ($cover_letter)
-                            <p class="text-sm text-green-600 mt-1">✅ Fichier prêt</p>
-                        @endif
-                    </div>
-                    @error('cover_letter') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                    @error('cover_letter') <span class="form-error">{{ $message }}</span> @enderror
                 </div>
 
-                <button
-                    type="submit"
-                    wire:loading.attr="disabled"
-                    wire:loading.class="opacity-50 cursor-not-allowed"
-                    class="w-full bg-gray-900 text-white py-3 px-4 rounded hover:bg-gray-700 transition font-bold uppercase tracking-widest"
-                >
+                <button type="submit" wire:loading.attr="disabled" class="form-submit">
                     <span wire:loading.remove>Envoyer mon dossier</span>
                     <span wire:loading>Envoi en cours...</span>
                 </button>
             </form>
+
+            <p class="recrutement-note">
+                L'art de la pierre s'engage à traiter votre dossier en toute confidentialité.<br>
+            </p>
+
         </div>
     </main>
 </div>
