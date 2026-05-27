@@ -20,7 +20,11 @@
      Uniquement sur la page d'accueil, le JS retire .scrolled
      au chargement et le rétablit au scroll. --}}
 <nav class="navbar scrolled" id="navbar">
-    <div class="logo">F. ODEN</div>
+    <div class="logo">
+        <a href="/">
+            Accueil
+        </a>
+    </div>
     <ul class="nav-links">
         <li><a href="/">Savoir-Faire</a></li>
         <li><a href="/">Réalisations</a></li>
