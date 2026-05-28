@@ -632,7 +632,7 @@ h1 em {
 
     .contact-card__items {
         flex-direction: column;
-        width: 100%;
+        width: 50%;
         gap: 10px;
     }
 
