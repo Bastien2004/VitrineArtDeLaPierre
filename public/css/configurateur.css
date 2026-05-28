@@ -1,8 +1,12 @@
 /* ═══════════════════════════════════════════════════════════
-   configurateur.css — L'Art de la Pierre
+   configurateur.css — L'Art de la Pierre (Version Finale)
    ═══════════════════════════════════════════════════════════ */
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
 :root {
     --stone:        #D6CCBC;
@@ -36,11 +40,17 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+/* ── Fix Global : Gestion de la Navbar fixe ──────────────── */
+main:has(.page) {
+    margin-top: 0 !important;
+    padding-top: 110px; /* Décale proprement la page sous la navbar */
+}
+
 /* ── Page wrapper ────────────────────────────────────────── */
 .page {
     max-width: 880px;
     margin: 0 auto;
-    padding: 56px 28px 100px;
+    padding: 0 28px 100px;
 }
 
 /* ── 1. Header ───────────────────────────────────────────── */
@@ -123,6 +133,8 @@ h1 em {
     color: var(--text);
     font-size: 14px;
     font-weight: 500;
+    max-width: 100%;
+    overflow: hidden;
     transition: background .16s, border-color .16s, transform .12s;
 }
 
@@ -151,11 +163,11 @@ h1 em {
 
 .contact-card__label {
     letter-spacing: 0.01em;
-}
-
-@media (max-width: 560px) {
-    .contact-card { flex-direction: column; align-items: flex-start; }
-    .contact-card__item { width: 100%; justify-content: center; }
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    max-width: 100%;
 }
 
 /* ── 3. Configurateur — barre d'actions ──────────────────── */
@@ -234,17 +246,12 @@ h1 em {
     to { opacity: 0; transform: translateY(-6px) scale(.98); max-height: 0; padding: 0; margin: 0; }
 }
 
-/* Layout intérieur : visuel | panel */
 .layout {
     display: grid;
     grid-template-columns: 1fr 280px;
 }
 
-@media (max-width: 640px) {
-    .layout { grid-template-columns: 1fr; }
-}
-
-/* Canvas */
+/* Canvas Wrap */
 .canvas-wrap {
     padding: 24px;
     border-right: 1px solid var(--border-light);
@@ -310,7 +317,7 @@ h1 em {
     color: var(--text-faint);
 }
 
-/* Dimensions */
+/* Dimensions Inputs */
 .dim-inputs {
     display: flex;
     gap: 8px;
@@ -455,11 +462,6 @@ h1 em {
     gap: 16px;
 }
 
-@media (max-width: 520px) {
-    .client-form { padding: 24px 20px; }
-    .client-form-grid { grid-template-columns: 1fr; }
-}
-
 .client-field {
     display: flex;
     flex-direction: column;
@@ -504,7 +506,6 @@ h1 em {
     line-height: 1.5;
 }
 
-/* Séparateur avant le bouton d'envoi */
 .client-form > div:last-child {
     padding-top: 20px;
     margin-top: 8px;
@@ -540,6 +541,7 @@ h1 em {
 @keyframes notifIn  { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 @keyframes notifOut { to   { opacity: 0; transform: translateY(6px); } }
 
+
 /* ==========================================================================
    CONFIGURATEUR — OPTIMISATIONS RESPONSIVE
    ========================================================================== */
@@ -547,18 +549,47 @@ h1 em {
 /* ── Écrans Intermédiaires (Max 880px) ──────────────────────────────────── */
 @media (max-width: 880px) {
     .page {
-        padding: 40px 20px 60px;
+        padding: 0 20px 60px;
     }
 }
 
-/* ── Tablettes et Petits Écrans (Max 768px) ─────────────────────────────── */
+/* ── Tablettes et Menu Mobile Fix (Max 768px) ───────────────────────────── */
 @media (max-width: 768px) {
+    /* Évite le télescopage des liens dans votre en-tête global */
+    .navbar {
+        padding: 16px 20px !important;
+        flex-direction: column;
+        gap: 12px;
+        background: rgba(253, 252, 250, 0.98) !important;
+        border-bottom: 1px solid var(--border-light);
+    }
+
+    .navbar .logo {
+        color: var(--text) !important;
+    }
+
+    .nav-links {
+        gap: 16px !important;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-links a {
+        color: var(--text-muted) !important;
+        font-size: 0.75rem !important;
+    }
+
+    /* Décale plus fort la page pour compenser le menu sur deux lignes */
+    main:has(.page) {
+        padding-top: 130px;
+    }
+
     .header {
         margin-bottom: 32px;
         padding-bottom: 24px;
     }
 
-    /* Le layout passe en une seule colonne (Le visuel au-dessus du panel) */
+    /* Le layout passe sur une seule colonne */
     .layout {
         grid-template-columns: 1fr;
     }
@@ -571,10 +602,9 @@ h1 em {
 
     .panel {
         padding: 20px;
-        gap: 24px; /* Un peu plus d'espace pour le confort tactile */
+        gap: 24px;
     }
 
-    /* Optimisation de la grille de boutons de finitions sur tablette */
     .fin-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -588,7 +618,7 @@ h1 em {
         font-size: 32px;
     }
 
-    /* Carte Contact en colonne */
+    /* Carte Contact en colonne propre */
     .contact-card {
         flex-direction: column;
         align-items: stretch;
@@ -609,10 +639,14 @@ h1 em {
     .contact-card__item {
         width: 100%;
         justify-content: center;
-        padding: 12px; /* Zone de clic plus grande */
+        padding: 12px;
     }
 
-    /* Barre d'action "Ajouter" */
+    .contact-card__label {
+        font-size: 11px !important; /* Force la réduction de l'e-mail */
+    }
+
+    /* Bouton Ajouter */
     .add-btn-container {
         width: 100%;
     }
@@ -623,17 +657,17 @@ h1 em {
         padding: 14px;
     }
 
-    /* Inputs de dimensions l'un en dessous de l'autre */
+    /* Inputs en colonne tactile */
     .dim-inputs {
         flex-direction: column;
         gap: 12px;
     }
 
     .input-group input {
-        padding: 11px 12px; /* Plus facile de taper sur mobile */
+        padding: 11px 12px;
     }
 
-    /* Remise des finitions sur une seule colonne pour les petits écrans */
+    /* Finitions sur 1 colonne */
     .fin-grid {
         grid-template-columns: 1fr;
         gap: 6px;
@@ -650,7 +684,7 @@ h1 em {
     }
 
     .client-form-grid {
-        grid-template-columns: 1fr; /* Une seule colonne pour les champs */
+        grid-template-columns: 1fr;
         gap: 14px;
     }
 }
@@ -658,14 +692,13 @@ h1 em {
 /* ── Ajustements pour Écrans Minuscules (Max 380px) ──────────────────────── */
 @media (max-width: 380px) {
     .page {
-        padding: 24px 16px 40px;
+        padding: 0 16px 40px;
     }
 
     .canvas-wrap {
         padding: 12px;
     }
 
-    /* Évite que le texte des toasts de notification déborde */
     .notif {
         font-size: 12px;
         padding: 10px 16px;
@@ -675,6 +708,6 @@ h1 em {
     }
 
     .contact-card__label {
-        font-size: 11px;
+        font-size: 10px !important;
     }
 }
