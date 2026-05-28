@@ -45,8 +45,9 @@
     </button>
 
     <a href="/">Savoir-Faire</a>
-    <a href="/">Réalisations</a>
+    <a href="/">Explorer l’atelier</a>
     <a href="/configurateur">Devis</a>
+    <a href="/">Avis</a>
     <div class="nav-mobile-divider"></div>
     <a href="{{ route('recrutement') }}" class="nav-mobile-cta">Recrutement</a>
 </div>
@@ -63,8 +64,9 @@
         </div>
         <ul class="footer-min-links">
             <li><a href="/">Savoir-Faire</a></li>
-            <li><a href="/">Réalisations</a></li>
+            <li><a href="/">Explorer l’atelier</a></li>
             <li><a href="/configurateur">Devis</a></li>
+            <li><a href="/">Avis</a></li>
             <li><a href="{{ route('recrutement') }}">Recrutement</a></li>
         </ul>
     </div>
