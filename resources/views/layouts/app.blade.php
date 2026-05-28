@@ -36,10 +36,24 @@
 @yield('content')
 @livewireScripts
 
-<footer class="footer">
-    <div class="footer-line"></div>
-    <p>© 2026 FRÉDÉRIC ODEN — TAILLEUR DE PIERRE & SCULPTEUR</p>
-</footer>
+<footer class="footer-minimal">
+    <div class="footer-min-container">
+        <!-- Gauche : Logo & Copyright -->
+        <div class="footer-min-left">
+            <span class="footer-min-logo">Frédéric Oden</span>
+            <span class="footer-min-sep">|</span>
+            <p class="footer-min-copyright">© {{ date('Y') }} — TAILLEUR DE PIERRE & SCULPTEUR</p>
+        </div>
+
+        <!-- Droite : Liens discrets -->
+        <ul class="footer-min-links">
+            <li><a href="/">Savoir-Faire</a></li>
+            <li><a href="/">Réalisations</a></li>
+            <li><a href="/configurateur">Devis</a></li>
+            <li><a href="{{ route('recrutement') }}">Recrutement</a></li>
+        </ul>
+    </div>
+</footer></footer>
 
 <script>
     (function () {

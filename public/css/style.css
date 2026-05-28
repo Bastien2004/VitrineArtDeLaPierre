@@ -852,3 +852,104 @@ body {
 .renovations {
     background-color: #edeae0;
 }
+
+
+/* ============================================
+   MINIMAL COMPACT FOOTER
+   ============================================ */
+.footer-minimal {
+    background-color: var(--white);
+    padding: 40px 64px;
+    border-top: 1px solid var(--stone-light);
+    position: relative;
+    z-index: 10;
+}
+
+.footer-min-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Bloc Gauche */
+.footer-min-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.footer-min-logo {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-transform: uppercase;
+}
+
+.footer-min-sep {
+    color: var(--stone-mid);
+    font-weight: 200;
+    opacity: 0.6;
+}
+
+.footer-min-copyright {
+    font-family: var(--nav-sans);
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    color: var(--stone-dark);
+}
+
+/* Bloc Droite (Liens) */
+.footer-min-links {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+}
+
+.footer-min-links a {
+    text-decoration: none;
+    font-family: var(--nav-sans);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--stone-dark);
+    text-transform: uppercase;
+    transition: color 0.3s var(--ease-out);
+}
+
+.footer-min-links a:hover {
+    color: var(--accent);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    .footer-minimal {
+        padding: 40px 24px;
+    }
+
+    .footer-min-container {
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+    }
+
+    .footer-min-left {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .footer-min-sep {
+        display: none; /* On cache la barre verticale sur mobile */
+    }
+
+    .footer-min-links {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
