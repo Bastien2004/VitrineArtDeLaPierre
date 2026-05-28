@@ -539,3 +539,138 @@ h1 em {
 
 @keyframes notifIn  { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 @keyframes notifOut { to   { opacity: 0; transform: translateY(6px); } }
+
+/* ==========================================================================
+   CONFIGURATEUR — OPTIMISATIONS RESPONSIVE
+   ========================================================================== */
+
+/* ── Écrans Intermédiaires (Max 880px) ──────────────────────────────────── */
+@media (max-width: 880px) {
+    .page {
+        padding: 40px 20px 60px;
+    }
+}
+
+/* ── Tablettes et Petits Écrans (Max 768px) ─────────────────────────────── */
+@media (max-width: 768px) {
+    .header {
+        margin-bottom: 32px;
+        padding-bottom: 24px;
+    }
+
+    /* Le layout passe en une seule colonne (Le visuel au-dessus du panel) */
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .canvas-wrap {
+        border-right: none;
+        border-bottom: 1px solid var(--border-light);
+        padding: 20px;
+    }
+
+    .panel {
+        padding: 20px;
+        gap: 24px; /* Un peu plus d'espace pour le confort tactile */
+    }
+
+    /* Optimisation de la grille de boutons de finitions sur tablette */
+    .fin-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+}
+
+/* ── Smartphones Standard (Max 560px) ───────────────────────────────────── */
+@media (max-width: 560px) {
+    h1 {
+        font-size: 32px;
+    }
+
+    /* Carte Contact en colonne */
+    .contact-card {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 20px;
+        gap: 16px;
+    }
+
+    .contact-card__intro {
+        text-align: center;
+    }
+
+    .contact-card__items {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .contact-card__item {
+        width: 100%;
+        justify-content: center;
+        padding: 12px; /* Zone de clic plus grande */
+    }
+
+    /* Barre d'action "Ajouter" */
+    .add-btn-container {
+        width: 100%;
+    }
+
+    .add-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 14px;
+    }
+
+    /* Inputs de dimensions l'un en dessous de l'autre */
+    .dim-inputs {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .input-group input {
+        padding: 11px 12px; /* Plus facile de taper sur mobile */
+    }
+
+    /* Remise des finitions sur une seule colonne pour les petits écrans */
+    .fin-grid {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+
+    .fin-btn {
+        padding: 12px;
+    }
+
+    /* Formulaire Client */
+    .client-form {
+        padding: 24px 20px;
+        margin-top: 32px;
+    }
+
+    .client-form-grid {
+        grid-template-columns: 1fr; /* Une seule colonne pour les champs */
+        gap: 14px;
+    }
+}
+
+/* ── Ajustements pour Écrans Minuscules (Max 380px) ──────────────────────── */
+@media (max-width: 380px) {
+    .page {
+        padding: 24px 16px 40px;
+    }
+
+    .canvas-wrap {
+        padding: 12px;
+    }
+
+    /* Évite que le texte des toasts de notification déborde */
+    .notif {
+        font-size: 12px;
+        padding: 10px 16px;
+        white-space: normal;
+        text-align: center;
+        max-width: 90vw;
+    }
+}
