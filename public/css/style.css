@@ -1580,3 +1580,56 @@ main section.py-20 button:hover {
         height: 280px !important;
     }
 }
+
+
+/* ============================================
+   FIX OVERFLOW HORIZONTAL — MOBILE
+   Empêche tout débordement latéral
+   ============================================ */
+
+html,
+body {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+}
+
+/* Les sliders doivent scroller en interne, pas faire déborder la page */
+.realisations-scroll,
+.renovations [x-ref="scrollContainer"],
+.cards-wrapper {
+    max-width: 100vw !important;
+}
+
+@media (max-width: 768px) {
+    /* Empêche tout enfant de déborder */
+    main,
+    section,
+    .about-section,
+    .about-container,
+    .realisations,
+    .renovations,
+    .footer-minimal {
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+
+    /* Le padding-right des sliders ne doit pas pousser hors écran */
+    .realisations-scroll {
+        /* On retire le padding-right et on le remplace par un pseudo-élément */
+        padding-right: 0 !important;
+    }
+
+    /* Espace après la dernière carte via un élément fantôme */
+    .realisations-scroll::after,
+    .renovations [x-ref="scrollContainer"]::after {
+        content: '';
+        display: block;
+        flex: 0 0 24px;
+        min-width: 24px;
+    }
+
+    /* About container : pas de débordement */
+    .about-image-bg {
+        left: 0 !important;
+    }
+}
