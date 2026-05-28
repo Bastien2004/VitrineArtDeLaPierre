@@ -22,8 +22,9 @@
 
     <ul class="nav-links">
         <li><a href="/">Savoir-Faire</a></li>
-        <li><a href="/">Réalisations</a></li>
+        <li><a href="/">Explorer l’atelier</a></li>
         <li><a href="/configurateur">Devis</a></li>
+        <li><a href="/">Avis</a></li>
         <li><a href="{{ route('recrutement') }}">Recrutement</a></li>
     </ul>
 
