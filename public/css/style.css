@@ -1429,3 +1429,154 @@ main section.py-20 button:hover {
         font-size: 1.75rem !important;
     }
 }
+
+
+/* ============================================
+   RÉALISATIONS — SLIDER HORIZONTAL
+   ============================================ */
+
+/* Conteneur scroll */
+.realisations-scroll {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 20px;
+    padding: 0 40px 32px;
+}
+
+/* Carte individuelle */
+.realisation-card {
+    flex: 0 0 300px;
+    height: 380px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+    scroll-snap-align: start;
+    background: var(--stone-light);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    cursor: pointer;
+}
+
+.realisation-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease-out);
+}
+
+.realisation-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Overlay info */
+.realisation-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,8,6,0.75) 0%, transparent 55%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.4s var(--ease-out);
+}
+
+.realisation-card:hover .realisation-card-overlay {
+    opacity: 1;
+}
+
+/* En-tête section réalisations — boutons */
+.realisations > div.px-10 button {
+    flex-shrink: 0;
+    background: none;
+    border: 1px solid var(--stone-light);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--stone-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.35s var(--ease-out);
+}
+
+.realisations > div.px-10 button:hover {
+    background: var(--charcoal);
+    border-color: var(--charcoal);
+    color: white;
+    transform: scale(1.08);
+}
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+    .realisations-scroll {
+        padding: 0 24px 24px !important;
+        gap: 14px !important;
+    }
+
+    .realisation-card {
+        flex: 0 0 72vw !important;
+        height: 320px !important;
+        max-width: 280px !important;
+    }
+
+    /* Overlay toujours visible sur touch */
+    .realisation-card .realisation-card-overlay {
+        opacity: 1 !important;
+        background: linear-gradient(to top, rgba(10,8,6,0.65) 0%, transparent 60%) !important;
+    }
+
+    /* En-tête : titre + boutons alignés */
+    .realisations > div.px-10.mb-12 {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .realisations > div.px-10.mb-12 h2 {
+        font-size: 1.9rem !important;
+        line-height: 1.15 !important;
+    }
+
+    .realisations > div.px-10.mb-12 > div.flex.gap-2 {
+        display: flex !important;
+        gap: 10px !important;
+        flex-shrink: 0 !important;
+        margin-left: 16px !important;
+    }
+
+    .realisations > div.px-10.mb-12 button {
+        width: 40px !important;
+        height: 40px !important;
+        min-width: 40px !important;
+        border: 1px solid var(--stone-mid) !important;
+        background: var(--white) !important;
+        color: var(--charcoal) !important;
+        font-size: 0.9rem !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+    }
+
+    .realisations > div.px-10.mb-12 button:active {
+        background: var(--charcoal) !important;
+        color: var(--white) !important;
+        border-color: var(--charcoal) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .realisation-card {
+        flex: 0 0 82vw !important;
+        height: 280px !important;
+    }
+}
