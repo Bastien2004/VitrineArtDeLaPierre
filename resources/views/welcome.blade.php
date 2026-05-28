@@ -88,7 +88,10 @@
                 </div>
             </div>
 
-            <div x-ref="scrollContainer" class="flex overflow-x-auto snap-x snap-mandatory gap-8 px-10 pb-12 hide-scrollbar scroll-smooth">
+            <div x-ref="scrollContainer"
+                 class="flex overflow-x-auto snap-x snap-mandatory gap-8 px-10 pb-12 hide-scrollbar scroll-smooth"
+                 style="display:flex !important; flex-direction:row !important; flex-wrap:nowrap !important; overflow-x:auto !important;">
+
                 @forelse($comparaisons as $comparaison)
                     <div class="snap-start shrink-0">
                         <x-compare-card

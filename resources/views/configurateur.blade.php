@@ -4,10 +4,7 @@
 
     <div class="page">
 
-        <div class="header">
-            <p class="eyebrow">Atelier de Taille</p>
-            <h1>Vos pierres,<br><em>sur mesure</em></h1>
-        </div>
+
 
         <div class="contact-card">
             <p class="contact-card__intro">Une question avant de commencer ? Contactez-nous directement.</p>

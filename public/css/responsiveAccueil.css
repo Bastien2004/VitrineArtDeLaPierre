@@ -1,0 +1,339 @@
+/* ============================================
+   RESPONSIVE ADDITIONS — Frédéric Oden
+   À inclure APRÈS le fichier CSS principal
+   ============================================ */
+
+/* ============================================
+   HERO — CORRECTIONS MOBILE
+   ============================================ */
+@media (max-width: 768px) {
+    .hero {
+        height: 100svh;
+        /* Recentre l'image sur mobile pour que le sujet soit visible */
+        background-position: center top !important;
+        background-size: cover !important;
+    }
+
+    /* Assombrit légèrement l'overlay pour améliorer la lisibilité */
+    .hero-overlay {
+        background: linear-gradient(170deg,
+        rgba(0,0,0,0.65) 0%,
+        rgba(0,0,0,0.35) 45%,
+        rgba(0,0,0,0.80) 100%) !important;
+    }
+
+    .hero-title {
+        font-size: clamp(3rem, 13vw, 5rem);
+        line-height: 1;
+        padding: 0 20px;
+    }
+
+    .hero-subtitle {
+        font-size: 0.55rem;
+        letter-spacing: 0.35em;
+        margin-top: 18px;
+        padding: 0 20px;
+    }
+
+    .hero-wave {
+        height: 180px;
+        bottom: 30px;
+    }
+
+    .hero-scroll-hint {
+        bottom: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: clamp(2.6rem, 13vw, 3.8rem);
+    }
+}
+
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+@media (max-width: 768px) {
+    /* Cache les liens intermédiaires, garde logo + CTA */
+    .nav-links li:not(:last-child) {
+        display: none;
+    }
+    .nav-links {
+        gap: 0;
+    }
+}
+
+
+/* ============================================
+   SECTION ABOUT
+   ============================================ */
+@media (max-width: 768px) {
+    .about-section {
+        padding: 60px 24px !important;
+    }
+
+    .about-title {
+        font-size: 2.4rem !important;
+        line-height: 1.2 !important;
+    }
+
+    .about-content p {
+        font-size: 0.95rem !important;
+        line-height: 1.8 !important;
+        text-align: left !important;
+        margin-bottom: 20px !important;
+    }
+
+    .about-content .about-lead {
+        font-size: 1.3rem !important;
+        line-height: 1.5 !important;
+    }
+
+    .about-content .about-quote {
+        font-size: 1.1rem !important;
+        padding-left: 16px !important;
+        margin: 28px 0 !important;
+    }
+
+    .about-image-column {
+        width: 100% !important;
+        margin-top: 40px !important;
+    }
+
+    .about-image-wrapper {
+        width: 100% !important;
+        margin: 0 auto !important;
+    }
+}
+
+
+/* ============================================
+   SECTION RÉALISATIONS — grille
+   ============================================ */
+@media (max-width: 768px) {
+    .realisations {
+        padding-top: 4rem !important;
+        padding-bottom: 3rem !important;
+    }
+
+    .realisations > div.px-10:first-child {
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+        margin-bottom: 28px !important;
+    }
+
+    .realisations h2 {
+        font-size: 2rem !important;
+        line-height: 1.15 !important;
+    }
+
+    /* 2 colonnes sur mobile */
+    .realisations .grid {
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+        gap: 10px !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .realisations .grid > div {
+        aspect-ratio: 1 / 1 !important;
+    }
+
+    /* Overlay toujours visible (pas de :hover sur touch) */
+    .realisations .group .absolute {
+        opacity: 1 !important;
+        background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 65%) !important;
+    }
+
+    .realisations .group .absolute p {
+        font-size: 0.85rem !important;
+    }
+
+    .realisations .group .absolute span {
+        font-size: 0.6rem !important;
+    }
+}
+
+@media (max-width: 420px) {
+    .realisations .grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .realisations .grid > div {
+        aspect-ratio: 4 / 3 !important;
+    }
+}
+
+
+/* ============================================
+   SECTION RÉNOVATIONS — slider horizontal
+   CORRECTION CRITIQUE : forcer le flex horizontal
+   ============================================ */
+
+/*
+ * Tailwind génère des classes utilitaires qui peuvent être purgées
+ * ou écrasées. On force ici TOUTES les propriétés du slider.
+ */
+
+/* Le conteneur scroll doit TOUJOURS être horizontal */
+.renovations [x-ref="scrollContainer"] {
+    display: flex !important;
+    flex-direction: row !important;       /* <- correction clé : pas de wrap vertical */
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-behavior: smooth !important;
+}
+
+/* Chaque carte ne doit JAMAIS rétrécir */
+.renovations [x-ref="scrollContainer"] > div {
+    flex-shrink: 0 !important;
+    scroll-snap-align: start !important;
+}
+
+/* Desktop & tablette : largeur naturelle */
+@media (min-width: 769px) {
+    .renovations [x-ref="scrollContainer"] > div {
+        flex: 0 0 auto !important;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .renovations {
+        padding-top: 4rem !important;
+        padding-bottom: 3rem !important;
+    }
+
+    /* En-tête : titre à gauche, flèches à droite */
+    .renovations > div.px-10:first-child {
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+        margin-bottom: 24px !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
+
+    .renovations h2 {
+        font-size: 2rem !important;
+        line-height: 1.15 !important;
+    }
+
+    /* Boutons flèches */
+    .renovations button {
+        width: 44px !important;
+        height: 44px !important;
+        min-width: 44px !important;
+        min-height: 44px !important;
+        font-size: 1rem !important;
+        border: 1px solid var(--stone-mid) !important;
+        color: var(--charcoal) !important;
+        background-color: transparent !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        transition: all 0.3s ease !important;
+        flex-shrink: 0 !important;
+    }
+
+    .renovations button:active {
+        background-color: var(--charcoal) !important;
+        color: var(--white) !important;
+        border-color: var(--charcoal) !important;
+    }
+
+    /* Scroll container sur mobile */
+    .renovations [x-ref="scrollContainer"] {
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+        gap: 16px !important;
+        padding-bottom: 20px !important;
+    }
+
+    /* Largeur des cartes : 82vw pour laisser entrevoir la suivante */
+    .renovations [x-ref="scrollContainer"] > div {
+        flex: 0 0 82vw !important;
+        max-width: 340px !important;
+    }
+}
+
+/* Très petits mobiles */
+@media (max-width: 480px) {
+    .renovations > div.px-10:first-child {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 14px !important;
+    }
+
+    .renovations > div.px-10:first-child .flex.gap-2 {
+        align-self: flex-end !important;
+    }
+
+    .renovations [x-ref="scrollContainer"] > div {
+        flex: 0 0 88vw !important;
+    }
+}
+
+
+/* ============================================
+   FOOTER MINIMAL
+   ============================================ */
+@media (max-width: 992px) {
+    .footer-minimal {
+        padding: 40px 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-minimal {
+        padding: 40px 24px;
+    }
+
+    .footer-min-container {
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+    }
+
+    .footer-min-left {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .footer-min-sep {
+        display: none;
+    }
+
+    .footer-min-links {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+
+/* ============================================
+   UTILITAIRES GLOBAUX TOUCH
+   ============================================ */
+
+/* Cible explicite pour iOS */
+.renovations [x-ref="scrollContainer"],
+.cards-wrapper {
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Masque la scrollbar mais garde le scroll fonctionnel */
+.renovations [x-ref="scrollContainer"] {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.renovations [x-ref="scrollContainer"]::-webkit-scrollbar {
+    display: none;
+}
