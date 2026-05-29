@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-9SBdIGyC.css",
+    "file": "assets/app-Dh38PEiJ.css",
     "name": "app",
     "names": [
       "app.css"
@@ -8,10 +8,29 @@
     "src": "resources/css/app.css",
     "isEntry": true
   },
+  "resources/css/panorama.css": {
+    "file": "assets/panorama-BDk1XuYf.css",
+    "name": "panorama",
+    "names": [
+      "panorama.css"
+    ],
+    "src": "resources/css/panorama.css",
+    "isEntry": true
+  },
   "resources/js/app.js": {
     "file": "assets/app-34mOoJaZ.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true
+  },
+  "resources/js/panorama.js": {
+    "file": "assets/panorama-JlF8R32j.js",
+    "name": "panorama",
+    "src": "resources/js/panorama.js",
+    "isEntry": true,
+    "css": [
+      "assets/panorama-b4MPYr32.css",
+      "assets/panorama-BDk1XuYf.css"
+    ]
   }
 }
