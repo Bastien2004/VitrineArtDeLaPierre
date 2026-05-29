@@ -3,13 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ConfigurateurEmail;
+use App\Traits\HasSEO;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 
 class ConfigurateurController extends Controller
 {
+    use HasSEO;
+
     public function index()
     {
+        $this->setSEO(
+            'Configurateur',
+            'Configurez votre projet de taille de pierre sur mesure.'
+        );
         return view('configurateur');
     }
 
