@@ -1,0 +1,234 @@
+/* resources/css/panorama.css */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #000;
+}
+
+/* Le conteneur 3D prend tout l'écran en arrière-plan */
+#panorama-viewer {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+/* Header flottant moderne */
+.pano-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0));
+    color: white;
+    padding: 25px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.pano-header__logo svg {
+    width: 32px;
+    height: 32px;
+    color: #dfb76c; /* Teinte dorée artisanat */
+}
+
+.pano-header__info {
+    flex-grow: 1;
+    margin-left: 20px;
+}
+
+.pano-header__title {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.pano-header__subtitle {
+    margin: 4px 0 0 0;
+    opacity: 0.7;
+    font-size: 0.85rem;
+}
+
+.pano-header__controls {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-ctrl {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+    backdrop-filter: blur(8px);
+}
+
+.btn-ctrl:hover, .btn-ctrl.active {
+    background: #dfb76c;
+    color: #111;
+    border-color: #dfb76c;
+}
+
+.btn-ctrl svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Galerie au bas de l'écran */
+.pano-gallery {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 15px;
+    background: rgba(15, 15, 15, 0.75);
+    padding: 12px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 90%;
+    overflow-x: auto;
+}
+
+.pano-gallery__thumb {
+    background: none;
+    border: 2px solid transparent;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 4px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    min-width: 100px;
+}
+
+.pano-gallery__thumb img {
+    width: 100px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.pano-gallery__thumb span {
+    font-size: 0.75rem;
+    opacity: 0.8;
+    white-space: nowrap;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pano-gallery__thumb:hover, .pano-gallery__thumb.active {
+    border-color: #dfb76c;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.pano-gallery__thumb.active span {
+    color: #dfb76c;
+    font-weight: 600;
+}
+
+/* Gestion du Loader global */
+.pano-loading {
+    position: absolute;
+    inset: 0;
+    z-index: 100;
+    background: #111;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.pano-loading.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.pano-loading__spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top-color: #dfb76c;
+    border-radius: 50%;
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   FLÈCHE FIXE (Interface Google Maps)
+   Reste au centre en bas de l'écran, ne bouge pas avec l'image 3D
+   ────────────────────────────────────────────────────────────────────────── */
+.nav-arrow-fixed {
+    position: absolute;
+    bottom: 120px; /* Placé idéalement juste au-dessus de la galerie basse */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20; /* Priorité d'affichage absolue sur le viewer 3D */
+
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    color: #111111;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.2s ease-in-out;
+    padding: 0;
+    outline: none;
+}
+
+.nav-arrow-fixed svg {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.2s ease;
+}
+
+.nav-arrow-fixed:hover {
+    background: #dfb76c; /* Changement d'état avec la couleur de ta charte */
+    border-color: #dfb76c;
+    color: #ffffff;
+    bottom: 125px; /* Effet dynamique de survol (léger rebond vers le haut) */
+    box-shadow: 0 6px 20px rgba(223, 183, 108, 0.4);
+}
+
+.nav-arrow-fixed:hover svg {
+    transform: translateY(-2px); /* La flèche interne pointe encore plus vers le haut */
+}
+
+.psv-caption {
+    display: none !important;
+}

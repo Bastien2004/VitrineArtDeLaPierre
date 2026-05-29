@@ -23,7 +23,7 @@
 
     <ul class="nav-links">
         <li><a href="/">Savoir-Faire</a></li>
-        <li><a href="/">Explorer l’atelier</a></li>
+        <li><a href="{{route('panoramas')}}">Explorer l’atelier</a></li>
         <li><a href="/configurateur">Devis</a></li>
         <li><a href="https://www.pagesjaunes.fr/contribution/votre-avis/62047963">Avis</a></li>
         <li><a href="{{ route('recrutement') }}">Recrutement</a></li>
@@ -46,7 +46,7 @@
     </button>
 
     <a href="/">Savoir-Faire</a>
-    <a href="/">Explorer l’atelier</a>
+    <a href="{{route('panoramas')}}">Explorer l’atelier</a>
     <a href="/configurateur">Devis</a>
     <a href="https://www.pagesjaunes.fr/contribution/votre-avis/62047963">Avis</a>
     <div class="nav-mobile-divider"></div>
@@ -65,7 +65,7 @@
         </div>
         <ul class="footer-min-links">
             <li><a href="/">Savoir-Faire</a></li>
-            <li><a href="/">Explorer l’atelier</a></li>
+            <li><a href="{{route('panoramas')}}">Explorer l’atelier</a></li>
             <li><a href="/configurateur">Devis</a></li>
             <li><a href="https://www.pagesjaunes.fr/contribution/votre-avis/62047963">Avis</a></li>
             <li><a href="{{ route('recrutement') }}">Recrutement</a></li>
