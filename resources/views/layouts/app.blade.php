@@ -24,7 +24,7 @@
         <li><a href="/">Savoir-Faire</a></li>
         <li><a href="/">Explorer l’atelier</a></li>
         <li><a href="/configurateur">Devis</a></li>
-        <li><a href="/">Avis</a></li>
+        <li><a href="https://www.pagesjaunes.fr/contribution/votre-avis/62047963">Avis</a></li>
         <li><a href="{{ route('recrutement') }}">Recrutement</a></li>
     </ul>
 
@@ -47,7 +47,7 @@
     <a href="/">Savoir-Faire</a>
     <a href="/">Explorer l’atelier</a>
     <a href="/configurateur">Devis</a>
-    <a href="/">Avis</a>
+    <a href="https://www.pagesjaunes.fr/contribution/votre-avis/62047963">Avis</a>
     <div class="nav-mobile-divider"></div>
     <a href="{{ route('recrutement') }}" class="nav-mobile-cta">Recrutement</a>
 </div>
@@ -66,7 +66,7 @@
             <li><a href="/">Savoir-Faire</a></li>
             <li><a href="/">Explorer l’atelier</a></li>
             <li><a href="/configurateur">Devis</a></li>
-            <li><a href="/">Avis</a></li>
+            <li><a href="https://www.pagesjaunes.fr/contribution/votre-avis/62047963">Avis</a></li>
             <li><a href="{{ route('recrutement') }}">Recrutement</a></li>
         </ul>
     </div>
