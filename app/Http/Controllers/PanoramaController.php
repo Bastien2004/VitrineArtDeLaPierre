@@ -18,7 +18,7 @@ class PanoramaController extends Controller
         $photo = [
             'title'         => 'Cathédrale de Nancy',
             'location'      => 'Nancy, Grand Est — France',
-            'file'          => 'panoramas/1.jpg', // Utilise une de vos images pour le test
+            'file'          => 'pano-images/1.jpg', // Utilise une de vos images pour le test
             'caption'       => 'Panorama 360° — Cathédrale Notre-Dame-de-l\'Annonciation',
             'default_yaw'   => 0,
             'default_pitch' => 0,
@@ -53,7 +53,7 @@ class PanoramaController extends Controller
         $photo = [
             'title' => 'Panorama Référence 1',
             'location' => 'Lieu Test 1',
-            'file' => 'panoramas/1.jpg',
+            'file' => 'pano-images/1.jpg',
             'caption' => 'Vue de l\'image 1',
             'default_yaw' => 0,
             'default_pitch' => 0,
@@ -63,7 +63,7 @@ class PanoramaController extends Controller
                     'id' => 'to-photo-2',
                     'yaw' => 0.5,       // Oriente la flèche horizontalement (entre -3.14 et 3.14)
                     'pitch' => -0.2,      // Oriente la flèche vers le sol (entre -1.57 et 1.57)
-                    'target' => 'panoramas/2.jpg', // Le fichier à charger au clic
+                    'target' => 'pano-images/2.jpg', // Le fichier à charger au clic
                     'title' => 'Aller vers le Panorama 2',
                 ]
             ],
@@ -73,22 +73,22 @@ class PanoramaController extends Controller
             [
                 'title' => 'Panorama Référence 1',
                 'location' => 'Lieu Test 1',
-                'file' => 'panoramas/1.jpg',
+                'file' => 'pano-images/1.jpg',
             ],
             [
                 'title' => 'Panorama Référence 2',
                 'location' => 'Lieu Test 2',
-                'file' => 'panoramas/2.jpg',
+                'file' => 'pano-images/2.jpg',
             ],
             [
                 'title' => 'Panorama Référence 3',
                 'location' => 'Lieu Test 3',
-                'file' => 'panoramas/3.jpg',
+                'file' => 'pano-images/3.jpg',
             ],
             [
                 'title' => 'Panorama Référence 4',
                 'location' => 'Lieu Test 4',
-                'file' => 'panoramas/4.jpg',
+                'file' => 'pano-images/4.jpg',
             ],
         ];
 
