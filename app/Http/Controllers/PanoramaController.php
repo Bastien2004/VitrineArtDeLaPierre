@@ -55,9 +55,9 @@ class PanoramaController extends Controller
                 'markers'  => [
                     [
                         'id'       => 'to-pano-2',
-                        'yaw'      => 1.57,
-                        'pitch'    => -0.5, // Baissé un peu vers le sol pour l'effet 3D
-                        'rotation' => 1.57, // 90° en radians -> Pointe vers la droite
+                        'yaw'      => 5.7230,
+                        'pitch'    => -0.1516,
+                        'rotation' => 0,
                         'target'   => 1,
                     ],
                 ],
@@ -71,16 +71,16 @@ class PanoramaController extends Controller
                 'markers'  => [
                     [
                         'id'       => 'to-pano-3',
-                        'yaw'      => -0.8,
-                        'pitch'    => -0.4,
-                        'rotation' => -0.8, // S'oriente vers le panorama 3
+                        'yaw'      => 0.2963,
+                        'pitch'    => -0.0517,
+                        'rotation' => -0,78,
                         'target'   => 2,
                     ],
                     [
                         'id'       => 'to-pano-1',
-                        'yaw'      => 2.5,
-                        'pitch'    => -0.4,
-                        'rotation' => 2.5, // Fait demi-tour vers le panorama 1
+                        'yaw'      => 0.2095,
+                        'pitch'    => -0.4692,
+                        'rotation' => 3,49,
                         'target'   => 0,
                     ],
                 ],
@@ -94,11 +94,18 @@ class PanoramaController extends Controller
                 'markers'  => [
                     [
                         'id'       => 'to-pano-4',
-                        'yaw'      => 1.2,
-                        'pitch'    => -0.4,
-                        'rotation' => 1.2,
+                        'yaw'      => 0.6628,
+                        'pitch'    => -0.0248,
+                        'rotation' => 0,785398,
                         'label'    => 'Aller vers Panorama 4',
                         'target'   => 3,
+                    ],
+                    [
+                        'id'       => 'to-pano-1',
+                        'yaw'      => 0.2095,
+                        'pitch'    => -0.4692,
+                        'rotation' => 3,49,
+                        'target'   => 0,
                     ],
                 ],
             ],
