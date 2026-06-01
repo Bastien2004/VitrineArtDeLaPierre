@@ -22,8 +22,6 @@ class PanoramaController extends Controller
                     'yaw'         => 0.0,
                     'pitch'       => 0.1,
                     'rotation'    => 1.57, // Optionnel pour les infos de base
-                    'label'       => 'Façade principale',
-                    'description' => 'Construite au XVIIIe siècle',
                     'target'      => null,
                 ],
                 [
@@ -31,8 +29,6 @@ class PanoramaController extends Controller
                     'yaw'         => 0.8,
                     'pitch'       => 0.4,
                     'rotation'    => 0,
-                    'label'       => 'Clocher',
-                    'description' => 'Hauteur : 55 mètres',
                     'target'      => null,
                 ],
             ],

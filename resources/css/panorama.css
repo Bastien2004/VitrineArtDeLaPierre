@@ -1,4 +1,7 @@
-/* resources/css/panorama.css */
+/* ==========================================================================
+   resources/css/panorama.css
+   Base fonctionnelle utilisateur + Intégration Layout (Navbar & Footer)
+   ========================================================================== */
 
 html, body {
     margin: 0;
@@ -8,6 +11,23 @@ html, body {
     overflow: hidden;
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     background-color: #000;
+}
+
+/* ── INTERFACE DU LAYOUT GLOBAL (layouts.app) ───────────────────────────── */
+#navbar {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50 !important; /* Force la navbar à passer au-dessus du panorama */
+}
+
+.footer-minimal {
+    position: absolute !important;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50 !important; /* Force le footer à passer au-dessus du panorama */
 }
 
 /* Le conteneur 3D prend tout l'écran en arrière-plan */
@@ -20,44 +40,24 @@ html, body {
     z-index: 1;
 }
 
-/* Header flottant moderne */
+/* ── BOUTONS DE CONTRÔLE (Plein écran / Auto-rotation) ──────────────────── */
 .pano-header {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 10;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0));
-    color: white;
-    padding: 25px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-sizing: border-box;
+    top: 90px; /* Positionné idéalement juste sous votre navbar blanche */
+    right: 25px;
+    left: auto;
+    width: auto;
+    background: none !important;
+    backdrop-filter: none !important;
+    border: none !important;
+    padding: 0 !important;
+    z-index: 30;
 }
 
-.pano-header__logo svg {
-    width: 32px;
-    height: 32px;
-    color: #dfb76c; /* Teinte dorée artisanat */
-}
-
+/* On masque la référence (Logo + Texte) mais on garde le conteneur des boutons */
+.pano-header__logo,
 .pano-header__info {
-    flex-grow: 1;
-    margin-left: 20px;
-}
-
-.pano-header__title {
-    margin: 0;
-    font-size: 1.4rem;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-}
-
-.pano-header__subtitle {
-    margin: 4px 0 0 0;
-    opacity: 0.7;
-    font-size: 0.85rem;
+    display: none !important;
 }
 
 .pano-header__controls {
@@ -66,10 +66,10 @@ html, body {
 }
 
 .btn-ctrl {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(15, 15, 15, 0.6); /* Fond sombre transparent pour contrer l'image 3D */
+    border: 1px solid rgba(255, 255, 255, 0.2);
     color: white;
-    padding: 10px;
+    padding: 12px;
     cursor: pointer;
     border-radius: 50%;
     display: flex;
@@ -83,6 +83,7 @@ html, body {
     background: #dfb76c;
     color: #111;
     border-color: #dfb76c;
+    transform: scale(1.05); /* Léger effet de zoom au survol */
 }
 
 .btn-ctrl svg {
@@ -90,10 +91,10 @@ html, body {
     height: 20px;
 }
 
-/* Galerie au bas de l'écran */
+/* ── GALERIE (Remontée pour laisser la place au footer global) ────────── */
 .pano-gallery {
     position: absolute;
-    bottom: 30px;
+    bottom: 90px; /* Ajusté pour flotter juste au-dessus de votre footer */
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
@@ -150,7 +151,7 @@ html, body {
     font-weight: 600;
 }
 
-/* Gestion du Loader global */
+/* ── GESTION DU LOADER (Sécurisé pour éviter le chargement infini) ─────── */
 .pano-loading {
     position: absolute;
     inset: 0;
@@ -166,8 +167,8 @@ html, body {
 }
 
 .pano-loading.hidden {
-    opacity: 0;
-    pointer-events: none;
+    opacity: 0 !important;
+    pointer-events: none !important;
 }
 
 .pano-loading__spinner {
@@ -183,16 +184,13 @@ html, body {
     to { transform: rotate(360deg); }
 }
 
-/* ──────────────────────────────────────────────────────────────────────────
-   FLÈCHE FIXE (Interface Google Maps)
-   Reste au centre en bas de l'écran, ne bouge pas avec l'image 3D
-   ────────────────────────────────────────────────────────────────────────── */
+/* ── FLÈCHE FIXE (Ajustée par rapport à la nouvelle position de la galerie) ── */
 .nav-arrow-fixed {
     position: absolute;
-    bottom: 120px; /* Placé idéalement juste au-dessus de la galerie basse */
+    bottom: 210px; /* Rehaussé pour s'aligner parfaitement au-dessus de la galerie remontée */
     left: 50%;
     transform: translateX(-50%);
-    z-index: 20; /* Priorité d'affichage absolue sur le viewer 3D */
+    z-index: 20;
 
     width: 50px;
     height: 50px;
@@ -218,50 +216,17 @@ html, body {
 }
 
 .nav-arrow-fixed:hover {
-    background: #dfb76c; /* Changement d'état avec la couleur de ta charte */
+    background: #dfb76c;
     border-color: #dfb76c;
     color: #ffffff;
-    bottom: 125px; /* Effet dynamique de survol (léger rebond vers le haut) */
+    bottom: 215px;
     box-shadow: 0 6px 20px rgba(223, 183, 108, 0.4);
 }
 
 .nav-arrow-fixed:hover svg {
-    transform: translateY(-2px); /* La flèche interne pointe encore plus vers le haut */
+    transform: translateY(-2px);
 }
 
 .psv-caption {
     display: none !important;
-}
-
-
-/* ── Markers (flèches ancrées dans la sphère) ───────────────────────────── */
-.psv-marker-arrow {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    pointer-events: none;
-    animation: marker-bounce 0.9s ease-in-out infinite alternate;
-}
-
-.psv-marker-arrow__label {
-    background: rgba(0, 0, 0, 0.65);
-    color: #fff;
-    font-size: 12px;
-    padding: 3px 8px;
-    border-radius: 4px;
-    margin-bottom: 4px;
-    white-space: nowrap;
-    backdrop-filter: blur(4px);
-}
-
-.psv-marker-arrow__icon {
-    font-size: 26px;
-    color: #f59e0b;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
-    line-height: 1;
-}
-
-@keyframes marker-bounce {
-    from { transform: translateY(0px); }
-    to   { transform: translateY(-7px); }
 }
