@@ -6,7 +6,18 @@
     @vite(['resources/js/panorama.js', 'resources/css/panorama.css'])
 @endpush
 
+
 @section('content')
+
+    <div class="pano-header">
+        <div class="pano-header__controls">
+            <button class="btn-ctrl" id="btn-fullscreen" title="Plein écran">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+                </svg>
+            </button>
+        </div>
+    </div>
 
     <div id="panorama-viewer">
         <div class="pano-loading" id="pano-loading">
@@ -27,14 +38,14 @@
                         title:    "{{ addslashes($p['title']) }}",
                         location: "{{ addslashes($p['location'] ?? '') }}",
                         markers:  {!! json_encode(array_map(fn($m) => [
-                    'id'          => $m['id'],
-                    'yaw'         => (float) $m['yaw'],
-                    'pitch'       => (float) $m['pitch'],
-                    'rotation'    => (float) ($m['rotation'] ?? 0),
-                    'label'       => $m['label']       ?? '',
-                    'description' => $m['description'] ?? '',
-                    'target'      => $m['target']      ?? null,
-                ], $p['markers'] ?? []), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT) !!},
+                            'id'          => $m['id'],
+                            'yaw'         => (float) $m['yaw'],
+                            'pitch'       => (float) $m['pitch'],
+                            'rotation'    => (float) ($m['rotation'] ?? 0),
+                            'label'       => $m['label']       ?? '',
+                            'description' => $m['description'] ?? '',
+                            'target'      => $m['target']      ?? null,
+                        ], $p['markers'] ?? []), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT) !!},
                     },
                     @endforeach
                 ],
