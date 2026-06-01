@@ -121,7 +121,30 @@ class PanoramaController extends Controller
                         'yaw'      => 0.2095,
                         'pitch'    => 1.5008,
                         'rotation' => -0.1074,
-                        'target'   => 0,
+                        'target'   => 5,
+                    ],
+                    [
+                        'id'       => 'to-pano-1',
+                        'yaw'      => 0.2095,
+                        'pitch'    => 1.5008,
+                        'rotation' => -0.1074,
+                        'target'   => 3,
+                    ],
+                ],
+            ],
+            [
+                'title'    => 'Panorama Référence 4',
+                'location' => 'Lieu Test 4',
+                'file'     => 'pano-images/5.jpg',
+                'default_yaw'   => 0,
+                'default_pitch' => 0,
+                'markers'  => [
+                    [
+                        'id'       => 'to-pano-1',
+                        'yaw'      => 0.2095,
+                        'pitch'    => 1.5008,
+                        'rotation' => -0.1074,
+                        'target'   => 5,
                     ],
                     [
                         'id'       => 'to-pano-1',
