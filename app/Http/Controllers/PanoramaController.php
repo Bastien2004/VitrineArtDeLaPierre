@@ -21,7 +21,7 @@ class PanoramaController extends Controller
                     'id'          => 'facade',
                     'yaw'         => 0.0,
                     'pitch'       => 0.1,
-                    'rotation'    => 1.57, // Optionnel pour les infos de base
+                    'rotation'    => 1.57,
                     'target'      => null,
                 ],
                 [
