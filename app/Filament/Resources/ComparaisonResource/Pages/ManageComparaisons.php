@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\RealisationResource\Pages;
+namespace App\Filament\Resources\ComparaisonResource\Pages;
 
 use App\Filament\Resources\ComparaisonResource;
 use Filament\Actions\CreateAction;

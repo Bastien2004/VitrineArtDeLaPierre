@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\RealisationResource\Pages;
+use App\Filament\Resources\ComparaisonResource\Pages;
 use App\Models\Comparaison;
 use Filament\Forms;
 use Filament\Forms\Form;
