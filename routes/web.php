@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ConfigurateurController;
-use App\Http\Controllers\Panoramacontroller;
+use App\Http\Controllers\PanoramaController;
 use App\Http\Controllers\RealisationController;
 use App\Livewire\RecruitmentForm;
 use Illuminate\Support\Facades\Route;
