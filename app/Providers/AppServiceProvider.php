@@ -21,7 +21,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Realisation::observe(RealisationObserver::class);
+        if (config('app.env') === 'production') {
+            \URL::forceScheme('https');
+        }
 
+        Realisation::observe(RealisationObserver::class);
     }
 }
