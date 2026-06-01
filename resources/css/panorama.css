@@ -232,3 +232,36 @@ html, body {
 .psv-caption {
     display: none !important;
 }
+
+
+/* ── Markers (flèches ancrées dans la sphère) ───────────────────────────── */
+.psv-marker-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+    animation: marker-bounce 0.9s ease-in-out infinite alternate;
+}
+
+.psv-marker-arrow__label {
+    background: rgba(0, 0, 0, 0.65);
+    color: #fff;
+    font-size: 12px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    backdrop-filter: blur(4px);
+}
+
+.psv-marker-arrow__icon {
+    font-size: 26px;
+    color: #f59e0b;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    line-height: 1;
+}
+
+@keyframes marker-bounce {
+    from { transform: translateY(0px); }
+    to   { transform: translateY(-7px); }
+}

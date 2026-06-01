@@ -8,7 +8,6 @@
 </head>
 <body>
 
-{{-- Header flottant --}}
 <header class="pano-header">
     <div class="pano-header__logo">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -35,37 +34,33 @@
     </div>
 </header>
 
-{{-- Conteneur du viewer --}}
-<div id="panorama-viewer" style="position: relative;">
+<div id="panorama-viewer">
     <div class="pano-loading" id="pano-loading">
         <div class="pano-loading__spinner"></div>
         <p>Chargement du panorama…</p>
     </div>
-
-    {{-- FLÈCHE FIXE : Elle reste au centre en bas, sans bouger avec la 3D --}}
-    <button id="btn-next-pano" class="nav-arrow-fixed" title="Passer au panorama suivant">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="12" y1="19" x2="12" y2="5"></line>
-            <polyline points="5 12 12 5 19 12"></polyline>
-        </svg>
-    </button>
 </div>
 
-{{-- Données PHP → JS --}}
 <script>
     window.PANORAMA_CONFIG = {
-        panorama: "{{ asset($photo['file']) }}",
-        title:    "{{ $photo['title'] ?? '' }}",
-        location: "{{ $photo['location'] ?? '' }}",
-        caption:  "{{ $photo['caption'] ?? '' }}",
-        defaultYaw:   {{ $photo['default_yaw'] ?? 0 }},
+        defaultYaw:   {{ $photo['default_yaw']   ?? 0 }},
         defaultPitch: {{ $photo['default_pitch'] ?? 0 }},
+
         gallery: [
                 @foreach($gallery ?? [$photo] as $p)
             {
                 file:     "{{ asset($p['file']) }}",
-                title:    "{{ $p['title'] }}",
-                location: "{{ $p['location'] ?? '' }}",
+                title:    "{{ addslashes($p['title']) }}",
+                location: "{{ addslashes($p['location'] ?? '') }}",
+                markers:  {!! json_encode(array_map(fn($m) => [
+                    'id'          => $m['id'],
+                    'yaw'         => (float) $m['yaw'],
+                    'pitch'       => (float) $m['pitch'],
+                    'rotation'    => (float) ($m['rotation'] ?? 0), // <-- TRANSFIÈRE LA ROTATION ICI
+                    'label'       => $m['label']       ?? '',
+                    'description' => $m['description'] ?? '',
+                    'target'      => $m['target']      ?? null,
+                ], $p['markers'] ?? []), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT) !!},
             },
             @endforeach
         ],
