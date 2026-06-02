@@ -178,7 +178,7 @@ class PanoramaController extends Controller
                 'default_yaw'   => 0,
                 'default_pitch' => 0,
                 'markers'       => [
-                    ['id' => 'back-to-1', 'yaw' => 1.4390, 'pitch' => -0.3000, 'rotation' => 3.92, 'target' => 1, 'label' => ''],
+                    ['id' => 'back-to-1', 'yaw' => 1.4390, 'pitch' => -0.3000, 'rotation' => 3.35, 'target' => 1, 'label' => ''],
                 ],
             ],
         ];
