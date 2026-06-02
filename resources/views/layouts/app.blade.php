@@ -63,13 +63,6 @@
             <span class="footer-min-sep">|</span>
             <p class="footer-min-copyright">© {{ date('Y') }} — TAILLEUR DE PIERRE & SCULPTEUR</p>
         </div>
-        <ul class="footer-min-links">
-            <li><a href="/">Savoir-Faire</a></li>
-            <li><a href="{{route('panoramas')}}">Explorer l’atelier</a></li>
-            <li><a href="/configurateur">Devis</a></li>
-            <li><a href="https://www.pagesjaunes.fr/contribution/votre-avis/62047963">Avis</a></li>
-            <li><a href="{{ route('recrutement') }}">Recrutement</a></li>
-        </ul>
     </div>
 </footer>
 
