@@ -190,7 +190,7 @@ class PanoramaController extends Controller
                 ],
             ],
 
-            // 13
+            // m
             [
                 'title'         => 'Extrême Gauche',
                 'location'      => 'Point 13 — Bordure du terrain',
