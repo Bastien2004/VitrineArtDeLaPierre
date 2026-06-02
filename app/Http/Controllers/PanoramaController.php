@@ -60,7 +60,7 @@ class PanoramaController extends Controller
                 'default_pitch' => 0,
                 'markers'       => [
                     ['id' => 'to-3',      'yaw' => 0.2963, 'pitch' => -0.0517, 'rotation' => 0.78, 'target' => 2,  'label' => ''],
-                    ['id' => 'to-14',     'yaw' => 1.6524, 'pitch' => -0.1000, 'rotation' => 0.2,  'target' => 13, 'label' => ''],
+                    ['id' => 'to-14',     'yaw' => 1.6524, 'pitch' => -0.1000, 'rotation' => 0.2,  'target' => 10, 'label' => ''],
                     ['id' => 'back-to-1', 'yaw' => 0.2095, 'pitch' => -0.4692, 'rotation' => 3.25, 'target' => 0,  'label' => ''],
                 ],
             ],
@@ -170,23 +170,11 @@ class PanoramaController extends Controller
                 ],
             ],
 
-            // m — Point 13
-            [
-                'title'         => 'Extrême Gauche',
-                'location'      => 'Point 13 — Bordure du terrain',
-                'file'          => 'pano-images/m.jpg',
-                'default_yaw'   => 0,
-                'default_pitch' => 0,
-                'markers'       => [
-                    ['id' => 'back-to-11', 'yaw' => 1.5000, 'pitch' => -0.2000, 'rotation' => 1.5, 'target' => 10, 'label' => ''],
-                ],
-            ],
-
-            // n — Point 14
+            // k — Point 11
             [
                 'title'         => 'Bureau',
                 'location'      => 'Point 14 — Intérieur Bureau',
-                'file'          => 'pano-images/n.jpg',
+                'file'          => 'pano-images/k.jpg',
                 'default_yaw'   => 0,
                 'default_pitch' => 0,
                 'markers'       => [
