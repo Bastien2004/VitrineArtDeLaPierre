@@ -31,24 +31,24 @@
             window.PANORAMA_CONFIG = {
                 defaultYaw:   {{ $photo['default_yaw']   ?? 0 }},
                 defaultPitch: {{ $photo['default_pitch'] ?? 0 }},
-                gallery: [
-                        @foreach($gallery ?? [$photo] as $p)
-                    {
-                        file:     "{{ asset($p['file']) }}",
-                        title:    "{{ addslashes($p['title']) }}",
-                        location: "{{ addslashes($p['location'] ?? '') }}",
-                        markers:  {!! json_encode(array_map(fn($m) => [
-                            'id'          => $m['id'],
-                            'yaw'         => (float) $m['yaw'],
-                            'pitch'       => (float) $m['pitch'],
-                            'rotation'    => (float) ($m['rotation'] ?? 0),
-                            'label'       => $m['label']       ?? '',
-                            'description' => $m['description'] ?? '',
-                            'target'      => $m['target']      ?? null,
-                        ], $p['markers'] ?? []), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT) !!},
-                    },
-                    @endforeach
-                ],
+                gallery: {!! json_encode(array_map(fn($p) => [
+            'file'      => asset($p['file']),
+            'title'     => $p['title']    ?? '',
+            'location'  => $p['location'] ?? '',
+            'min_pitch' => isset($p['min_pitch']) ? (float) $p['min_pitch'] : null,
+            'max_pitch' => isset($p['max_pitch']) ? (float) $p['max_pitch'] : null,
+            'min_yaw'   => isset($p['min_yaw'])   ? (float) $p['min_yaw']   : null,
+            'max_yaw'   => isset($p['max_yaw'])   ? (float) $p['max_yaw']   : null,
+            'markers'   => array_map(fn($m) => [
+                'id'          => $m['id'],
+                'yaw'         => (float) $m['yaw'],
+                'pitch'       => (float) $m['pitch'],
+                'rotation'    => (float) ($m['rotation'] ?? 0),
+                'label'       => $m['label']       ?? '',
+                'description' => $m['description'] ?? '',
+                'target'      => $m['target']      ?? null,
+            ], $p['markers'] ?? []),
+        ], $gallery ?? [$photo]), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT) !!},
             };
         </script>
     @endpush

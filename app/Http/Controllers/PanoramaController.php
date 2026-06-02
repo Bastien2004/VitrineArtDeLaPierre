@@ -4,9 +4,6 @@ namespace App\Http\Controllers;
 
 class PanoramaController extends Controller
 {
-    /**
-     * Panorama unique (via slug).
-     */
     public function show(string $slug)
     {
         $photo = [
@@ -17,20 +14,8 @@ class PanoramaController extends Controller
             'default_yaw'   => 0,
             'default_pitch' => 0,
             'markers'       => [
-                [
-                    'id'          => 'facade',
-                    'yaw'         => 0.0,
-                    'pitch'       => 0.1,
-                    'rotation'    => 1.57,
-                    'target'      => null,
-                ],
-                [
-                    'id'          => 'clocher',
-                    'yaw'         => 0.8,
-                    'pitch'       => 0.4,
-                    'rotation'    => 0,
-                    'target'      => null,
-                ],
+                ['id' => 'facade',  'yaw' => 0.0, 'pitch' => 0.1, 'rotation' => 1.57, 'target' => null],
+                ['id' => 'clocher', 'yaw' => 0.8, 'pitch' => 0.4, 'rotation' => 0,    'target' => null],
             ],
         ];
 
@@ -41,24 +26,32 @@ class PanoramaController extends Controller
     }
 
     /**
-     * Galerie complète modélisée selon le plan manuscrit (Points 1 à 14).
+     * Galerie complète (Points 1 à 14).
+     *
+     * VisibleRangePlugin accepte yawRange en valeurs positives même si min > max
+     * (il gère lui-même la plage qui traverse le 0).
+     * Pas besoin de convertir en négatif.
      */
     public function gallery()
     {
         $gallery = [
-            // a
+            // a — Point 1
             [
                 'title'         => 'Parking',
                 'location'      => 'Point 1 — Entrée côté Parking',
                 'file'          => 'pano-images/a.jpg',
                 'default_yaw'   => 0,
                 'default_pitch' => 0,
+                'min_pitch'     => -1,
+                'max_pitch'     =>  1,
+                'min_yaw'       =>  -2,
+                'max_yaw'       =>  2.5,
                 'markers'       => [
                     ['id' => 'to-2', 'yaw' => 5.7230, 'pitch' => -0.1516, 'rotation' => 0, 'target' => 1, 'label' => ''],
                 ],
             ],
 
-            // b
+            // b — Point 2
             [
                 'title'         => 'Allée / Devant Bureau',
                 'location'      => 'Point 2 — Allée principale',
@@ -66,13 +59,13 @@ class PanoramaController extends Controller
                 'default_yaw'   => 0,
                 'default_pitch' => 0,
                 'markers'       => [
-                    ['id' => 'to-3', 'yaw' => 0.2963, 'pitch' => -0.0517, 'rotation' => 0.78, 'target' => 2, 'label' => ''],
-                    ['id' => 'to-14', 'yaw' => 1.6524, 'pitch' => -0.1000, 'rotation' => 0.2, 'target' => 13, 'label' => ''],
-                    ['id' => 'back-to-1', 'yaw' => 0.2095, 'pitch' => -0.4692, 'rotation' => 3.25, 'target' => 0, 'label' => ''],
+                    ['id' => 'to-3',      'yaw' => 0.2963, 'pitch' => -0.0517, 'rotation' => 0.78, 'target' => 2,  'label' => ''],
+                    ['id' => 'to-14',     'yaw' => 1.6524, 'pitch' => -0.1000, 'rotation' => 0.2,  'target' => 13, 'label' => ''],
+                    ['id' => 'back-to-1', 'yaw' => 0.2095, 'pitch' => -0.4692, 'rotation' => 3.25, 'target' => 0,  'label' => ''],
                 ],
             ],
 
-            // c
+            // c — Point 3
             [
                 'title'         => 'Carrefour Central',
                 'location'      => 'Point 3 — Intersection',
@@ -80,12 +73,12 @@ class PanoramaController extends Controller
                 'default_yaw'   => 0,
                 'default_pitch' => 0,
                 'markers'       => [
-                    ['id' => 'to-4', 'yaw' => 0.6628, 'pitch' => -0.0248, 'rotation' => 0.785398, 'target' => 3, 'label' => ''],
-                    ['id' => 'back-to-2', 'yaw' => 0.2095, 'pitch' => -0.4692, 'rotation' => 3.00, 'target' => 1, 'label' => ''],
+                    ['id' => 'to-4',      'yaw' => 0.6628, 'pitch' => -0.0248, 'rotation' => 0.785398, 'target' => 3, 'label' => ''],
+                    ['id' => 'back-to-2', 'yaw' => 0.2095, 'pitch' => -0.4692, 'rotation' => 3.00,     'target' => 1, 'label' => ''],
                 ],
             ],
 
-            // d
+            // d — Point 4
             [
                 'title'         => 'Devant Déchetterie',
                 'location'      => 'Point 4 — Bâtiment Déchetterie',
@@ -93,14 +86,14 @@ class PanoramaController extends Controller
                 'default_yaw'   => 0,
                 'default_pitch' => 0,
                 'markers'       => [
-                    ['id' => 'to-5', 'yaw' => 1.4931, 'pitch' => -0.1077, 'rotation' => 1.00, 'target' => 5, 'label' => ''],
-                    ['id' => 'back-to-3', 'yaw' => 0.7095, 'pitch' => -0.4692, 'rotation' => 3.00, 'target' => 2, 'label' => ''],
-                    ['id' => 'to-10', 'yaw' => 5.49, 'pitch' => -0.2692, 'rotation' => 0.78, 'target' => 10, 'label' => ''],
-                    ['id' => 'to-6', 'yaw' => 5.2591, 'pitch' => -0.2692, 'rotation' => 5.49, 'target' => 6, 'label' => ''],
+                    ['id' => 'to-5',      'yaw' => 1.4931, 'pitch' => -0.1077, 'rotation' => 1.00, 'target' => 5,  'label' => ''],
+                    ['id' => 'back-to-3', 'yaw' => 0.7095, 'pitch' => -0.4692, 'rotation' => 3.00, 'target' => 2,  'label' => ''],
+                    ['id' => 'to-10',     'yaw' => 5.49,   'pitch' => -0.2692, 'rotation' => 0.78, 'target' => 10, 'label' => ''],
+                    ['id' => 'to-6',      'yaw' => 5.2591, 'pitch' => -0.2692, 'rotation' => 5.49, 'target' => 6,  'label' => ''],
                 ],
             ],
 
-            // e
+            // e — Point 5
             [
                 'title'         => 'Côté Déchetterie',
                 'location'      => 'Point 5 — Allée Déchetterie',
@@ -112,7 +105,7 @@ class PanoramaController extends Controller
                 ],
             ],
 
-            //f
+            // f — Point 6
             [
                 'title'         => 'Fond d\'allée (Haut Droite)',
                 'location'      => 'Point 6 — Extrémité impasse',
@@ -120,12 +113,12 @@ class PanoramaController extends Controller
                 'default_yaw'   => 0,
                 'default_pitch' => 0,
                 'markers'       => [
-                    ['id' => 'to-5', 'yaw' => 1.8819, 'pitch' => -0.2000, 'rotation' => 0.3, 'target' => 4, 'label' => ''],
+                    ['id' => 'to-5',      'yaw' => 1.8819, 'pitch' => -0.2000, 'rotation' => 0.3,  'target' => 4, 'label' => ''],
                     ['id' => 'back-to-4', 'yaw' => 2.1097, 'pitch' => -0.2000, 'rotation' => 1.57, 'target' => 3, 'label' => ''],
                 ],
             ],
 
-            // g
+            // g — Point 7
             [
                 'title'         => 'Cour Centrale',
                 'location'      => 'Point 7 — Esplanade',
@@ -133,13 +126,13 @@ class PanoramaController extends Controller
                 'default_yaw'   => 0,
                 'default_pitch' => 0,
                 'markers'       => [
-                    ['id' => 'to-8', 'yaw' => 2.8055, 'pitch' => -0.1000, 'rotation' => 0.78, 'target' => 7, 'label' => ''],
-                    ['id' => 'to-11', 'yaw' => 1.2000, 'pitch' => -0.0500, 'rotation' => 0.78, 'target' => 10, 'label' => ''],
-                    ['id' => 'back-to-3', 'yaw' => 2.2172, 'pitch' => -0.1500, 'rotation' => 0, 'target' => 2, 'label' => ''],
+                    ['id' => 'to-8',      'yaw' => 2.8055, 'pitch' => -0.1000, 'rotation' => 0.78, 'target' => 7,  'label' => ''],
+                    ['id' => 'to-11',     'yaw' => 1.2000, 'pitch' => -0.0500, 'rotation' => 0.78, 'target' => 10, 'label' => ''],
+                    ['id' => 'back-to-3', 'yaw' => 2.2172, 'pitch' => -0.1500, 'rotation' => 0,    'target' => 2,  'label' => ''],
                 ],
             ],
 
-            // h
+            // h — Point 8
             [
                 'title'         => 'Coin Bas Gauche',
                 'location'      => 'Point 8 — Angle bâtiment',
@@ -147,12 +140,12 @@ class PanoramaController extends Controller
                 'default_yaw'   => 0,
                 'default_pitch' => 0,
                 'markers'       => [
-                    ['id' => 'to-9', 'yaw' => 0.8000, 'pitch' => -0.1000, 'rotation' => 0, 'target' => 8, 'label' => ''],
+                    ['id' => 'to-9',      'yaw' => 0.8000, 'pitch' => -0.1000, 'rotation' => 0,    'target' => 8, 'label' => ''],
                     ['id' => 'back-to-7', 'yaw' => 3.1400, 'pitch' => -0.2000, 'rotation' => 3.14, 'target' => 6, 'label' => ''],
                 ],
             ],
 
-            // i
+            // i — Point 9
             [
                 'title'         => 'Petit Local (Entrée)',
                 'location'      => 'Point 9 — Devant l\'Annexe',
@@ -160,12 +153,12 @@ class PanoramaController extends Controller
                 'default_yaw'   => 0,
                 'default_pitch' => 0,
                 'markers'       => [
-                    ['id' => 'to-10', 'yaw' => 0.0000, 'pitch' => -0.1000, 'rotation' => 0, 'target' => 9, 'label' => ''],
+                    ['id' => 'to-10',     'yaw' => 0.0000, 'pitch' => -0.1000, 'rotation' => 0,    'target' => 9, 'label' => ''],
                     ['id' => 'back-to-8', 'yaw' => 3.1400, 'pitch' => -0.2000, 'rotation' => 3.14, 'target' => 7, 'label' => ''],
                 ],
             ],
 
-            // j
+            // j — Point 10
             [
                 'title'         => 'Annexe (À refaire)',
                 'location'      => 'Point 10 — Intérieur',
@@ -177,20 +170,7 @@ class PanoramaController extends Controller
                 ],
             ],
 
-            // k
-            [
-                'title'         => 'Devant Zone Client',
-                'location'      => 'Point 11 — Approche zone hachurée',
-                'file'          => 'pano-images/k.jpg',
-                'default_yaw'   => 0,
-                'default_pitch' => 0,
-                'markers'       => [
-                    ['id' => 'to-12', 'yaw' => 0.2000, 'pitch' => -0.1000, 'rotation' => 0, 'target' => 11, 'label' => ''],
-                    ['id' => 'back-to-7', 'yaw' => 3.1400, 'pitch' => -0.2000, 'rotation' => 3.14, 'target' => 6, 'label' => ''],
-                ],
-            ],
-
-            // m
+            // m — Point 13
             [
                 'title'         => 'Extrême Gauche',
                 'location'      => 'Point 13 — Bordure du terrain',
@@ -202,7 +182,7 @@ class PanoramaController extends Controller
                 ],
             ],
 
-            // n
+            // n — Point 14
             [
                 'title'         => 'Bureau',
                 'location'      => 'Point 14 — Intérieur Bureau',
