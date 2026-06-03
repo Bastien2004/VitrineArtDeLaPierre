@@ -29,8 +29,8 @@ class ComparaisonObserver
 
             $manager = new ImageManager(new Driver());
             $manager->read($path)
-                ->scaleDown(width: 1200)
-                ->toJpeg(quality: 80)
+                ->scaleDown(width: 800)
+                ->toJpeg(quality: 75)
                 ->save($path);
         }
     }
