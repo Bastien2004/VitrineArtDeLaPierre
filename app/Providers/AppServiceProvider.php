@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Comparaison;
 use App\Models\Realisation;
+use App\Observers\ComparaisonObserver;
 use App\Observers\RealisationObserver;
 use Illuminate\Support\ServiceProvider;
 
@@ -26,5 +28,6 @@ class AppServiceProvider extends ServiceProvider
         }
 
         Realisation::observe(RealisationObserver::class);
+        Comparaison::observe(ComparaisonObserver::class);
     }
 }
