@@ -22,12 +22,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function buildVisibleRange(pano) {
         return {
             verticalRange: [
-                pano.min_pitch ?? -Math.PI / 2,
-                pano.max_pitch ??  Math.PI / 2,
+                pano.min_pitch !== null && pano.min_pitch !== undefined ? pano.min_pitch : -Math.PI / 2,
+                pano.max_pitch !== null && pano.max_pitch !== undefined ? pano.max_pitch :  Math.PI / 2,
             ],
-            horizontalRange: pano.min_yaw != null && pano.max_yaw != null
-                ? [pano.min_yaw, pano.max_yaw]
-                : [-Math.PI, Math.PI],
+            horizontalRange:
+                pano.min_yaw !== null && pano.min_yaw !== undefined &&
+                pano.max_yaw !== null && pano.max_yaw !== undefined
+                    ? [pano.min_yaw, pano.max_yaw]
+                    : [-Math.PI, Math.PI],
         };
     }
 
@@ -46,9 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
             plugins: [
                 [MarkersPlugin, { markers: buildMarkers(0) }],
                 [VisibleRangePlugin, {
-                    verticalRange: initialRange.verticalRange,
-                    horizontalRange:   initialRange.horizontalRange,
-                    usePanoData: false,
+                    verticalRange:   initialRange.verticalRange,
+                    horizontalRange: initialRange.horizontalRange,
+                    usePanoData:     false,
                 }],
             ],
         });
@@ -97,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     html: `<div class="psv-marker-arrow">
                                ${m.label ? `<span class="psv-marker-arrow__label">${m.label}</span>` : ''}
                                <span class="psv-marker-arrow__icon">📍</span>
-                           </div>`
+                           </div>`,
                 };
             }
         });
@@ -107,6 +109,20 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('pano-loading')?.classList.add('hidden');
         updateNavArrow();
     }, { once: true });
+
+    function applyRanges(pano) {
+        const hasVertical   = pano.min_pitch !== null && pano.min_pitch !== undefined
+            && pano.max_pitch !== null && pano.max_pitch !== undefined;
+        const hasHorizontal = pano.min_yaw   !== null && pano.min_yaw   !== undefined
+            && pano.max_yaw   !== null && pano.max_yaw   !== undefined;
+
+        visibleRangePlugin.setVerticalRange(
+            hasVertical ? [pano.min_pitch, pano.max_pitch] : null
+        );
+        visibleRangePlugin.setHorizontalRange(
+            hasHorizontal ? [pano.min_yaw, pano.max_yaw] : null
+        );
+    }
 
     function goTo(target) {
         const nextPano = typeof target === 'number'
@@ -118,17 +134,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const index = panoramas.indexOf(nextPano);
         document.getElementById('pano-loading')?.classList.remove('hidden');
 
+        // ✅ setTimeout(0) : on s'exécute après TOUS les handlers synchrones
+        // de PanoramaLoadedEvent, dont le __moveToRange() interne du plugin
+        viewer.addEventListener('panorama-loaded', () => {
+            setTimeout(() => applyRanges(nextPano), 0);
+        }, { once: true });
+
         viewer.setPanorama(nextPano.file, {
             transition: true,
-            speed: '3rpm',
+            speed:      '3rpm',
+            position: {
+                yaw:   nextPano.default_yaw   ?? 0,
+                pitch: nextPano.default_pitch ?? 0,
+            },
         })
             .then(() => {
                 currentIndex = index;
                 document.getElementById('pano-loading')?.classList.add('hidden');
-
-                const range = buildVisibleRange(nextPano);
-                visibleRangePlugin.setOption('verticalRange', range.verticalRange);
-                visibleRangePlugin.setOption('horizontalRange',   range.horizontalRange);
 
                 const titleEl    = document.querySelector('.pano-header__title');
                 const subtitleEl = document.querySelector('.pano-header__subtitle');

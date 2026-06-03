@@ -35,6 +35,8 @@
             'file'      => asset($p['file']),
             'title'     => $p['title']    ?? '',
             'location'  => $p['location'] ?? '',
+            'default_yaw'   => isset($p['default_yaw'])   ? (float) $p['default_yaw']   : 0,
+            'default_pitch' => isset($p['default_pitch']) ? (float) $p['default_pitch'] : 0,
             'min_pitch' => isset($p['min_pitch']) ? (float) $p['min_pitch'] : null,
             'max_pitch' => isset($p['max_pitch']) ? (float) $p['max_pitch'] : null,
             'min_yaw'   => isset($p['min_yaw'])   ? (float) $p['min_yaw']   : null,
