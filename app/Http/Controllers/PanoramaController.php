@@ -130,7 +130,7 @@ class PanoramaController extends Controller
                 'default_pitch' => 0,
                 'min_pitch'     => -1,
                 'max_pitch'     =>  1,
-                'min_yaw'       =>  -2,
+                'min_yaw'       =>  -3,
                 'max_yaw'       =>  2.5,
                 'markers'       => [
                     ['id' => 'to-5',      'yaw' => 1.8819, 'pitch' => -0.2000, 'rotation' => 0.3,  'target' => 4, 'label' => ''],
