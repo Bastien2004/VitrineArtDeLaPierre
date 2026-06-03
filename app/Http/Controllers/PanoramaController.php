@@ -48,6 +48,7 @@ class PanoramaController extends Controller
                 'max_yaw'       =>  2.5,
                 'markers'       => [
                     ['id' => 'to-2', 'yaw' => 5.7230, 'pitch' => -0.1516, 'rotation' => 0, 'target' => 1, 'label' => ''],
+                    ['id' => 'compresseur', 'yaw' => 5.7230, 'pitch' => -0.1, 'rotation' => 0, 'target' => null, 'label' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaa <br> aaaaaaaaaaaaaaaaaaaaaaaaaaaa <br> aaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaa <br> aaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaa'],
                 ],
             ],
 

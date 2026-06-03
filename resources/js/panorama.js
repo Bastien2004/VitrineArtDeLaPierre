@@ -91,15 +91,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     rotation:    m.rotation ?? 0,
                 };
             } else {
+                const el = document.createElement('div');
+                el.className = 'pano-label';
+                el.innerHTML = (m.label ? `<span class="pano-label__text">${m.label}</span>` : '') + '<span class="pano-label__dot"></span>';
                 return {
                     id:       m.id,
                     position: { yaw: m.yaw, pitch: m.pitch },
-                    tooltip:  m.label || null,
                     anchor:   'bottom center',
-                    html: `<div class="psv-marker-arrow">
-                               ${m.label ? `<span class="psv-marker-arrow__label">${m.label}</span>` : ''}
-                               <span class="psv-marker-arrow__icon">📍</span>
-                           </div>`,
+                    element:  el,
                 };
             }
         });

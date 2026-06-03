@@ -249,3 +249,47 @@ html, body {
     height: calc(100vh - 64px); /* ajustez 64px selon la hauteur de votre navbar */
     position: relative;
 }
+
+/* ── LABEL MARBRE (marqueurs sans navigation) ───────────────────────────── */
+
+.psv-marker .pano-label,
+.pano-label {
+    display:        flex !important;
+    flex-direction: column !important;
+    align-items:    center !important;
+    gap:            6px !important;
+    pointer-events: none !important;
+    user-select:    none !important;
+    background:     none !important;
+    border:         none !important;
+    padding:        0 !important;
+}
+
+.psv-marker .pano-label__text,
+.pano-label__text {
+    background:      rgba(30, 25, 20, 0.85) !important;
+    color:           #e8d5b0 !important;
+    font-family:     Georgia, 'Times New Roman', serif !important;
+    font-size:       12px !important;
+    font-weight:     600 !important;
+    letter-spacing:  1.5px !important;
+    text-transform:  uppercase !important;
+    padding:         7px 14px !important;
+    border-radius:   6px !important;
+    white-space:     nowrap !important;
+    border:          1.5px solid #b8976a !important;
+    outline:         0.8px solid rgba(184, 151, 106, 0.35) !important;
+    outline-offset:  -4px !important;
+    display:         block !important;
+}
+
+.psv-marker .pano-label__dot,
+.pano-label__dot {
+    width:         8px !important;
+    height:        8px !important;
+    border-radius: 50% !important;
+    background:    #b8976a !important;
+    border:        1.5px solid rgba(255, 255, 255, 0.6) !important;
+    box-shadow:    0 0 0 3px rgba(184, 151, 106, 0.25) !important;
+    display:       block !important;
+}
