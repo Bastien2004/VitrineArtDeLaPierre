@@ -7,10 +7,10 @@ class PanoramaController extends Controller
     public function show(string $slug)
     {
         $photo = [
-            'title'         => 'Cathédrale de Nancy',
-            'location'      => 'Nancy, Grand Est — France',
+            'title'         => 'L art de la pierre',
+            'location'      => 'Bellignies',
             'file'          => 'pano-images/a.jpg',
-            'caption'       => 'Panorama 360° — Cathédrale Notre-Dame-de-l\'Annonciation',
+            'caption'       => 'Panorama 360°',
             'default_yaw'   => 0,
             'default_pitch' => 0,
             'markers'       => [
@@ -37,8 +37,8 @@ class PanoramaController extends Controller
         $gallery = [
             // a — Point 1
             [
-                'title'         => 'Parking',
-                'location'      => 'Point 1 — Entrée côté Parking',
+                'title'         => 'Apres parking',
+                'location'      => 'Point 1 — Apres parking',
                 'file'          => 'pano-images/a.jpg',
                 'default_yaw'   => 5.7230,
                 'default_pitch' => 0,
@@ -92,8 +92,8 @@ class PanoramaController extends Controller
 
             // d — Point 4
             [
-                'title'         => 'Devant Déchetterie',
-                'location'      => 'Point 4 — Bâtiment Déchetterie',
+                'title'         => 'Carrefour',
+                'location'      => 'Point 4 — Carrefour',
                 'file'          => 'pano-images/d.jpg',
                 'default_yaw'   => 5.5730,
                 'default_pitch' => 0,
@@ -110,8 +110,8 @@ class PanoramaController extends Controller
 
             // e — Point 5
             [
-                'title'         => 'Côté Déchetterie',
-                'location'      => 'Point 5 — Allée Déchetterie',
+                'title'         => 'Devant atelier',
+                'location'      => 'Point 5 — Devant atelier',
                 'file'          => 'pano-images/e.jpg',
                 'default_yaw'   => 0.5708,
                 'default_pitch' => 0,
@@ -128,8 +128,8 @@ class PanoramaController extends Controller
 
             // f — Point 6
             [
-                'title'         => 'Fond d\'allée (Haut Droite)',
-                'location'      => 'Point 6 — Extrémité impasse',
+                'title'         => 'Atelier',
+                'location'      => 'Point 6 — atelier',
                 'file'          => 'pano-images/f.jpg',
                 'default_yaw'   => 1.7657,
                 'default_pitch' => 0,
@@ -148,7 +148,7 @@ class PanoramaController extends Controller
             // g — Point 7
             [
                 'title'         => 'Cour Centrale',
-                'location'      => 'Point 7 — Esplanade',
+                'location'      => 'Point 7 — Cour Centrale',
                 'file'          => 'pano-images/g.jpg',
                 'default_yaw'   => 1.6960,
                 'default_pitch' => 0,
@@ -185,8 +185,8 @@ class PanoramaController extends Controller
 
             // i — Point 9
             [
-                'title'         => 'Petit Local (Entrée)',
-                'location'      => 'Point 9 — Devant l\'Annexe',
+                'title'         => 'Tour',
+                'location'      => 'Point 9 — Tour',
                 'file'          => 'pano-images/i.jpg',
                 'default_yaw'   => 0.2905,
                 'default_pitch' => 0,
@@ -203,8 +203,8 @@ class PanoramaController extends Controller
 
             // j — Point 10
             [
-                'title'         => 'Annexe (À refaire)',
-                'location'      => 'Point 10 — Intérieur',
+                'title'         => 'Armure',
+                'location'      => 'Point 10 — Armure',
                 'file'          => 'pano-images/j.jpg',
                 'default_yaw'   => 0,
                 'default_pitch' => 0,
@@ -213,7 +213,7 @@ class PanoramaController extends Controller
                 'min_pitch' => -1,
                 'max_pitch' =>  1,
                 'markers'       => [
-                    ['id' => 'back-to-9', 'yaw' => 3.1400, 'pitch' => -0.2000, 'rotation' => 3.14, 'target' => 8, 'label' => ''],
+                    ['id' => 'back-to-9', 'yaw' => 0.0927, 'pitch' => -0.7010, 'rotation' => 3.14, 'target' => 6, 'label' => ''],
                     ['id' => 'Armure', 'yaw' => 0.0721, 'pitch' => -0.1768, 'rotation' => 0, 'target' => null, 'label' => 'Armure <br> Machine de sciage utilisée pour transformer les gros blocs de pierre <br> en plaques de différentes épaisseurs, prêtes à être travaillées ou façonnées.'],
                 ],
             ],
@@ -225,10 +225,10 @@ class PanoramaController extends Controller
                 'file'          => 'pano-images/k.jpg',
                 'default_yaw'   => 0,
                 'default_pitch' => 0,
-                'min_pitch'     => 0,
-                'max_pitch'     =>  0,
-                'min_yaw'       =>  0,
-                'max_yaw'       =>  0,
+                'min_pitch'     => -1,
+                'max_pitch'     =>  1,
+                'min_yaw'       =>  -2,
+                'max_yaw'       =>  2.5,
                 'markers'       => [
                     ['id' => 'back-to-1', 'yaw' => 1.4390, 'pitch' => -0.3000, 'rotation' => 3.35, 'target' => 1, 'label' => ''],
                 ],
