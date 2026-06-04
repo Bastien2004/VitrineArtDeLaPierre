@@ -8,6 +8,9 @@
 
 
 @section('content')
+    @php
+        SEO::setTitle('Explorer l\'atelier');
+    @endphp
 
     <div class="pano-header">
         <div class="pano-header__controls">
