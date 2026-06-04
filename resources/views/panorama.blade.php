@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', ('Vue panoramique') . ' — Panorama 360°')
+@section('title', 'Vue panoramique')
 
 @push('styles')
     @vite(['resources/js/panorama.js', 'resources/css/panorama.css'])
