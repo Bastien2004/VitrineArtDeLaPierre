@@ -194,31 +194,5 @@ document.addEventListener('DOMContentLoaded', () => {
         viewer.toggleFullscreen();
     });
 
-    viewer.addEventListener('click', ({ data }) => {
-        const yaw   = data.yaw.toFixed(4);
-        const pitch = data.pitch.toFixed(4);
 
-        console.log(`%c 📍 Coordonnées pour votre PanoramaController :`, 'background: #1c1a17; color: #dfb76c; padding: 4px; font-weight: bold;');
-        console.log(`'yaw'   => ${yaw},\n'pitch' => ${pitch},`);
-
-        const devMarkerId       = 'fleche-de-test-dev';
-        const testArrowSvg      = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="60" height="60"><circle cx="24" cy="24" r="22" fill="rgba(223, 183, 108, 0.8)" stroke="white" stroke-width="2"/><path d="M24 10 L34 22 L27 22 L27 34 L21 34 L21 22 L14 22 Z" fill="white" /></svg>`;
-        const testArrowImageUrl = 'data:image/svg+xml;base64,' + btoa(testArrowSvg);
-
-        if (markersPlugin.getMarker(devMarkerId)) {
-            markersPlugin.updateMarker({
-                id:       devMarkerId,
-                position: { yaw: data.yaw, pitch: data.pitch },
-            });
-        } else {
-            markersPlugin.addMarker({
-                id:          devMarkerId,
-                position:    { yaw: data.yaw, pitch: data.pitch },
-                image:       testArrowImageUrl,
-                size:        { width: 60, height: 60 },
-                orientation: 'horizontal',
-                tooltip:     'Position de test',
-            });
-        }
-    });
 });
