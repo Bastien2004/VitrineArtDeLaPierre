@@ -48,7 +48,6 @@ class PanoramaController extends Controller
                 'max_yaw'       =>  2.5,
                 'markers'       => [
                     ['id' => 'to-2', 'yaw' => 5.7230, 'pitch' => -0.1516, 'rotation' => 0, 'target' => 1, 'label' => ''],
-                    ['id' => 'compresseur', 'yaw' => 5.7230, 'pitch' => -0.1, 'rotation' => 0, 'target' => null, 'label' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaa <br> aaaaaaaaaaaaaaaaaaaaaaaaaaaa <br> aaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaa <br> aaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaa'],
                 ],
             ],
 
@@ -84,6 +83,9 @@ class PanoramaController extends Controller
                 'markers'       => [
                     ['id' => 'to-4',      'yaw' => 0.6628, 'pitch' => -0.0248, 'rotation' => 0.785398, 'target' => 3, 'label' => ''],
                     ['id' => 'back-to-2', 'yaw' => 0.2095, 'pitch' => -0.4692, 'rotation' => 3.00,     'target' => 1, 'label' => ''],
+                    ['id' => 'compresseur', 'yaw' => 0.0207, 'pitch' => 0.3201, 'rotation' => 0, 'target' => null, 'label' => 'Concasseur <br> Machine qui broie les chutes et déchets de pierre <br> pour les transformer en galets, graviers ou matériaux réutilisables.'],
+                    ['id' => 'eau', 'yaw' => 6.1487, 'pitch' => 0.5444, 'rotation' => 0, 'target' => null, 'label' => 'fp600/6 installation de clarification des eaux et déshydratation des boues <br> Installation qui récupère, filtre et réutilise <br> l\'eau utilisée par les machines de découpe et de polissage, <br> limitant ainsi le gaspillage et l\'impact environnemental.'],
+
                 ],
             ],
 
@@ -118,6 +120,8 @@ class PanoramaController extends Controller
                 'max_yaw'       =>  2.5,
                 'markers'       => [
                     ['id' => 'to-6', 'yaw' => 0.3901, 'pitch' => -0.1500, 'rotation' => 3.14, 'target' => 5, 'label' => ''],
+                    ['id' => 'Atelier', 'yaw' => 0.4093, 'pitch' => 0.1596, 'rotation' => 0, 'target' => null, 'label' => 'Atelier <br> Espace de travail où les artisans façonnent la pierre : </br>polissage, meulage, collage des rejingots, finitions et <br> préparation des pièces avant leur livraison ou leur pose.'],
+
                 ],
             ],
 
@@ -135,6 +139,8 @@ class PanoramaController extends Controller
                 'markers'       => [
                     ['id' => 'to-5',      'yaw' => 1.8819, 'pitch' => -0.2000, 'rotation' => 0.3,  'target' => 4, 'label' => ''],
                     ['id' => 'back-to-4', 'yaw' => 2.1097, 'pitch' => -0.2000, 'rotation' => 1.57, 'target' => 3, 'label' => ''],
+                    ['id' => 'Débiteuse', 'yaw' => 3.9186, 'pitch' => 0.3209, 'rotation' => 0, 'target' => null, 'label' => 'Débiteuse <br> Grande machine équipée d\'un disque diamanté <br> permettant de découper avec précision <br> les blocs et les plaques de pierre selon <br> les dimensions souhaitées.'],
+
                 ],
             ],
 
@@ -153,6 +159,7 @@ class PanoramaController extends Controller
                     ['id' => 'to-11',     'yaw' => 1.2000, 'pitch' => -0.0500, 'rotation' => 0.78, 'target' => 3, 'label' => ''],
                     ['id' => 'to-9', 'yaw' => 2.0790, 'pitch' => -0.0660, 'rotation' => 1,    'target' => 9,  'label' => ''],
                     ['id' => 'back-to-3', 'yaw' => 2.2172, 'pitch' => -0.1500, 'rotation' => 1.57,    'target' => 7,  'label' => ''],
+                    ['id' => 'Tremies', 'yaw' => 1.5585, 'pitch' => 0.1999, 'rotation' => 0, 'target' => null, 'label' => 'Trémies de vieillissement <br> Grands bacs vibrants dans lesquels les pierres sont <br> brassées afin de leur donner un aspect vieilli et authentique, <br> recherché pour certains aménagements et restaurations.'],
                 ],
             ],
 
@@ -170,6 +177,8 @@ class PanoramaController extends Controller
                 'markers'       => [
                     ['id' => 'to-9',      'yaw' => 5.2032, 'pitch' => -0.1000, 'rotation' => 4.71, 'target' => 8, 'label' => ''],
                     ['id' => 'back-to-7', 'yaw' => 6.0431, 'pitch' => -0.2000, 'rotation' => 3.14, 'target' => 6, 'label' => ''],
+                    ['id' => 'Polissoir', 'yaw' => 4.7415, 'pitch' => 0.2631, 'rotation' => 0, 'target' => null, 'label' => 'Polissoir <br> Machine montée sur rails qui lisse et polit la surface <br> des dalles de pierre afin d\'obtenir une finition uniforme, <br> brillante ou satinée selon le rendu souhaité.'],
+
                 ],
             ],
 
@@ -187,6 +196,7 @@ class PanoramaController extends Controller
                 'max_pitch'     =>  0.001,
                 'markers'       => [
                     ['id' => 'back-to-8', 'yaw' => 0.1809, 'pitch' => -0.2000, 'rotation' => 3.14, 'target' => 7, 'label' => ''],
+                    ['id' => 'Tour', 'yaw' => 0.0273, 'pitch' => 0.1601, 'rotation' => 0, 'target' => null, 'label' => 'Tour <br> Machine permettant de réaliser des <br> éléments de forme ronde ou cylindrique <br> tels que des piliers, balustres, colonnes <br> et autres pièces décoratives sur mesure.'],
                 ],
             ],
 
@@ -203,6 +213,7 @@ class PanoramaController extends Controller
                 'max_yaw'       =>  2.5,
                 'markers'       => [
                     ['id' => 'back-to-9', 'yaw' => 3.1400, 'pitch' => -0.2000, 'rotation' => 3.14, 'target' => 8, 'label' => ''],
+                    ['id' => 'Armure', 'yaw' => 0.0721, 'pitch' => -0.1768, 'rotation' => 0, 'target' => null, 'label' => 'Armure <br> Machine de sciage utilisée pour transformer les gros blocs de pierre <br> en plaques de différentes épaisseurs, prêtes à être travaillées ou façonnées.'],
                 ],
             ],
 
@@ -211,12 +222,12 @@ class PanoramaController extends Controller
                 'title'         => 'Bureau',
                 'location'      => 'Point 14 — Intérieur Bureau',
                 'file'          => 'pano-images/k.jpg',
-                'default_yaw'   => 0.9184,
-                'default_pitch' => -0.0428,
-                'min_pitch'     => -1,
-                'max_pitch'     =>  1,
-                'min_yaw'       =>  -2,
-                'max_yaw'       =>  2.5,
+                'default_yaw'   => 0,
+                'default_pitch' => 0,
+                'min_pitch'     => 0,
+                'max_pitch'     =>  0,
+                'min_yaw'       =>  0,
+                'max_yaw'       =>  0,
                 'markers'       => [
                     ['id' => 'back-to-1', 'yaw' => 1.4390, 'pitch' => -0.3000, 'rotation' => 3.35, 'target' => 1, 'label' => ''],
                 ],
