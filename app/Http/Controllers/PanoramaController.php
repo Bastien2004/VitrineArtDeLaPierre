@@ -66,6 +66,7 @@ class PanoramaController extends Controller
                     ['id' => 'to-3',      'yaw' => 0.2963, 'pitch' => -0.0517, 'rotation' => 0.78, 'target' => 2,  'label' => ''],
                     ['id' => 'to-14',     'yaw' => 1.6524, 'pitch' => -0.1000, 'rotation' => 0.2,  'target' => 10, 'label' => ''],
                     ['id' => 'back-to-1', 'yaw' => 0.2095, 'pitch' => -0.4692, 'rotation' => 3.25, 'target' => 0,  'label' => ''],
+                    ['id' => 'back-to-11', 'yaw' => 6.2513, 'pitch' => -0.2194, 'rotation' => 4.71, 'target' => 11,  'label' => ''],
                 ],
             ],
 
@@ -207,10 +208,10 @@ class PanoramaController extends Controller
                 'file'          => 'pano-images/j.jpg',
                 'default_yaw'   => 0,
                 'default_pitch' => 0,
-                'min_pitch'     => -1,
-                'max_pitch'     =>  1,
-                'min_yaw'       =>  -2,
-                'max_yaw'       =>  2.5,
+                'min_yaw'   => -0.001,
+                'max_yaw'   =>  0.001,
+                'min_pitch' => -1,
+                'max_pitch' =>  1,
                 'markers'       => [
                     ['id' => 'back-to-9', 'yaw' => 3.1400, 'pitch' => -0.2000, 'rotation' => 3.14, 'target' => 8, 'label' => ''],
                     ['id' => 'Armure', 'yaw' => 0.0721, 'pitch' => -0.1768, 'rotation' => 0, 'target' => null, 'label' => 'Armure <br> Machine de sciage utilisée pour transformer les gros blocs de pierre <br> en plaques de différentes épaisseurs, prêtes à être travaillées ou façonnées.'],
@@ -230,6 +231,25 @@ class PanoramaController extends Controller
                 'max_yaw'       =>  0,
                 'markers'       => [
                     ['id' => 'back-to-1', 'yaw' => 1.4390, 'pitch' => -0.3000, 'rotation' => 3.35, 'target' => 1, 'label' => ''],
+                ],
+            ],
+
+            // L — Point 12
+            [
+                'title'         => 'Allée / Or',
+                'location'      => 'Point 11 — Or',
+                'file'          => 'pano-images/l.jpg',
+                'default_yaw'   => 0.8053,
+                'default_pitch' => -0.1565,
+                'min_pitch'     => -1,
+                'max_pitch'     =>  1,
+                'min_yaw'       =>  -2,
+                'max_yaw'       =>  2.5,
+                'markers'       => [
+                    ['id' => 'back-to-1', 'yaw' => 0.6799, 'pitch' => -0.0678, 'rotation' => 0.78, 'target' => 1, 'label' => ''],
+                    ['id' => 'Plaque', 'yaw' => 5.9684, 'pitch' => 0.1320, 'rotation' => 0, 'target' => null, 'label' => 'Tranches de Pierres Naturelles & Granits <br> Ces plaques prêtes pour le façonnage dévoilent la beauté brute de la roche. <br> Qu\'il s\'agisse de Pierre Bleue, de granit ou de marbre, chaque tranche porte <br> les marques de son histoire géologique : veines subtiles, sédiments fossilisés <br> et variations de teintes uniques. <br> Soigneusement sélectionnées, ces tranches seront découpées et polies <br> pour donner vie à vos projets de plans de travail, appuis de fenêtre ou dallages sur-mesure.'],
+                    ['id' => 'Or', 'yaw' => 1.7190, 'pitch' => -0.0928, 'rotation' => 0, 'target' => null, 'label' => 'Bloc de Pierre Bleue Belge brut <br> Ce bloc révèle toute la richesse de la pierre naturelle : <br> fossiles marins, veines minérales, cristallisations et nuances de couleurs formées <br> il y a plusieurs centaines de millions d\'années.  <br>Certaines zones peuvent également présenter des reflets dorés dus à la <br> présence de minéraux naturellement intégrés à la roche. <br> Ces particularités témoignent de l\'histoire géologique exceptionnelle de la Pierre <br> Bleue Belge et rendent chaque bloc absolument unique.'],
+
                 ],
             ],
         ];
