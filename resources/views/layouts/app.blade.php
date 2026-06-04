@@ -22,7 +22,6 @@
     <a href="/" class="logo">Frédéric Oden</a>
 
     <ul class="nav-links">
-        <li><a href="/">Savoir-Faire</a></li>
         <li><a href="{{route('panoramas')}}">Explorer l’atelier</a></li>
         <li><a href="/configurateur">Devis</a></li>
         <li><a href="https://www.pagesjaunes.fr/contribution/votre-avis/62047963">Avis</a></li>
@@ -45,7 +44,7 @@
         <span></span>
     </button>
 
-    <a href="/">Savoir-Faire</a>
+    <a href="/">Accueil</a>
     <a href="{{route('panoramas')}}">Explorer l’atelier</a>
     <a href="/configurateur">Devis</a>
     <a href="https://www.pagesjaunes.fr/contribution/votre-avis/62047963">Avis</a>
