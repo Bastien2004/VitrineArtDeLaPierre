@@ -56,14 +56,17 @@
 @yield('content')
 @livewireScripts
 
-<footer class="footer-minimal">
-    <div class="footer-min-container">
-        <div class="footer-min-left">
+<footer class="footer-minimal w-full px-8 py-6">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+
+        <div class="flex items-center gap-4">
             <span class="footer-min-logo">Frédéric Oden</span>
             <span class="footer-min-sep">|</span>
             <p class="footer-min-copyright">© {{ date('Y') }} — TAILLEUR DE PIERRE & SCULPTEUR</p>
-            {{--<a href="https://guideon.dev" class="guideon">Développé par GuideOn</a>--}}
         </div>
+
+        <a href="https://guideon.dev" class="guideon">Développé par GuideOn</a>
+
     </div>
 </footer>
 
