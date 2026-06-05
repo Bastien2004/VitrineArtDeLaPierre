@@ -62,6 +62,7 @@
             <span class="footer-min-logo">Frédéric Oden</span>
             <span class="footer-min-sep">|</span>
             <p class="footer-min-copyright">© {{ date('Y') }} — TAILLEUR DE PIERRE & SCULPTEUR</p>
+            {{--<a href="https://guideon.dev" class="guideon">Développé par GuideOn</a>--}}
         </div>
     </div>
 </footer>
