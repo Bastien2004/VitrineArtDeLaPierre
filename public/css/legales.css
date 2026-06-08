@@ -1,0 +1,29 @@
+.legal-container {
+    background-color: #FDFCFA;
+    color: #44403c;
+}
+
+.legal-title,
+.legal-section-title {
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: -0.01em;
+}
+
+.legal-content p {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #57534e;
+}
+
+.legal-link {
+    color: #1c1917;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: #b0a494;
+    transition: color 0.2s ease;
+}
+
+.legal-link:hover {
+    color: #b0a494;
+}

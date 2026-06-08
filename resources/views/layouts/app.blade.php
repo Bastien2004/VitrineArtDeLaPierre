@@ -64,7 +64,9 @@
             <span class="footer-min-sep">|</span>
             <p class="footer-min-copyright">© {{ date('Y') }} — TAILLEUR DE PIERRE & SCULPTEUR</p>
         </div>
-
+        <a href="{{ route('mentions-legales') }}" class="text-xs text-gray-500 hover:underline">Mentions légales</a>
+        <span class="footer-min-sep">|</span>
+        <a href="{{ route('politique-confidentialite') }}" class="text-xs text-gray-500 hover:underline">Confidentialité</a>
         <a href="https://guideon.dev" class="guideon">Développé par GuideOn</a>
 
     </div>

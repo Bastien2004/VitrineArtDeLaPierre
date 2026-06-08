@@ -12,3 +12,5 @@ Route::get('/configurateur', [ConfigurateurController::class, 'index'])->name('c
 Route::post('/configurateur/envoyer-mail', [ConfigurateurController::class, 'envoyerMail']);
 Route::get('/', [RealisationController::class, 'index'])->name('home');
 Route::get('/panoramas', [PanoramaController::class, 'gallery'])->name('panoramas');
+Route::view('/mentions-legales', 'mentions-legales')->name('mentions-legales');
+Route::view('/politique-confidentialite', 'politique-confidentialite')->name('politique-confidentialite');
