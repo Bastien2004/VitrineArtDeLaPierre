@@ -9,7 +9,7 @@
 
 @section('content')
     @php
-        SEO::setTitle('Explorer l\'atelier');
+        SEO::setTitle('Explorer l\'atelier  — Frédéric Oden');
     @endphp
 
     <div class="pano-header">

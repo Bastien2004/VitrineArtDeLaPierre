@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@php
+    SEO::setTitle('Politique de Confidentialité — Frédéric Oden');
+    SEO::setDescription('Consultez la politique de confidentialité et de protection des données personnelles de l’atelier Frédéric Oden.');
+@endphp
+
 @section('content')
     <div class="max-w-4xl mx-auto px-6 py-24 font-sans text-[#44403c] leading-relaxed">
         <span class="text-xs uppercase tracking-widest text-[#b0a494] block mb-2">Protection des données</span>

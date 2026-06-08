@@ -1,10 +1,17 @@
 @extends('layouts.app')
 
+@php
+    SEO::setTitle('Mentions Légales — Frédéric Oden');
+    SEO::setDescription('Consultez les mentions légales de l’atelier Frédéric Oden, tailleur de pierre et sculpteur, hébergé par OVH Cloud.');
+@endphp
+
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/legales.css') }}">
 @endpush
 
+
 @section('content')
+    {!! SEO::generate() !!}
     <div class="legal-container min-h-screen px-6 py-20 sm:py-32">
         <div class="max-w-3xl mx-auto">
 
