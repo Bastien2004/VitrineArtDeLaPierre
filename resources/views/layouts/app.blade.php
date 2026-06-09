@@ -36,10 +36,8 @@
     </button>
 </nav>
 
-{{-- Menu plein écran mobile --}}
 <div class="nav-mobile-menu" id="nav-mobile-menu" aria-hidden="true">
 
-    {{-- Bouton fermeture en haut à droite --}}
     <button class="nav-mobile-close" id="nav-mobile-close" aria-label="Fermer le menu">
         <span></span>
         <span></span>

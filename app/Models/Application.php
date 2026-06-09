@@ -9,7 +9,6 @@ class Application extends Model
 {
     use HasFactory;
 
-    // On autorise Laravel à remplir ces colonnes
     protected $fillable = [
         'first_name',
         'last_name',

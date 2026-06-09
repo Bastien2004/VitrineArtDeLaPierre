@@ -24,7 +24,6 @@ class User extends Authenticatable implements FilamentUser // <-- MODIFIER CETTE
      */
     public function canAccessPanel(Panel $panel): bool
     {
-        // Autorise uniquement votre adresse email sur le VPS
         return $this->email === 'frederic.oden.tailleur.pierre@gmail.com';
     }
 

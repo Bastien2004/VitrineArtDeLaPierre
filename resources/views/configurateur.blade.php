@@ -39,7 +39,6 @@
 
         <div id="liste-pierres"></div>
 
-        {{-- Formulaire client --}}
         <div class="client-form">
             <div class="client-form-grid">
                 <div class="client-field">

@@ -11,7 +11,6 @@
 
     <main>
 
-        {{-- ── BIOGRAPHIE ── --}}
         <section class="about-section">
             <div class="about-container">
                 <div class="about-text-column">
@@ -34,10 +33,8 @@
             </div>
         </section>
 
-        {{-- ── RÉALISATIONS ── --}}
         <section class="slider-section realisations" x-data="{}">
 
-            {{-- En-tête --}}
             <div class="slider-section-header">
                 <div class="slider-section-title-block">
                     <h2 class="slider-section-title">Nos réalisations</h2>
@@ -59,7 +56,6 @@
                 </div>
             </div>
 
-            {{-- Track --}}
             <div class="slider-track" x-ref="realisationsTrack">
                 @forelse($realisations as $realisation)
                     <div class="slider-card">
@@ -79,10 +75,8 @@
 
         </section>
 
-        {{-- ── RÉNOVATIONS ── --}}
         <section class="slider-section renovations" x-data="{}">
 
-            {{-- En-tête --}}
             <div class="slider-section-header">
                 <div class="slider-section-title-block">
                     <h2 class="slider-section-title">Nos rénovations</h2>
@@ -104,7 +98,6 @@
                 </div>
             </div>
 
-            {{-- Track --}}
             <div class="slider-track" x-ref="renovationsTrack">
                 @forelse($comparaisons as $comparaison)
                     <div class="slider-card slider-card--compare">

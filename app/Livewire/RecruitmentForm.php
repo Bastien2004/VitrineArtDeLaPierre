@@ -37,7 +37,6 @@ class RecruitmentForm extends Component
                 : null,
         ]);
 
-        // On bascule l'état du composant
         $this->isSubmitted = true;
 
         $this->reset(['first_name', 'last_name', 'email', 'phone', 'cv', 'cover_letter']);
