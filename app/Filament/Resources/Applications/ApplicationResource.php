@@ -20,6 +20,8 @@ class ApplicationResource extends Resource
     protected static ?string $pluralModelLabel = 'candidatures';
     protected static ?string $navigationLabel = 'Candidatures';
 
+    protected static ?int $navigationSort = 1;
+
     public static function canCreate(): bool
     {
         return false;
