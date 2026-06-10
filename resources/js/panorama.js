@@ -64,6 +64,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!viewer || !markersPlugin) return;
 
+    function updateVideo(pano) {
+        const videoContainer = document.getElementById('pano-video-container');
+        const videoPlayer = document.getElementById('video-player');
+        const videoTitle = document.getElementById('video-title');
+        const panoramaViewer = document.getElementById('panorama-viewer');
+
+        if (!pano.video_id) {
+            // Pas de vidéo pour ce panorama
+            videoContainer.classList.remove('visible');
+            panoramaViewer.style.height = '100vh'; // ✅ 100vh quand pas de vidéo
+            return;
+        }
+
+        // Afficher le conteneur
+        videoContainer.classList.add('visible');
+        panoramaViewer.style.height = '50vh'; // ✅ 50vh quand vidéo visible
+        videoTitle.textContent = pano.video_title || 'Vidéo';
+
+        // Créer l'iframe YouTube
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube.com/embed/${pano.video_id}`;
+        iframe.frameborder = '0';
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.allowFullscreen = true;
+        iframe.className = 'video-iframe';
+
+        // Effacer l'ancien contenu et ajouter le nouvel iframe
+        videoPlayer.innerHTML = '';
+        videoPlayer.appendChild(iframe);
+    }
 
     function buildMarkers(target) {
         const pano = typeof target === 'number' ? panoramas[target] : target;
@@ -107,6 +137,8 @@ document.addEventListener('DOMContentLoaded', () => {
     viewer.addEventListener('ready', () => {
         document.getElementById('pano-loading')?.classList.add('hidden');
         updateNavArrow();
+        // ✅ Afficher la vidéo du premier panorama s'il en a une
+        updateVideo(panoramas[0]);
     }, { once: true });
 
     function applyRanges(pano) {
@@ -133,8 +165,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const index = panoramas.indexOf(nextPano);
         document.getElementById('pano-loading')?.classList.remove('hidden');
 
-        // ✅ setTimeout(0) : on s'exécute après TOUS les handlers synchrones
-        // de PanoramaLoadedEvent, dont le __moveToRange() interne du plugin
         viewer.addEventListener('panorama-loaded', () => {
             setTimeout(() => applyRanges(nextPano), 0);
         }, { once: true });
@@ -159,6 +189,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 markersPlugin.clearMarkers();
                 buildMarkers(nextPano).forEach(m => markersPlugin.addMarker(m));
 
+                // ✅ METTRE À JOUR LA VIDÉO
+                updateVideo(nextPano);
+
                 updateNavArrow();
             })
             .catch((err) => {
@@ -182,6 +215,12 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.style.display = currentIndex >= panoramas.length - 1 ? 'none' : 'flex';
     }
 
+    // ✅ FERMER LA VIDÉO
+    document.getElementById('btn-close-video')?.addEventListener('click', () => {
+        document.getElementById('pano-video-container').classList.remove('visible');
+        document.getElementById('panorama-viewer').style.height = '100vh'; // ✅ Revenir à 100vh
+    });
+
     document.getElementById('btn-next-pano')?.addEventListener('click', () => {
         goTo(currentIndex + 1);
     });
@@ -193,6 +232,4 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btn-fullscreen')?.addEventListener('click', () => {
         viewer.toggleFullscreen();
     });
-
-
 });

@@ -157,8 +157,7 @@ class PanoramaController extends Controller
                 'min_yaw'       =>  -2,
                 'max_yaw'       =>  2.7,
                 'markers'       => [
-                    ['id' => 'to-11',     'yaw' => 1.2000, 'pitch' => -0.0500, 'rotation' => 0.78, 'target' => 3, 'label' => ''],
-                    ['id' => 'to-9', 'yaw' => 2.0790, 'pitch' => -0.0660, 'rotation' => 1,    'target' => 9,  'label' => ''],
+                    ['id' => 'to-11', 'yaw' => 1.9, 'pitch' => 0, 'rotation' => 0.78, 'target' => 3, 'label' => ''],                    ['id' => 'to-9', 'yaw' => 2.0790, 'pitch' => -0.0660, 'rotation' => 1,    'target' => 9,  'label' => ''],
                     ['id' => 'back-to-3', 'yaw' => 2.2172, 'pitch' => -0.1500, 'rotation' => 1.57,    'target' => 7,  'label' => ''],
                     ['id' => 'Tremies', 'yaw' => 1.5585, 'pitch' => 0.1999, 'rotation' => 0, 'target' => null, 'label' => 'Trémies de vieillissement <br> Grands bacs vibrants dans lesquels les pierres sont <br> brassées afin de leur donner un aspect vieilli et authentique, <br> recherché pour certains aménagements et restaurations.'],
                 ],
@@ -206,16 +205,17 @@ class PanoramaController extends Controller
                 'title'         => 'Armure',
                 'location'      => 'Point 10 — Armure',
                 'file'          => 'pano-images/j.jpg',
+                'video_id'      => 'jNQXAC9IVRw',           // ✅ Vidéo YouTube test
+                'video_title'   => 'Démonstration Armure',
                 'default_yaw'   => 0,
                 'default_pitch' => 0,
-                'min_yaw'   => -0.001,
-                'max_yaw'   =>  0.001,
-                'min_pitch' => -1,
-                'max_pitch' =>  1,
+                'min_yaw'       => -0.001,
+                'max_yaw'       =>  0.001,
+                'min_pitch'     => -1,
+                'max_pitch'     =>  1,
                 'markers'       => [
                     ['id' => 'back-to-9', 'yaw' => 0.0927, 'pitch' => -0.7010, 'rotation' => 3.14, 'target' => 6, 'label' => ''],
-                    ['id' => 'Armure', 'yaw' => 0.0721, 'pitch' => -0.1768, 'rotation' => 0, 'target' => null, 'label' => 'Armure <br> Machine de sciage utilisée pour transformer les gros blocs de pierre <br> en plaques de différentes épaisseurs, prêtes à être travaillées ou façonnées.'],
-                ],
+                    ['id' => 'Armure', 'yaw' => 0.0721, 'pitch' => -0.1768, 'rotation' => 0, 'target' => null, 'label' => 'Armure <br> Machine de sciage utilisée pour transformer les gros blocs de pierre <br> en plaques de différentes épaisseurs, prêtes à être travaillées ou façonnées.'],                ],
             ],
 
             // k — Point 11

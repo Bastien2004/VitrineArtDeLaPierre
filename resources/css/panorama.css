@@ -1,49 +1,133 @@
 /* ==========================================================================
    resources/css/panorama.css
-   Base fonctionnelle utilisateur + Intégration Layout (Navbar & Footer)
+   Clean version - Panorama 360 + Video Container
    ========================================================================== */
 
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
-    overflow: hidden;
+    height: auto;
+    overflow: visible;
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     background-color: #000;
 }
 
-/* ── INTERFACE DU LAYOUT GLOBAL (layouts.app) ───────────────────────────── */
 #navbar {
     position: fixed !important;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 50 !important; /* Force la navbar à passer au-dessus du panorama */
+    z-index: 50 !important;
 }
 
 .footer-minimal {
-    position: absolute !important;
+    position: fixed !important;
     bottom: 0;
     left: 0;
     width: 100%;
-    z-index: 50 !important; /* Force le footer à passer au-dessus du panorama */
+    z-index: 50 !important;
 }
 
-/* Le conteneur 3D prend tout l'écran en arrière-plan */
+/* ── MAIN WRAPPER ────────────────────────────────────────────────────── */
+.pano-wrapper {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding-top: 64px;
+    padding-bottom: 0;
+    background: white;
+    margin-bottom: 0;
+}
+
 #panorama-viewer {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100vh;  /* ✅ 100vh par défaut */
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+}
+
+/* ── VIDEO CONTAINER ────────────────────────────────────────────────── */
+.pano-video-container {
+    width: 100%;
+    background: #f8f8f8;
+    border-top: 1px solid #ddd;
+    padding: 0;
+    margin: 0;
+    display: none;
+    flex-shrink: 0;
+    z-index: 10;
+    height: 0;
+    overflow: hidden;
+}
+
+.pano-video-container.visible {
+    display: block;
+    padding: 1.5rem;
+    height: auto;
+    overflow: visible;
+}
+
+.pano-video__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.pano-video__header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.btn-close-video {
+    background: none;
+    border: none;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.2s;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.btn-close-video:hover {
+    color: #333;
+}
+
+.btn-close-video svg {
+    width: 100%;
+    height: 100%;
+}
+
+.pano-video__player {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 4px;
+    background: #000;
+}
+
+.video-iframe {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 1;
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 
-/* ── BOUTONS DE CONTRÔLE (Plein écran / Auto-rotation) ──────────────────── */
+/* ── HEADER CONTROLS ────────────────────────────────────────────────── */
 .pano-header {
     position: absolute;
-    top: 90px; /* Positionné idéalement juste sous votre navbar blanche */
+    top: 90px;
     right: 25px;
     left: auto;
     width: auto;
@@ -54,7 +138,6 @@ html, body {
     z-index: 30;
 }
 
-/* On masque la référence (Logo + Texte) mais on garde le conteneur des boutons */
 .pano-header__logo,
 .pano-header__info {
     display: none !important;
@@ -66,7 +149,7 @@ html, body {
 }
 
 .btn-ctrl {
-    background: rgba(15, 15, 15, 0.6); /* Fond sombre transparent pour contrer l'image 3D */
+    background: rgba(15, 15, 15, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: white;
     padding: 12px;
@@ -83,7 +166,7 @@ html, body {
     background: #dfb76c;
     color: #111;
     border-color: #dfb76c;
-    transform: scale(1.05); /* Léger effet de zoom au survol */
+    transform: scale(1.05);
 }
 
 .btn-ctrl svg {
@@ -91,67 +174,7 @@ html, body {
     height: 20px;
 }
 
-/* ── GALERIE (Remontée pour laisser la place au footer global) ────────── */
-.pano-gallery {
-    position: absolute;
-    bottom: 90px; /* Ajusté pour flotter juste au-dessus de votre footer */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-    display: flex;
-    gap: 15px;
-    background: rgba(15, 15, 15, 0.75);
-    padding: 12px;
-    border-radius: 12px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    max-width: 90%;
-    overflow-x: auto;
-}
-
-.pano-gallery__thumb {
-    background: none;
-    border: 2px solid transparent;
-    color: white;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    padding: 4px;
-    border-radius: 6px;
-    transition: all 0.2s ease;
-    min-width: 100px;
-}
-
-.pano-gallery__thumb img {
-    width: 100px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 4px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
-
-.pano-gallery__thumb span {
-    font-size: 0.75rem;
-    opacity: 0.8;
-    white-space: nowrap;
-    max-width: 100px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.pano-gallery__thumb:hover, .pano-gallery__thumb.active {
-    border-color: #dfb76c;
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.pano-gallery__thumb.active span {
-    color: #dfb76c;
-    font-weight: 600;
-}
-
-/* ── GESTION DU LOADER (Sécurisé pour éviter le chargement infini) ─────── */
+/* ── LOADING ────────────────────────────────────────────────────────── */
 .pano-loading {
     position: absolute;
     inset: 0;
@@ -184,74 +207,11 @@ html, body {
     to { transform: rotate(360deg); }
 }
 
-/* ── FLÈCHE FIXE (Ajustée par rapport à la nouvelle position de la galerie) ── */
-.nav-arrow-fixed {
-    position: absolute;
-    bottom: 210px; /* Rehaussé pour s'aligner parfaitement au-dessus de la galerie remontée */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 20;
-
-    width: 50px;
-    height: 50px;
-    background: rgba(255, 255, 255, 0.9);
-    border: 2px solid #ffffff;
-    border-radius: 50%;
-    color: #111111;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    transition: all 0.2s ease-in-out;
-    padding: 0;
-    outline: none;
-}
-
-.nav-arrow-fixed svg {
-    width: 24px;
-    height: 24px;
-    transition: transform 0.2s ease;
-}
-
-.nav-arrow-fixed:hover {
-    background: #dfb76c;
-    border-color: #dfb76c;
-    color: #ffffff;
-    bottom: 215px;
-    box-shadow: 0 6px 20px rgba(223, 183, 108, 0.4);
-}
-
-.nav-arrow-fixed:hover svg {
-    transform: translateY(-2px);
-}
-
 .psv-caption {
     display: none !important;
 }
 
-.pano-header__back {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    color: white;
-    text-decoration: none;
-    font-size: 13px;
-    opacity: 0.8;
-    transition: opacity 0.2s;
-}
-.pano-header__back:hover { opacity: 1; }
-.pano-header__back svg { width: 16px; height: 16px; }
-
-#panorama-viewer {
-    width: 100%;
-    height: calc(100vh - 64px); /* ajustez 64px selon la hauteur de votre navbar */
-    position: relative;
-}
-
-/* ── LABEL MARBRE (marqueurs sans navigation) ───────────────────────────── */
-
+/* ── LABELS ────────────────────────────────────────────────────────── */
 .psv-marker .pano-label,
 .pano-label {
     display:        flex !important;
@@ -292,4 +252,29 @@ html, body {
     border:        1.5px solid rgba(255, 255, 255, 0.6) !important;
     box-shadow:    0 0 0 3px rgba(184, 151, 106, 0.25) !important;
     display:       block !important;
+}
+
+/* ── RESPONSIVE ────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .pano-wrapper {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    #panorama-viewer {
+        height: 45vh;
+    }
+
+    .pano-video-container.visible {
+        padding: 1rem;
+    }
+
+    .pano-video__header h3 {
+        font-size: 1rem;
+    }
+}
+
+
+html, body {
+    background-color: white;
 }
