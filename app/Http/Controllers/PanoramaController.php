@@ -47,7 +47,7 @@ class PanoramaController extends Controller
                 'min_yaw'       =>  -2,
                 'max_yaw'       =>  2.5,
                 'markers'       => [
-                    ['id' => 'to-2', 'yaw' => 5.7230, 'pitch' => -0.1516, 'rotation' => 0, 'target' => 1, 'label' => ''],
+                    ['id' => 'to-2', 'yaw' => 5.7230, 'pitch' => -0.1516, 'rotation' => 0, 'target' => 1, 'label' => 'Entrée'],
                     ['id' => 'camera', 'yaw' => 5.7230, 'pitch' => 0.3, 'rotation' => 0, 'target' => null, 'label' => 'Site sécurisé par un système de vidéosurveillance.'],
                 ],
             ],
@@ -65,9 +65,9 @@ class PanoramaController extends Controller
                 'max_yaw'       =>  2.5,
                 'markers'       => [
                     ['id' => 'to-3',      'yaw' => 0.2963, 'pitch' => -0.0517, 'rotation' => 0.78, 'target' => 2,  'label' => ''],
-                    ['id' => 'to-14',     'yaw' => 1.6524, 'pitch' => -0.1000, 'rotation' => 0.2,  'target' => 10, 'label' => ''],
+                    ['id' => 'to-14',     'yaw' => 1.6524, 'pitch' => -0.1000, 'rotation' => 0.2,  'target' => 10, 'label' => 'Bureau'],
                     ['id' => 'back-to-1', 'yaw' => 0.2095, 'pitch' => -0.4692, 'rotation' => 3.25, 'target' => 0,  'label' => ''],
-                    ['id' => 'back-to-11', 'yaw' => 6.2513, 'pitch' => -0.2194, 'rotation' => 4.71, 'target' => 11,  'label' => ''],
+                    ['id' => 'back-to-11', 'yaw' => 6.2513, 'pitch' => -0.2194, 'rotation' => 4.71, 'target' => 11,  'label' => 'Stock'],
                 ],
             ],
 
@@ -139,7 +139,7 @@ class PanoramaController extends Controller
                 'min_yaw'       =>  -3,
                 'max_yaw'       =>  2.5,
                 'markers'       => [
-                    ['id' => 'to-5',      'yaw' => 1.8819, 'pitch' => -0.2000, 'rotation' => 0.3,  'target' => 4, 'label' => ''],
+                    ['id' => 'to-5',      'yaw' => 1.8819, 'pitch' => -0.2000, 'rotation' => 0.3,  'target' => 4, 'label' => 'Atelier'],
                     ['id' => 'back-to-4', 'yaw' => 2.1097, 'pitch' => -0.2000, 'rotation' => 1.57, 'target' => 3, 'label' => ''],
                     ['id' => 'Débiteuse', 'yaw' => 3.9186, 'pitch' => 0.3209, 'rotation' => 0, 'target' => null, 'label' => 'Débiteuse <br> Grande machine équipée d\'un disque diamanté <br> permettant de découper avec précision <br> les blocs et les plaques de pierre selon <br> les dimensions souhaitées.'],
 
@@ -158,7 +158,8 @@ class PanoramaController extends Controller
                 'min_yaw'       =>  -2,
                 'max_yaw'       =>  2.7,
                 'markers'       => [
-                    ['id' => 'to-11', 'yaw' => 1.9, 'pitch' => 0, 'rotation' => 0.78, 'target' => 3, 'label' => ''],                    ['id' => 'to-9', 'yaw' => 2.0790, 'pitch' => -0.0660, 'rotation' => 1,    'target' => 9,  'label' => ''],
+                    ['id' => 'to-11', 'yaw' => 1.9, 'pitch' => 0, 'rotation' => 0.78, 'target' => 3, 'label' => ''],
+                    ['id' => 'to-9', 'yaw' => 2.0790, 'pitch' => -0.0660, 'rotation' => 1,    'target' => 9,  'label' => 'Armure'],
                     ['id' => 'back-to-3', 'yaw' => 2.2172, 'pitch' => -0.1500, 'rotation' => 1.57,    'target' => 7,  'label' => ''],
                     ['id' => 'Tremies', 'yaw' => 1.5585, 'pitch' => 0.1999, 'rotation' => 0, 'target' => null, 'label' => 'Trémies de vieillissement <br> Grands bacs vibrants dans lesquels les pierres sont <br> brassées afin de leur donner un aspect vieilli et authentique, <br> recherché pour certains aménagements et restaurations.'],
                 ],
@@ -176,7 +177,7 @@ class PanoramaController extends Controller
                 'min_yaw'       =>  -2,
                 'max_yaw'       =>  2.5,
                 'markers'       => [
-                    ['id' => 'to-9',      'yaw' => 5.2032, 'pitch' => -0.1000, 'rotation' => 4.71, 'target' => 8, 'label' => ''],
+                    ['id' => 'to-9',      'yaw' => 5.2032, 'pitch' => -0.1000, 'rotation' => 4.71, 'target' => 8, 'label' => 'Tour'],
                     ['id' => 'back-to-7', 'yaw' => 6.0431, 'pitch' => -0.2000, 'rotation' => 3.14, 'target' => 6, 'label' => ''],
                     ['id' => 'Polissoir', 'yaw' => 4.7415, 'pitch' => 0.2631, 'rotation' => 0, 'target' => null, 'label' => 'Polissoir <br> Machine montée sur rails qui lisse et polit la surface <br> des dalles de pierre afin d\'obtenir une finition uniforme, <br> brillante ou satinée selon le rendu souhaité.'],
 
