@@ -278,3 +278,33 @@ html, body {
 html, body {
     background-color: white;
 }
+
+
+@media (max-width: 768px) {
+    /* Conteneur principal de la vidéo quand il est visible */
+    .pano-video-container.visible {
+        padding: 1rem;
+        height: auto;
+        background: #f8f8f8;
+    }
+
+    /* En-tête (Titre + Bouton Fermer) */
+    .pano-video__header {
+        margin-bottom: 0.75rem;
+    }
+
+    .pano-video__header h3 {
+        font-size: 1rem;
+    }
+
+    .btn-close-video {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Zone du lecteur (Iframe au format 16:9) */
+    .pano-video__player {
+        padding-bottom: 56.25%; /* Maintient le ratio 16:9 sur petit écran */
+        border-radius: 4px;
+    }
+}
