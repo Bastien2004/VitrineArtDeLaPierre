@@ -48,6 +48,7 @@ class PanoramaController extends Controller
                 'max_yaw'       =>  2.5,
                 'markers'       => [
                     ['id' => 'to-2', 'yaw' => 5.7230, 'pitch' => -0.1516, 'rotation' => 0, 'target' => 1, 'label' => ''],
+                    ['id' => 'camera', 'yaw' => 5.7230, 'pitch' => 0.3, 'rotation' => 0, 'target' => null, 'label' => 'Site sécurisé par un système de vidéosurveillance.'],
                 ],
             ],
 
