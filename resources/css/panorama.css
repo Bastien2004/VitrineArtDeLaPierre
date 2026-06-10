@@ -1,8 +1,3 @@
-/* ==========================================================================
-   resources/css/panorama.css
-   Clean version - Panorama 360 + Video Container
-   ========================================================================== */
-
 html, body {
     margin: 0;
     padding: 0;
@@ -29,7 +24,7 @@ html, body {
     z-index: 50 !important;
 }
 
-/* ── MAIN WRAPPER ────────────────────────────────────────────────────── */
+
 .pano-wrapper {
     width: 100%;
     height: auto;
@@ -49,7 +44,7 @@ html, body {
     flex-shrink: 0;
 }
 
-/* ── VIDEO CONTAINER ────────────────────────────────────────────────── */
+
 .pano-video-container {
     width: 100%;
     background: #f8f8f8;
@@ -124,7 +119,7 @@ html, body {
     border: none;
 }
 
-/* ── HEADER CONTROLS ────────────────────────────────────────────────── */
+
 .pano-header {
     position: absolute;
     top: 90px;
@@ -174,7 +169,7 @@ html, body {
     height: 20px;
 }
 
-/* ── LOADING ────────────────────────────────────────────────────────── */
+
 .pano-loading {
     position: absolute;
     inset: 0;
@@ -211,7 +206,7 @@ html, body {
     display: none !important;
 }
 
-/* ── LABELS ────────────────────────────────────────────────────────── */
+
 .psv-marker .pano-label,
 .pano-label {
     display:        flex !important;
@@ -254,7 +249,7 @@ html, body {
     display:       block !important;
 }
 
-/* ── RESPONSIVE ────────────────────────────────────────────────────── */
+
 @media (max-width: 768px) {
     .pano-wrapper {
         padding-top: 50px;
@@ -281,14 +276,12 @@ html, body {
 
 
 @media (max-width: 768px) {
-    /* Conteneur principal de la vidéo quand il est visible */
     .pano-video-container.visible {
         padding: 1rem;
         height: auto;
         background: #f8f8f8;
     }
 
-    /* En-tête (Titre + Bouton Fermer) */
     .pano-video__header {
         margin-bottom: 0.75rem;
     }
@@ -302,9 +295,8 @@ html, body {
         height: 20px;
     }
 
-    /* Zone du lecteur (Iframe au format 16:9) */
     .pano-video__player {
-        padding-bottom: 56.25%; /* Maintient le ratio 16:9 sur petit écran */
+        padding-bottom: 56.25%;
         border-radius: 4px;
     }
 }

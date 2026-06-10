@@ -205,7 +205,7 @@ class PanoramaController extends Controller
                 'title'         => 'Armure',
                 'location'      => 'Point 10 — Armure',
                 'file'          => 'pano-images/j.jpg',
-                'video_id'      => 'jNQXAC9IVRw',           // ✅ Vidéo YouTube test
+                'video_id'      => 'Bvz3O6yqzwo',
                 'video_title'   => 'Démonstration Armure',
                 'default_yaw'   => 0,
                 'default_pitch' => 0,

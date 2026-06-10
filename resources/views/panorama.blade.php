@@ -11,9 +11,7 @@
         SEO::setTitle('Explorer l\'atelier  — Frédéric Oden');
     @endphp
 
-        <!-- ✅ WRAPPER PRINCIPAL -->
     <div class="pano-wrapper">
-        <!-- Boutons de contrôle -->
         <div class="pano-header">
             <div class="pano-header__controls">
                 <button class="btn-ctrl" id="btn-fullscreen" title="Plein écran">
@@ -24,7 +22,6 @@
             </div>
         </div>
 
-        <!-- Panorama 360 -->
         <div id="panorama-viewer">
             <div class="pano-loading" id="pano-loading">
                 <div class="pano-loading__spinner"></div>
@@ -32,7 +29,6 @@
             </div>
         </div>
 
-        <!-- ✅ CONTENEUR VIDÉO -->
         <div class="pano-video-container" id="pano-video-container">
             <div class="pano-video__header">
                 <h3 id="video-title">Vidéo</h3>

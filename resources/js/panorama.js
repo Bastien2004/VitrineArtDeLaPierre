@@ -137,7 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
     viewer.addEventListener('ready', () => {
         document.getElementById('pano-loading')?.classList.add('hidden');
         updateNavArrow();
-        // ✅ Afficher la vidéo du premier panorama s'il en a une
         updateVideo(panoramas[0]);
     }, { once: true });
 
@@ -189,7 +188,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 markersPlugin.clearMarkers();
                 buildMarkers(nextPano).forEach(m => markersPlugin.addMarker(m));
 
-                // ✅ METTRE À JOUR LA VIDÉO
                 updateVideo(nextPano);
 
                 updateNavArrow();
@@ -215,7 +213,6 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.style.display = currentIndex >= panoramas.length - 1 ? 'none' : 'flex';
     }
 
-    // ✅ FERMER LA VIDÉO
     document.getElementById('btn-close-video')?.addEventListener('click', () => {
         document.getElementById('pano-video-container').classList.remove('visible');
         document.getElementById('panorama-viewer').style.height = '100vh'; // ✅ Revenir à 100vh
