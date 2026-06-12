@@ -21,14 +21,12 @@ class RealisationObserver
 
     private function compress(Realisation $realisation): void
     {
-        if (!$realisation->image) return;
 
         $path = Storage::disk('public')->path($realisation->image);
 
         $manager = new ImageManager(new Driver());
-        $manager->read($path)
+        $manager->decode($path)
             ->scaleDown(width: 800)
-            ->toJpeg(quality: 75)
-            ->save($path);
+            ->save($path, quality: 75);
     }
 }

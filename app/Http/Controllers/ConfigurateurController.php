@@ -30,8 +30,8 @@ class ConfigurateurController extends Controller
         $prenom = $request->input('prenom', '');
 
 
-        //Mail::to('frederic.oden.tailleur.pierre@gmail.com')->send(new ConfigurateurEmail($pierres));
-        Mail::to('bastienhecquet2004@gmail.com')->send(new ConfigurateurEmail($pierres, $note, $numero, $mail, $nom, $prenom));
+        Mail::to("frederic.oden.tailleur.pierre@gmail.com")->send(new ConfigurateurEmail($pierres, $note, $numero, $mail, $nom, $prenom));
+        //Mail::to('bastienhecquet2004@gmail.com')->send(new ConfigurateurEmail($pierres, $note, $numero, $mail, $nom, $prenom));
 
 
         return response()->json(['success' => true]);
