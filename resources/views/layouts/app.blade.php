@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@200;300;400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-
     <style>
         .font-serif { font-family: 'Cormorant Garamond', serif; }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
@@ -22,30 +21,23 @@
 
 <nav class="navbar scrolled" id="navbar">
     <a href="/" class="logo">Frédéric Oden</a>
-
     <ul class="nav-links">
-        <li><a href="{{route('panoramas')}}">Explorer l’atelier</a></li>
+        <li><a href="{{route('panoramas')}}">Explorer l'atelier</a></li>
         <li><a href="/configurateur">Devis</a></li>
         <li><a href="https://www.pagesjaunes.fr/contribution/votre-avis/62047963">Avis</a></li>
         <li><a href="{{ route('recrutement') }}">Recrutement</a></li>
     </ul>
-
     <button class="nav-hamburger" id="nav-hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
     </button>
 </nav>
 
 <div class="nav-mobile-menu" id="nav-mobile-menu" aria-hidden="true">
-
     <button class="nav-mobile-close" id="nav-mobile-close" aria-label="Fermer le menu">
-        <span></span>
-        <span></span>
+        <span></span><span></span>
     </button>
-
     <a href="/">Accueil</a>
-    <a href="{{route('panoramas')}}">Explorer l’atelier</a>
+    <a href="{{route('panoramas')}}">Explorer l'atelier</a>
     <a href="/configurateur">Devis</a>
     <a href="https://www.pagesjaunes.fr/contribution/votre-avis/62047963">Avis</a>
     <div class="nav-mobile-divider"></div>
@@ -65,6 +57,13 @@
         </div>
 
         <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+
+            <div class="flex items-center gap-1.5 text-gray-400 border-b border-gray-100 pb-2 sm:pb-0 sm:border-b-0 sm:border-r sm:pr-6">
+                <svg class="w-3.5 h-3.5 opacity-60 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2m6-2a10 10 0 1 1-20 0 10 10 0 0 1 20 0Z" />
+                </svg>
+                <span>Lun–Ven&nbsp;8h–12h / 13h–17h &nbsp;·&nbsp; Sam sur RDV</span>
+            </div>
 
             <div class="flex items-center gap-4 border-b border-gray-100 pb-2 sm:pb-0 sm:border-b-0 sm:pr-2">
                 <a href="tel:0615850625" class="flex items-center gap-1.5 hover:text-gray-900 transition-colors duration-200">
@@ -87,7 +86,6 @@
                 <span>·</span>
                 <a href="{{ route('politique-confidentialite') }}" class="hover:text-gray-700 hover:underline transition-colors">Confidentialité</a>
                 <span>·</span>
-
                 <span class="text-gray-400">Développé par
                     <a href="https://guideon.dev" class="inline-block ml-0.5 font-semibold text-gray-600 hover:text-blue-600 hover:drop-shadow-[0_0_6px_rgba(37,99,235,0.3)] transition-all duration-300 tracking-wide">
                         GuideOn
@@ -96,12 +94,10 @@
             </div>
 
         </div>
-
     </div>
 </footer>
 
 <script>
-    /* ── Navbar transparente sur hero ── */
     (function () {
         const navbar = document.getElementById('navbar');
         const isHome = document.querySelector('.hero') !== null;
@@ -112,11 +108,10 @@
         }, { passive: true });
     })();
 
-    /* ── Menu hamburger ── */
     (function () {
-        const btn       = document.getElementById('nav-hamburger');
-        const closeBtn  = document.getElementById('nav-mobile-close');
-        const menu      = document.getElementById('nav-mobile-menu');
+        const btn      = document.getElementById('nav-hamburger');
+        const closeBtn = document.getElementById('nav-mobile-close');
+        const menu     = document.getElementById('nav-mobile-menu');
 
         function openMenu() {
             btn.classList.add('open');
@@ -134,23 +129,12 @@
             document.body.style.overflow = '';
         }
 
-        /* Ouvre/ferme via le hamburger */
         btn.addEventListener('click', () => {
             btn.classList.contains('open') ? closeMenu() : openMenu();
         });
-
-        /* Ferme via le bouton ✕ dans le menu */
         closeBtn.addEventListener('click', closeMenu);
-
-        /* Ferme au clic sur un lien */
         menu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
-
-        /* Ferme au clic sur le fond (hors liens) */
-        menu.addEventListener('click', function (e) {
-            if (e.target === menu) closeMenu();
-        });
-
-        /* Ferme avec Escape */
+        menu.addEventListener('click', function (e) { if (e.target === menu) closeMenu(); });
         document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
     })();
 </script>
