@@ -57,17 +57,14 @@
 <footer class="footer-minimal w-full px-8 py-6 text-gray-500 text-xs bg-white border-t border-gray-100">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
 
-        <!-- Bloc Gauche : Identité & Copyright -->
         <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
             <span class="font-bold text-gray-800 tracking-wide">Frédéric Oden</span>
             <span class="hidden sm:inline text-gray-300">|</span>
             <p class="uppercase tracking-wider text-[10px] text-gray-400">© {{ date('Y') }} — Tailleur de Pierre & Sculpteur</p>
         </div>
 
-        <!-- Bloc Central / Droite : Contacts & Liens légaux -->
         <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
 
-            <!-- Vos Contacts -->
             <div class="flex items-center gap-4 border-b border-gray-100 pb-2 sm:pb-0 sm:border-b-0 sm:pr-2">
                 <a href="tel:0615850625" class="flex items-center gap-1.5 hover:text-gray-900 transition-colors duration-200">
                     <svg class="w-3.5 h-3.5 opacity-70" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
@@ -84,14 +81,12 @@
                 </a>
             </div>
 
-            <!-- Liens Légaux & Crédit -->
             <div class="flex items-center gap-3 text-gray-400">
                 <a href="{{ route('mentions-legales') }}" class="hover:text-gray-700 hover:underline transition-colors">Mentions légales</a>
                 <span>·</span>
                 <a href="{{ route('politique-confidentialite') }}" class="hover:text-gray-700 hover:underline transition-colors">Confidentialité</a>
                 <span>·</span>
 
-                <!-- GuideOn mis en valeur (Bleu au survol) -->
                 <span class="text-gray-400">Développé par
                     <a href="https://guideon.dev" class="inline-block ml-0.5 font-semibold text-gray-600 hover:text-blue-600 hover:drop-shadow-[0_0_6px_rgba(37,99,235,0.3)] transition-all duration-300 tracking-wide">
                         GuideOn
@@ -106,7 +101,6 @@
 
 
 <script>
-    /* ── Navbar transparente sur hero ── */
     (function () {
         const navbar = document.getElementById('navbar');
         const isHome = document.querySelector('.hero') !== null;
@@ -117,7 +111,6 @@
         }, { passive: true });
     })();
 
-    /* ── Menu hamburger ── */
     (function () {
         const btn       = document.getElementById('nav-hamburger');
         const closeBtn  = document.getElementById('nav-mobile-close');
@@ -139,23 +132,18 @@
             document.body.style.overflow = '';
         }
 
-        /* Ouvre/ferme via le hamburger */
         btn.addEventListener('click', () => {
             btn.classList.contains('open') ? closeMenu() : openMenu();
         });
 
-        /* Ferme via le bouton ✕ dans le menu */
         closeBtn.addEventListener('click', closeMenu);
 
-        /* Ferme au clic sur un lien */
         menu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
 
-        /* Ferme au clic sur le fond (hors liens) */
         menu.addEventListener('click', function (e) {
             if (e.target === menu) closeMenu();
         });
 
-        /* Ferme avec Escape */
         document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
     })();
 </script>
