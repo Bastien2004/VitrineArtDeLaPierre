@@ -7,6 +7,11 @@ use App\Livewire\RecruitmentForm;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ComparaisonController;
 
+Route::redirect('/contact.html', '/', 301);
+Route::redirect('/index.html', '/', 301);
+Route::redirect('/artiste.html', '/', 301);
+Route::redirect('/savoir-faire.html', '/', 301);
+
 Route::get('/recrutement', fn() => view('recrutement'))->name('recrutement');
 Route::get('/configurateur', [ConfigurateurController::class, 'index'])->name('configurateur');
 Route::post('/configurateur/envoyer-mail', [ConfigurateurController::class, 'envoyerMail']);
